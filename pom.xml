@@ -13,7 +13,8 @@
         <module>ConverterInterface</module>
         <module>CustomerComposition</module>
         <module>IceCreamClassDesign</module>
-<!--        <module>RPGInheritance</module>-->
+        <module>CalculatorObject</module>
+        <module>RPGInheritance</module>
     </modules>
 
     <dependencies>
