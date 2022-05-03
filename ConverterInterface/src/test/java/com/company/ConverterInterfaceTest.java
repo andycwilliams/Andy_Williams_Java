@@ -5,11 +5,11 @@ import org.junit.Test;
 
 public class ConverterInterfaceTest {
     // ConverterIf, ConverterSwitch
-//    ConverterInterface convertTest;
+//    com.company.interfaces.ConverterInterface convertTest;
 //
 //    @Before
 //    public void setUp() {
-//        convertTest = new ConverterInterface();
+//        convertTest = new com.company.interfaces.ConverterInterface();
 //    }
 //
 //    @Test

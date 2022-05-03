@@ -1,3 +1,5 @@
+package com.company.interfaces;
+
 public interface ConverterInterface {
         /**
          * This method converts the given number into its corresponding month.
@@ -12,4 +14,9 @@ public interface ConverterInterface {
          */
         String convertDay(int dayNumber);
 
+//        public int readInt(String prompt);
+//        public long readLong(String prompt);
+//        public double readDouble(String prompt);
+//        public float readFloat(String prompt);
+//        public String readString(String prompt);
 }

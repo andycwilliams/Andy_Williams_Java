@@ -10,7 +10,7 @@
     <version>1.0-SNAPSHOT</version>
     <modules>
         <module>CalculatorObject</module>
-        <module>ConverterInterface</module>
+        <module>com.company.interfaces.ConverterInterface</module>
         <module>CustomerComposition</module>
         <module>IceCreamClassDesign</module>
         <module>CalculatorObject</module>
