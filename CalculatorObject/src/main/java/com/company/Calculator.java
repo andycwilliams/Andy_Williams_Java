@@ -29,11 +29,3 @@ public class Calculator {
     }
 }
 
-//addInt(1, 1);
-//subtractInt(23, 52);
-//multiplyInt(34, 2);
-//divideInt(12. 3);
-//divideInt(12. 7);
-//addDouble(3.4, 2.3);
-//multiplyDouble(6.7, 4.4);
-//subtractDouble(5.5-0.5);
