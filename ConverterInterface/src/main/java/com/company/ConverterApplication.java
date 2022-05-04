@@ -2,12 +2,12 @@ package com.company;
 
 import com.company.interfaces.ConverterInterface;
 class ConverterApplication {
-    public static void main(String[] args) {
-
-        ConverterInterface newConvert = new ConverterInterface();
-        newConvert.convertDay();
-        newConvert.convertMonth();
-    }
+//    public static void main(String[] args) {
+//
+//        ConverterInterface newConvert = new ConverterInterface();
+//        newConvert.convertDay();
+//        newConvert.convertMonth();
+//    }
 }
 
 //public static void main(String[] args) {

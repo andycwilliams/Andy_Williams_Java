@@ -13,8 +13,8 @@ public class App {
         calculator.addDouble(3.4, 2.3);
         calculator.multiplyDouble(6.7, 4.4);
         calculator.subtractDouble(5.5,0.5);
+        calculator.divideDouble(10.8, 2.2);
 
-//        System.out.println(calculator.addInt(14,17));
     }
 }
 

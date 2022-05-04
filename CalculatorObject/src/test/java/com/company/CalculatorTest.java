@@ -51,22 +51,22 @@ public class CalculatorTest {
     @Test
     public void shouldSubtractDouble() {
         assertEquals(1.26, calculator.subtractDouble(4.44,3.18), 1);
-//        assertEquals(9, calculator.subtractDouble(, ), 1);
-//        assertEquals(0, calculator.subtractDouble(, ), 1);
+        assertEquals(1.8, calculator.subtractDouble(7.4, 5.6), 1);
+        assertEquals(21.7, calculator.subtractDouble(82.78, 61.08), 1);
     }
 
     @Test
     public void shouldMultiplyDouble() {
         assertEquals(50.922, calculator.multiplyDouble(6.21,8.2), 1);
-//        assertEquals(80, calculator.multiplyDouble(, ), 1);
-//        assertEquals(-25, calculator.multiplyDouble(, ), 1);
+        assertEquals(7.56, calculator.multiplyDouble(2.7, 2.8), 1);
+        assertEquals(41.44, calculator.multiplyDouble(7.4, 5.6), 1);
     }
 
     @Test
     public void shouldDivideDouble() {
-        assertEquals(-5.96, calculator.divideDouble(-7.45,1.25), 0);
-//        assertEquals(4, calculator.divideDouble(, ), 0);
-//        assertEquals(15, calculator.divideDouble(, ), 0);
+        assertEquals(-5.96, calculator.divideDouble(-7.45,1.25), 1);
+        assertEquals(5.125, calculator.divideDouble(8.2, 1.6), 1);
+        assertEquals(3, calculator.divideDouble(9.99, 3.33), 1);
     }
 
 }
