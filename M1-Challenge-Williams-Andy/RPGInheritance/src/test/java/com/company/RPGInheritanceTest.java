@@ -3,10 +3,24 @@ package com.company;
 import com.company.inheritance.Constable;
 import com.company.inheritance.Farmer;
 import com.company.inheritance.Warrior;
+import org.junit.Before;
+import org.junit.Test;
+
+import java.util.HashMap;
+import java.util.Scanner;
+
+import static org.junit.Assert.assertArrayEquals;
+import static org.junit.Assert.assertTrue;
 
 public class RPGInheritanceTest {
-    public static void main(String[] args) {
+
+//    private Constable newConstable;
+
+    private static HashMap<String, String> test1;
+    @Before
+    public void setUp() {
         Constable newConstable = new Constable();
+//        newConstable = new Constable();
         Farmer newFarmer = new Farmer();
         Warrior newWarrior = new Warrior();
 
@@ -34,4 +48,53 @@ public class RPGInheritanceTest {
         System.out.println(newFarmer);
         System.out.println(newWarrior);
     }
+
+//    @Test
+//    public void shouldReturnConstable() throws Exception {
+//        Scanner scan = new Scanner(getClass(new))
+//
+//    }
 }
+
+//        assertArrayEquals(new int[] {2,5,8,11}, tester.averageArrays(testArr1));
+//        assertArrayEquals(new int[] {8,46}, tester.averageArrays(testArr2));
+//        assertArrayEquals(new int[] {1,4,0}, tester.averageArrays(testArr3));
+
+//    @Test
+//    public void shouldPrintKeysAndValues() throws Exception {
+//        Scanner scan = new Scanner(getOutput("keysAndValues", 1));
+//
+//        tester.printKeysAndValues(test1);
+//        String output = systemOutRule.getLog();
+//
+//        while(scan.hasNext()) {
+//            String failMessage = "Expected to output all keys and values";
+//            assertTrue(failMessage, output.contains(scan.nextLine()));
+//        }
+//
+//        systemOutRule.clearLog();
+//
+//        scan = new Scanner(getOutput("keysAndValues", 2));
+//
+//        tester.printKeysAndValues(test2);
+//        output = systemOutRule.getLog();
+//
+//        while(scan.hasNext()) {
+//            String failMessage = "Expected to output all keys and values";
+//            assertTrue(failMessage, output.contains(scan.nextLine()));
+//        }
+//
+//        systemOutRule.clearLog();
+//
+//        scan = new Scanner(getOutput("keysAndValues", 3));
+//
+//        tester.printKeysAndValues(test3);
+//        output = systemOutRule.getLog();
+//
+//        while(scan.hasNext()) {
+//            String failMessage = "Expected to output all keys and values";
+//            assertTrue(failMessage, output.contains(scan.nextLine()));
+//        }
+//
+//        systemOutRule.clearLog();
+//    }

@@ -11,7 +11,6 @@ public class IceCream {
         this.productionTime = productionTime;
         this.ingredients = ingredients;
     }
-
     public String brand;
     public String flavor;
     public int quantity;
