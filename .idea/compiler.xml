@@ -6,12 +6,14 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
-        <module name="IceCreamClassDesign" />
-        <module name="CalculatorObject" />
-        <module name="ConverterInterface" />
-        <module name="CustomerComposition" />
-        <module name="RPGInheritance" />
       </profile>
     </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="CalculatorObject" target="18" />
+      <module name="ConverterInterface" target="18" />
+      <module name="CustomerComposition" target="1.8" />
+      <module name="IceCreamClassDesign" target="1.8" />
+      <module name="RPGInheritance" target="18" />
+    </bytecodeTargetLevel>
   </component>
 </project>
