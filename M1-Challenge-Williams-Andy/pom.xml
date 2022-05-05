@@ -9,11 +9,11 @@
     <packaging>pom</packaging>
     <version>1.0-SNAPSHOT</version>
     <modules>
-        <module>M1-Challenge-Williams-Andy/CalculatorObject</module>
-        <module>M1-Challenge-Williams-Andy/ConverterInterface</module>
-        <module>M1-Challenge-Williams-Andy/CustomerComposition</module>
-        <module>M1-Challenge-Williams-Andy/IceCreamClassDesign</module>
-        <module>M1-Challenge-Williams-Andy/RPGInheritance</module>
+        <module>CalculatorObject</module>
+        <module>ConverterInterface</module>
+        <module>CustomerComposition</module>
+        <module>IceCreamClassDesign</module>
+        <module>RPGInheritance</module>
     </modules>
 
     <dependencies>
