@@ -4,8 +4,8 @@ import java.util.Objects;
 
 public class Farmer extends BaseClass{
 
-    protected boolean plowing;
-    protected boolean harvesting;
+    protected boolean plowing = false;
+    protected boolean harvesting = false;
 
     public boolean isPlowing() {
         return plowing;

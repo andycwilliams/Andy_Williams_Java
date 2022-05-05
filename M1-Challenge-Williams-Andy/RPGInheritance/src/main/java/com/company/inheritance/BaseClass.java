@@ -3,16 +3,15 @@ package com.company.inheritance;
 import java.util.Objects;
 
 public class BaseClass {
-
     protected String name;
-    protected int health;
+    protected int health = 100;
     protected int strength;
     protected int stamina;
     protected int attackPower;
     protected int speed;
-    protected boolean running;
-    protected boolean arrested;
-    protected String abilities;
+    protected boolean running = false;
+    protected boolean arrested = false;
+    protected String abilities = "Attack another character. ";
 
     public String getName() {
         return name;
