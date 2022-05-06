@@ -9,20 +9,22 @@ import org.junit.Test;
 import java.util.HashMap;
 import java.util.Scanner;
 
-import static org.junit.Assert.assertArrayEquals;
-import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.*;
 
 public class RPGInheritanceTest {
 
-//    private Constable newConstable;
+    Constable newConstable;
+    Farmer newFarmer;
+    Warrior newWarrior;
 
     private static HashMap<String, String> test1;
     @Before
     public void setUp() {
-        Constable newConstable = new Constable();
-//        newConstable = new Constable();
-        Farmer newFarmer = new Farmer();
-        Warrior newWarrior = new Warrior();
+//        Constable newConstable = new Constable();
+        // calc = new Calculator()
+        newConstable = new Constable();
+        newFarmer = new Farmer();
+        newWarrior = new Warrior();
 
         newConstable.setName("Constable Guy");
         newConstable.setStrength(60);
@@ -44,16 +46,28 @@ public class RPGInheritanceTest {
         newWarrior.setAttackPower(10);
         newWarrior.setShieldStrength(100);
 
-        System.out.println(newConstable);
-        System.out.println(newFarmer);
-        System.out.println(newWarrior);
+//        System.out.println(newConstable);
+//        System.out.println(newFarmer);
+//        System.out.println(newWarrior);
     }
 
-//    @Test
-//    public void shouldReturnConstable() throws Exception {
-//        Scanner scan = new Scanner(getClass(new))
-//
-//    }
+    @Test
+    public void shouldshouldReturnConstableName() throws Exception {
+        assertEquals("Constable Guy", newConstable.getName());
+
+    }
+
+    @Test
+    public void shouldshouldReturnFarmerHealth() throws Exception {
+        assertEquals(100, newFarmer.getHealth());
+
+    }
+
+    @Test
+    public void shouldshouldReturnWarriorAttackPower() throws Exception {
+        assertEquals(10, newWarrior.getAttackPower());
+
+    }
 }
 
 //        assertArrayEquals(new int[] {2,5,8,11}, tester.averageArrays(testArr1));

@@ -3,6 +3,19 @@ package com.company.pointofsale;
 import java.util.Objects;
 
 public class IceCream {
+
+    public void FreeIceCreamDay() {
+        System.out.println("We don't have a free ice cream day.");
+    }
+
+    public void IceCreamOnSaleDay() {
+        System.out.println("We don't ever put our ice cream on sale.");
+    }
+
+    public void IceCreamInStock() {
+        System.out.println("We don't have any ice cream in stock either.");
+    }
+
     public IceCream(String brand, String flavor, int quantity, double price) {
         this.brand = brand;
         this.flavor = flavor;

@@ -1,5 +1,6 @@
 package com.company;
 
+import java.util.List;
 import java.util.Objects;
 
 public class Customer extends Address{
@@ -10,8 +11,12 @@ public class Customer extends Address{
     protected Integer phoneNo;
     protected Boolean isRewardsMember;
 
-    public Customer(String address, String street1, String street, String city, String state, Integer zipCode) {
-        super(address, street1, street, city, state, zipCode);
+//    private List<Address> addresses;
+//    Customer(List<Address> addresses) { this.addresses = addresses; }
+//    public List<Address> getBothAddresses() { return addresses; }
+
+    public Customer(String address, String street1, String street2, String city, String state, Integer zipCode) {
+        super(address, street1, street2, city, state, zipCode);
     }
 
     public Customer() {
@@ -81,7 +86,7 @@ public class Customer extends Address{
                 ", isRewardsMember=" + isRewardsMember +
                 ", address='" + address + '\'' +
                 ", street1='" + street1 + '\'' +
-                ", street='" + street + '\'' +
+                ", street2='" + street2 + '\'' +
                 ", city='" + city + '\'' +
                 ", state='" + state + '\'' +
                 ", zipCode=" + zipCode +

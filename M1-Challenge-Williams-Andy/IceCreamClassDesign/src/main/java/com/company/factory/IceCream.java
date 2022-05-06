@@ -3,6 +3,18 @@ package com.company.factory;
 import java.util.Objects;
 
 public class IceCream {
+
+    public void Overtime() {
+        System.out.println("We will make all our employees work overtime.");
+    }
+
+    public void Fumigation () {
+        System.out.println("We have to shut down to fumigate that one worker who never showers. Thanks, Kyle.");
+    }
+
+    public void OutOfIngredients() {
+        System.out.println("We're out of ingredients. Just put whatever in there.");
+    }
     public IceCream(String brand, String flavor, int quantity, double productionCost, int productionTime, String ingredients) {
         this.brand = brand;
         this.flavor = flavor;
