@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CompilerConfiguration">
+    <annotationProcessing>
+      <profile name="Maven default annotation processors profile" enabled="true">
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <module name="IceCreamClassDesign" />
+        <module name="CalculatorObject" />
+        <module name="MonthAPI" />
+        <module name="ConverterInterface" />
+        <module name="CustomerComposition" />
+        <module name="RPGInheritance" />
+      </profile>
+    </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="Andy_Williams_Java" target="1.8" />
+      <module name="Andy_Williams_Java (1)" target="1.8" />
+      <module name="CalculatorObject" target="18" />
+      <module name="ConverterInterface" target="18" />
+      <module name="CustomerComposition" target="1.8" />
+      <module name="IceCreamClassDesign" target="1.8" />
+      <module name="MonthAPI" target="1.8" />
+      <module name="RPGInheritance" target="18" />
+    </bytecodeTargetLevel>
+  </component>
+  <component name="JavacSettings">
+    <option name="ADDITIONAL_OPTIONS_OVERRIDE">
+      <module name="MonthAPI" options="-parameters" />
+    </option>
+  </component>
+</project>

@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/M1-Challenge-Williams-Andy/Andy_Williams_Java.iml" filepath="$PROJECT_DIR$/M1-Challenge-Williams-Andy/Andy_Williams_Java.iml" />
+      <module fileurl="file://$PROJECT_DIR$/M1-Challenge-Williams-Andy/CalculatorObject/CalculatorObject.iml" filepath="$PROJECT_DIR$/M1-Challenge-Williams-Andy/CalculatorObject/CalculatorObject.iml" />
+      <module fileurl="file://$PROJECT_DIR$/M1-Challenge-Williams-Andy/ConverterInterface/ConverterInterface.iml" filepath="$PROJECT_DIR$/M1-Challenge-Williams-Andy/ConverterInterface/ConverterInterface.iml" />
+      <module fileurl="file://$PROJECT_DIR$/M1-Challenge-Williams-Andy/CustomerComposition/CustomerComposition.iml" filepath="$PROJECT_DIR$/M1-Challenge-Williams-Andy/CustomerComposition/CustomerComposition.iml" />
+      <module fileurl="file://$PROJECT_DIR$/M1-Challenge-Williams-Andy/IceCreamClassDesign/IceCreamClassDesign.iml" filepath="$PROJECT_DIR$/M1-Challenge-Williams-Andy/IceCreamClassDesign/IceCreamClassDesign.iml" />
+      <module fileurl="file://$PROJECT_DIR$/M2-Challenge-Williams-Andy/MonthAPI.iml" filepath="$PROJECT_DIR$/M2-Challenge-Williams-Andy/MonthAPI.iml" />
+      <module fileurl="file://$PROJECT_DIR$/M1-Challenge-Williams-Andy/RPGInheritance/RPGInheritance.iml" filepath="$PROJECT_DIR$/M1-Challenge-Williams-Andy/RPGInheritance/RPGInheritance.iml" />
+    </modules>
+  </component>
+</project>
