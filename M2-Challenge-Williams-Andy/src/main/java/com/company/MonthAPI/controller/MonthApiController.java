@@ -1,33 +1,47 @@
 package com.company.MonthAPI.controller;
 
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.web.bind.annotation.*;
 
 import java.time.Month;
 import java.util.List;
+import java.util.Random;
 
 @RestController
 public class MonthApiController {
 
-    @RequestMapping(value = "/randomMonth", method = RequestMethod.GET)
-//    public List<Student> getStudents() {
-//        return studentList;
-//    }
+    @Autowired
+    Months month;
 
+        @RequestMapping(value = "/randomMonth", method = RequestMethod.GET)
+        @ResponseStatus(HttpStatus.OK)
+        public Month getRandomMonth(string index) {
+            System.out.println("RANDOM MONTH!");
+            return getRandomMonth.get(index);
+        }
 
-
-//    java.time.Month Converter:
-//    URI: /month/{monthNumber}
+//    Random Month:
+//    URI: /randomMonth
 //    HTTP Method: GET
 //    Request Body: None
-//    Response Body: A Month object containing the name and number of the requested month (1—January, 2—February, etc.)
-//    Error: 422, if the input is out of range
+//    Response Body: A Month object containing a randomly selected month
+
+    // ------
+
+//    @RequestMapping(value = "/month/{monthNumber}", method = RequestMethod.GET)
+//    public Student convertMonth(@PathVariable int index) {
+//        return studentList.get(index);
+//    }
+
+//    RequestMapping(value = "/add", method = RequestMethod.POST)
+
+//    RequestMapping(value = "/subtract", method = RequestMethod.POST)
+
+//    RequestMapping(value = "/multiply", method = RequestMethod.POST)
+
+//    RequestMapping(value = "/divide", method = RequestMethod.POST)
+}
 
 
 
-    @RequestMapping(value = "/month/{monthNumber}", method = RequestMethod.GET)
-    public String echo(@PathVariable String input) {
-        return input;
-    }
