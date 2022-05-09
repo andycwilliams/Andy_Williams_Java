@@ -11,15 +11,15 @@ import java.util.Random;
 @RestController
 public class MonthApiController {
 
-    @Autowired
-    Months month;
-
-        @RequestMapping(value = "/randomMonth", method = RequestMethod.GET)
-        @ResponseStatus(HttpStatus.OK)
-        public Month getRandomMonth(string index) {
-            System.out.println("RANDOM MONTH!");
-            return getRandomMonth.get(index);
-        }
+//    @Autowired
+//    Months month;
+//
+//        @RequestMapping(value = "/randomMonth", method = RequestMethod.GET)
+//        @ResponseStatus(HttpStatus.OK)
+//        public Month getRandomMonth(string index) {
+//            System.out.println("RANDOM MONTH!");
+//            return getRandomMonth.get(index);
+//        }
 
 //    Random Month:
 //    URI: /randomMonth
