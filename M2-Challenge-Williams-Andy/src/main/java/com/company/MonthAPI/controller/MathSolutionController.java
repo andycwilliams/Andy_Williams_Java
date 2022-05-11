@@ -18,6 +18,12 @@ public class MathSolutionController {
             new MathSolution(40,5,"divide",8)
     ));
 
+    @RequestMapping(value = "/", method = RequestMethod.GET)
+    @ResponseStatus(HttpStatus.OK)
+    public List<MathSolution> getAllMathSolutions() {
+        return tests;
+    }
+
     @RequestMapping(value="/add", method = RequestMethod.POST)
     @ResponseStatus(HttpStatus.CREATED)
     public MathSolution addSolution(@RequestBody MathSolution mathSolution) {

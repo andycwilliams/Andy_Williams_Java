@@ -18,7 +18,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 
 @RunWith(SpringRunner.class)
 @WebMvcTest(MonthApiController.class)
-public class MonthApiControllerTest {
+public class MathSolutionControllerTest {
 
     @Autowired
     MockMvc mockMvc;
@@ -33,30 +33,38 @@ public class MonthApiControllerTest {
     }
 
     @Test
-    public void shouldConvertMonth() throws Exception {
-        Month month = new Month();
-        month.setNumber(7);
-        month.setName("July");
-
-        String outputJson = mapper.writeValueAsString(month);
-
-        mockMvc.perform(get("/month/7"))
-                .andDo(print())
-                .andExpect(status().isOk())
-                .andExpect(content().json(outputJson));
+    public void shouldAddOperands() throws Exception {
+        MathSolution mathSolution = new MathSolution();
+        mathSolution.setOperand1(30);
+        mathSolution.setOperand2(90);
+        mathSolution.setOperation("add");
+        mathSolution.setAnswer(120);
     }
 
     @Test
-    public void shouldGetRandomMonth() throws Exception {
-//        Month month = new Month();
-//        month.setNumber(7);
-//        month.setName("July");
-//
-//        String outputJson = mapper.writeValueAsString(month);
-//
-//        mockMvc.perform(get("/month/7"))
-//                .andDo(print())
-//                .andExpect(status().isOk())
-//                .andExpect(content().json(outputJson));
+    public void shouldSubtractOperands() throws Exception {
+        MathSolution mathSolution = new MathSolution();
+        mathSolution.setOperand1(17);
+        mathSolution.setOperand2(5);
+        mathSolution.setOperation("subtract");
+        mathSolution.setAnswer(12);
+    }
+
+    @Test
+    public void shouldMultiplyOperands() throws Exception {
+        MathSolution mathSolution = new MathSolution();
+        mathSolution.setOperand1(10);
+        mathSolution.setOperand2(8);
+        mathSolution.setOperation("multiply");
+        mathSolution.setAnswer(80);
+    }
+
+    @Test
+    public void shouldDivideOperands() throws Exception {
+        MathSolution mathSolution = new MathSolution();
+        mathSolution.setOperand1(42);
+        mathSolution.setOperand2(2);
+        mathSolution.setOperation("divide");
+        mathSolution.setAnswer(21);
     }
 }
