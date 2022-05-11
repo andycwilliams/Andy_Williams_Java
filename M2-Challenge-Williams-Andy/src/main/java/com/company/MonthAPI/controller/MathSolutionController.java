@@ -28,6 +28,8 @@ public class MathSolutionController {
     @ResponseStatus(HttpStatus.CREATED)
     public MathSolution addSolution(@RequestBody MathSolution mathSolution) {
         mathSolution.addInt(mathSolution.getOperand1(), mathSolution.getOperand2());
+        mathSolution.setOperation("add");
+        mathSolution.setAnswer(mathSolution.getOperand1() + mathSolution.getOperand2());
         tests.add(mathSolution);
         return mathSolution;
     }
@@ -36,6 +38,8 @@ public class MathSolutionController {
     @ResponseStatus(HttpStatus.CREATED)
     public MathSolution subtractSolution(@RequestBody MathSolution mathSolution) {
         mathSolution.subtractInt(mathSolution.getOperand1(), mathSolution.getOperand2());
+        mathSolution.setOperation("subtract");
+        mathSolution.setAnswer(mathSolution.getOperand1() - mathSolution.getOperand2());
         tests.add(mathSolution);
         return mathSolution;
     }
@@ -44,6 +48,8 @@ public class MathSolutionController {
     @ResponseStatus(HttpStatus.CREATED)
     public MathSolution multiplySolution(@RequestBody MathSolution mathSolution) {
         mathSolution.multiplyInt(mathSolution.getOperand1(), mathSolution.getOperand2());
+        mathSolution.setOperation("multiply");
+        mathSolution.setAnswer(mathSolution.getOperand1() * mathSolution.getOperand2());
         tests.add(mathSolution);
         return mathSolution;
     }
@@ -52,6 +58,8 @@ public class MathSolutionController {
     @ResponseStatus(HttpStatus.CREATED)
     public MathSolution divideSolution(@RequestBody MathSolution mathSolution) {
         mathSolution.divideInt(mathSolution.getOperand1(), mathSolution.getOperand2());
+        mathSolution.setOperation("divide");
+        mathSolution.setAnswer(mathSolution.getOperand1() / mathSolution.getOperand2());
         tests.add(mathSolution);
         return mathSolution;
     }

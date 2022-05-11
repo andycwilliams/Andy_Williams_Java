@@ -39,6 +39,10 @@ public class MonthApiController {
     @ResponseStatus(HttpStatus.OK)
     public Month getMonthByNumber(@PathVariable int id) {
 
+        if (id < 1 || id > 12) {
+            throw new IllegalArgumentException("Must choose a number between 1 and 12.");
+        }
+
         Month findMonth = null;
 
         for (Month month : monthList) {
