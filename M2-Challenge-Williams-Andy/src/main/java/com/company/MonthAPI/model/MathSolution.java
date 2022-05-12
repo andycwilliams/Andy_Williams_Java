@@ -1,14 +1,22 @@
 package com.company.MonthAPI.model;
 
+import org.jetbrains.annotations.NotNull;
+
 import java.util.Objects;
 
 public class MathSolution {
 
     private int id;
+    @NotNull
     private Integer operand1;
+    @NotNull
     private Integer operand2;
     private String operation;
     private Integer answer;
+
+//    private int operand1;
+//    private int operand2;
+//    private int answer;
 
     public MathSolution(int id, Integer operand1, Integer operand2, String operation, Integer answer) {
         this.id = id;
@@ -18,6 +26,10 @@ public class MathSolution {
         this.answer = answer;
     }
 
+    public MathSolution(Integer operand1, Integer operand2) {
+        this.operand1 = operand1;
+        this.operand2 = operand2;
+    }
     public MathSolution(Integer operand1, Integer operand2, String operation, Integer answer) {
         this.operand1 = operand1;
         this.operand2 = operand2;

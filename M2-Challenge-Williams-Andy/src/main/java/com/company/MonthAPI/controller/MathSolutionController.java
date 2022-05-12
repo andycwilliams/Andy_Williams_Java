@@ -25,42 +25,47 @@ public class MathSolutionController {
     }
 
     @RequestMapping(value="/add", method = RequestMethod.POST)
-    @ResponseStatus(HttpStatus.CREATED)
+    @ResponseStatus(HttpStatus.OK)
     public MathSolution addSolution(@RequestBody MathSolution mathSolution) {
-        mathSolution.addInt(mathSolution.getOperand1(), mathSolution.getOperand2());
         mathSolution.setOperation("add");
         mathSolution.setAnswer(mathSolution.getOperand1() + mathSolution.getOperand2());
         tests.add(mathSolution);
         return mathSolution;
+        // Error: 422, if missing operand or if operands are not both numbers
     }
 
     @RequestMapping(value="/subtract", method = RequestMethod.POST)
-    @ResponseStatus(HttpStatus.CREATED)
+    @ResponseStatus(HttpStatus.OK)
     public MathSolution subtractSolution(@RequestBody MathSolution mathSolution) {
-        mathSolution.subtractInt(mathSolution.getOperand1(), mathSolution.getOperand2());
         mathSolution.setOperation("subtract");
         mathSolution.setAnswer(mathSolution.getOperand1() - mathSolution.getOperand2());
         tests.add(mathSolution);
         return mathSolution;
+        // Error: 422, if missing operand or if operands are not both numbers
     }
 
     @RequestMapping(value="/multiply", method = RequestMethod.POST)
-    @ResponseStatus(HttpStatus.CREATED)
+    @ResponseStatus(HttpStatus.OK)
     public MathSolution multiplySolution(@RequestBody MathSolution mathSolution) {
-        mathSolution.multiplyInt(mathSolution.getOperand1(), mathSolution.getOperand2());
         mathSolution.setOperation("multiply");
         mathSolution.setAnswer(mathSolution.getOperand1() * mathSolution.getOperand2());
         tests.add(mathSolution);
         return mathSolution;
+        // Error: 422, if missing operand or if operands are not both numbers
     }
 
     @RequestMapping(value="/divide", method = RequestMethod.POST)
-    @ResponseStatus(HttpStatus.CREATED)
+    @ResponseStatus(HttpStatus.OK)
     public MathSolution divideSolution(@RequestBody MathSolution mathSolution) {
-        mathSolution.divideInt(mathSolution.getOperand1(), mathSolution.getOperand2());
+
+        if (mathSolution.getOperand2() == 0) {
+            throw new IllegalArgumentException("Cannot divide by zero.");
+        }
+
         mathSolution.setOperation("divide");
         mathSolution.setAnswer(mathSolution.getOperand1() / mathSolution.getOperand2());
         tests.add(mathSolution);
         return mathSolution;
+        // Error: 422, if missing operand or if operands are not both numbers, or if operand2 is zero
     }
 }
