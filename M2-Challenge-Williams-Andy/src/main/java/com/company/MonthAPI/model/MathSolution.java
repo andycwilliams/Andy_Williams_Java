@@ -7,16 +7,12 @@ import java.util.Objects;
 public class MathSolution {
 
     private int id;
-    @NotNull
+//    @NotNull
     private Integer operand1;
-    @NotNull
+//    @NotNull
     private Integer operand2;
     private String operation;
     private Integer answer;
-
-//    private int operand1;
-//    private int operand2;
-//    private int answer;
 
     public MathSolution(int id, Integer operand1, Integer operand2, String operation, Integer answer) {
         this.id = id;
@@ -121,24 +117,3 @@ public class MathSolution {
                 '}';
     }
 }
-
-//    switch(operand1, operand2) {
-//        case add:
-//            System.out.println(operand1 + operand2);
-//            return operand1 + operand2;
-//            break;
-//        case subtract:
-//            System.out.println(operand1 - operand2);
-//            return operand1 - operand2;
-//            break;
-//        case multiply:
-//            System.out.println(operand1 * operand2);
-//            return operand1 * operand2;
-//            break;
-//        case divide:
-//            System.out.println(operand1/operand2);
-//            return operand1/operand2;
-//            break;
-//        default:
-//            System.out.println("An error occurred");
-//    }

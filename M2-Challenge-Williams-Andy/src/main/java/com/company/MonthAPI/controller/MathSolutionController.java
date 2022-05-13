@@ -27,36 +27,48 @@ public class MathSolutionController {
     @RequestMapping(value="/add", method = RequestMethod.POST)
     @ResponseStatus(HttpStatus.OK)
     public MathSolution addSolution(@RequestBody MathSolution mathSolution) {
+        if (mathSolution.getOperand1() instanceof Integer || mathSolution.getOperand2() instanceof Integer) {
+            System.out.println("IS INTEGER");
+        } else { throw new IllegalArgumentException("Both operands must be numbers."); }
+
         mathSolution.setOperation("add");
         mathSolution.setAnswer(mathSolution.getOperand1() + mathSolution.getOperand2());
         tests.add(mathSolution);
         return mathSolution;
-        // Error: 422, if missing operand or if operands are not both numbers
     }
 
     @RequestMapping(value="/subtract", method = RequestMethod.POST)
     @ResponseStatus(HttpStatus.OK)
     public MathSolution subtractSolution(@RequestBody MathSolution mathSolution) {
+        if (mathSolution.getOperand1() instanceof Integer || mathSolution.getOperand2() instanceof Integer) {
+            System.out.println("IS INTEGER");
+        } else { throw new IllegalArgumentException("Both operands must be numbers."); }
+
         mathSolution.setOperation("subtract");
         mathSolution.setAnswer(mathSolution.getOperand1() - mathSolution.getOperand2());
         tests.add(mathSolution);
         return mathSolution;
-        // Error: 422, if missing operand or if operands are not both numbers
     }
 
     @RequestMapping(value="/multiply", method = RequestMethod.POST)
     @ResponseStatus(HttpStatus.OK)
     public MathSolution multiplySolution(@RequestBody MathSolution mathSolution) {
+        if (mathSolution.getOperand1() instanceof Integer || mathSolution.getOperand2() instanceof Integer) {
+            System.out.println("IS INTEGER");
+        } else { throw new IllegalArgumentException("Both operands must be numbers."); }
+
         mathSolution.setOperation("multiply");
         mathSolution.setAnswer(mathSolution.getOperand1() * mathSolution.getOperand2());
         tests.add(mathSolution);
         return mathSolution;
-        // Error: 422, if missing operand or if operands are not both numbers
     }
 
     @RequestMapping(value="/divide", method = RequestMethod.POST)
     @ResponseStatus(HttpStatus.OK)
     public MathSolution divideSolution(@RequestBody MathSolution mathSolution) {
+        if (mathSolution.getOperand1() instanceof Integer || mathSolution.getOperand2() instanceof Integer) {
+            System.out.println("IS INTEGER");
+        } else { throw new IllegalArgumentException("Both operands must be numbers."); }
 
         if (mathSolution.getOperand2() == 0) {
             throw new IllegalArgumentException("Cannot divide by zero.");
@@ -66,6 +78,5 @@ public class MathSolutionController {
         mathSolution.setAnswer(mathSolution.getOperand1() / mathSolution.getOperand2());
         tests.add(mathSolution);
         return mathSolution;
-        // Error: 422, if missing operand or if operands are not both numbers, or if operand2 is zero
     }
 }

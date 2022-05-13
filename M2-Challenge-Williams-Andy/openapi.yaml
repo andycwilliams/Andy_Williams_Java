@@ -1,0 +1,166 @@
+openapi: 3.0.1
+info:
+  title: OpenAPI definition
+  version: v0
+servers:
+  - url: http://localhost:8080
+    description: Custom-built API that converts a given number into its corresponding month, returns a random month, and does basic arithmatic given two operands.
+paths:
+  /subtract:
+    post:
+      tags:
+        - math-solution-controller
+      operationId: subtractSolution
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/MathSolution'
+        required: true
+      responses:
+        '200':
+          description: OK
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/MathSolution'
+  /multiply:
+    post:
+      tags:
+        - math-solution-controller
+      operationId: multiplySolution
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/MathSolution'
+        required: true
+      responses:
+        '200':
+          description: OK
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/MathSolution'
+  /divide:
+    post:
+      tags:
+        - math-solution-controller
+      operationId: divideSolution
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/MathSolution'
+        required: true
+      responses:
+        '200':
+          description: OK
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/MathSolution'
+  /add:
+    post:
+      tags:
+        - math-solution-controller
+      operationId: addSolution
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/MathSolution'
+        required: true
+      responses:
+        '200':
+          description: OK
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/MathSolution'
+  /randomMonth:
+    get:
+      tags:
+        - month-api-controller
+      operationId: getRandomMonth
+      responses:
+        '200':
+          description: OK
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/Month'
+  /month:
+    get:
+      tags:
+        - month-api-controller
+      operationId: getAllMonths
+      responses:
+        '200':
+          description: OK
+          content:
+            '*/*':
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Month'
+  /month/{id}:
+    get:
+      tags:
+        - month-api-controller
+      operationId: getMonthByNumber
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+            format: int32
+      responses:
+        '200':
+          description: OK
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/Month'
+  /:
+    get:
+      tags:
+        - math-solution-controller
+      operationId: getAllMathSolutions
+      responses:
+        '200':
+          description: OK
+          content:
+            '*/*':
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/MathSolution'
+components:
+  schemas:
+    MathSolution:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int32
+        operand1:
+          type: integer
+          format: int32
+        operand2:
+          type: integer
+          format: int32
+        operation:
+          type: string
+        answer:
+          type: integer
+          format: int32
+    Month:
+      type: object
+      properties:
+        number:
+          type: integer
+          format: int32
+        name:
+          type: string

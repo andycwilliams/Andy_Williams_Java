@@ -4,6 +4,7 @@ import com.company.MonthAPI.model.Month;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.server.ResponseStatusException;
 
 
 import java.util.ArrayList;
@@ -39,9 +40,9 @@ public class MonthApiController {
     @ResponseStatus(HttpStatus.OK)
     public Month getMonthByNumber(@PathVariable int id) {
 
-//        if (id < 1 || id > 12) {
-//            throw new IllegalArgumentException("Must choose a number between 1 and 12.");
-//        }
+        if (id < 1 || id > 12) {
+            throw new ResponseStatusException(HttpStatus.UNPROCESSABLE_ENTITY, "Number must be between 1 and 12.");
+        }
 
         Month findMonth = null;
 
@@ -72,49 +73,3 @@ public class MonthApiController {
         return findMonth;
     }
 }
-
-// ------------------------------------------------------------------------
-
-//    public String getTest() {
-//        System.out.println("Random number: " + Math.random());
-//        return "Month";
-//
-//    }
-
-//    @RequestMapping(value = "/randomMonth/{id}", method = RequestMethod.GET)
-//    @ResponseStatus(value = HttpStatus.OK)
-//    public String getRandomMonth() {
-//        System.out.println("Random number: " + Math.random());
-//        return "Month";
-//
-//    }
-
-//    @RequestMapping(value = "/randomMonth", method = RequestMethod.GET)
-//    @ResponseStatus(HttpStatus.OK)
-//    public Month getRandomMonth(string index) {
-//        System.out.println("RANDOM MONTH!");
-//        return getRandomMonth.get(index);
-//    }
-
-//    Random Month:
-//    URI: /randomMonth
-//    HTTP Method: GET
-//    Request Body: None
-//    Response Body: A Month object containing a randomly selected month
-
-//    @RequestMapping(value = "/month/{monthNumber}", method = RequestMethod.GET)
-//    public Student convertMonth(@PathVariable int index) {
-//        return studentList.get(index);
-//    }
-
-//    RequestMapping(value = "/add", method = RequestMethod.POST)
-
-//    RequestMapping(value = "/subtract", method = RequestMethod.POST)
-
-//    RequestMapping(value = "/multiply", method = RequestMethod.POST)
-
-//    RequestMapping(value = "/divide", method = RequestMethod.POST)
-
-
-
-

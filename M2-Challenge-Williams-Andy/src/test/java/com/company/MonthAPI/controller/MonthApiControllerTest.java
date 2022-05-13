@@ -29,13 +29,6 @@ public class MonthApiControllerTest {
 
     private ObjectMapper mapper = new ObjectMapper();
 
-    @Before
-    public void setUp() {
-        // This is the standard set up method that runs before each test. It's typically used for instantiating test
-        // objects. We don't have to do anything special for mockMvc since it's Autowired. We will however be using
-        // setUp() in the future.
-    }
-
     @Test
     public void shouldConvertMonth() throws Exception {
         Month month = new Month();
@@ -50,19 +43,10 @@ public class MonthApiControllerTest {
                 .andExpect(content().json(outputJson));
     }
 
-    // MockMVC test for input out of range.
-
     @Test
     public void shouldGet422ForOutOfRangeMonth() throws Exception {
-        Month month = new Month();
-        month.setNumber(123);
-        month.setName("Super January");
-
-        String inputJSON = mapper.writeValueAsString(month);
-
         mockMvc.perform(
                         get("/month/123")
-                                .content(inputJSON)
                                 .contentType(MediaType.APPLICATION_JSON)
                 )
                 .andDo(print())
@@ -71,23 +55,10 @@ public class MonthApiControllerTest {
 
     @Test
     public void shouldGetRandomMonth() throws Exception {
-            Random rando = new Random();
-            int randoInt = rando.nextInt(12); // Makes sure it's between 0 and one less than the bound number
-            int correctedInt = randoInt + 1;
-
-            Month findMonth = null;
-//
-//            for (Month month : ) {
-//                if (month.getNumber() == correctedInt) {
-//                    findMonth = month;
-//                }
-//            }
-
         mockMvc.perform(
-                        get("/month")
-                                .contentType(MediaType.APPLICATION_JSON)
-                )
+                        get("/randomMonth"))
                 .andDo(print())
-                .andExpect(status().isOk());
+                .andExpect(jsonPath("$.number").isNotEmpty())
+                .andExpect(jsonPath("$.name").isNotEmpty());
     }
 }

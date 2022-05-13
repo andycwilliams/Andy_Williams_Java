@@ -11,6 +11,7 @@ import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
 import org.springframework.http.MediaType;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.web.servlet.MockMvc;
+import org.springframework.web.bind.annotation.RestControllerAdvice;
 
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
@@ -27,13 +28,6 @@ public class MathSolutionControllerTest {
 
     private ObjectMapper mapper = new ObjectMapper();
 
-    @Before
-    public void setUp() {
-        // This is the standard set up method that runs before each test. It's typically used for instantiating test
-        // objects. We don't have to do anything special for mockMvc since it's Autowired. We will however be using
-        // setUp() in the future.
-    }
-
     @Test
     public void shouldAddOperands() throws Exception {
         MathSolution expectedResult = new MathSolution(30, 90, "add", 120);
@@ -48,15 +42,11 @@ public class MathSolutionControllerTest {
                 .andExpect(content().json(outputJSON));
     }
 
-    // Error: 422, if missing operand or if operands are not both numbers
-
     @Test
-    public void shouldThrow422IfOneAddOperandIsMissingOrAreNotStrings() throws Exception {
-        MathSolution expectedResult = new MathSolution(null, 7, "add", 100);
+    public void shouldThrow422IfOneOperandIsMissingOrNotANumber() throws Exception {
+        MathSolution expectedResult = new MathSolution();
+        expectedResult.setOperand2(7);
         String inputJSON = mapper.writeValueAsString(expectedResult);
-
-//        MathSolution expectedResult2 = new MathSolution("", 7, "add", 100);
-//        String inputJSON2 = mapper.writeValueAsString(expectedResult2);
 
         mockMvc.perform(post("/add").content(inputJSON).contentType(MediaType.APPLICATION_JSON))
                 .andDo(print())
@@ -78,11 +68,6 @@ public class MathSolutionControllerTest {
     }
 
     @Test
-    public void shouldThrow422IfOneSubtractOperandIsMissingOrAreNotStrings() throws Exception {
-
-    }
-
-    @Test
     public void shouldMultiplyOperands() throws Exception {
         MathSolution expectedResult = new MathSolution(10, 8, "multiply", 80);
         String outputJSON = mapper.writeValueAsString(expectedResult);
@@ -94,11 +79,6 @@ public class MathSolutionControllerTest {
                 .andDo(print())
                 .andExpect(status().isOk())
                 .andExpect(content().json(outputJSON));
-    }
-
-    @Test
-    public void shouldThrow422IfOneMultiplyOperandIsMissingOrAreNotStrings() throws Exception {
-
     }
 
     @Test
@@ -116,9 +96,15 @@ public class MathSolutionControllerTest {
     }
 
     @Test
-    public void shouldThrow422IfOneADivideOperandIsMissingOrAreNotStrings() throws Exception {
+    public void shouldThrow422IfTryToDivideByZero() throws Exception {
+        MathSolution expectedResult = new MathSolution(42, 0, "divide", null);
+        String inputJSON = mapper.writeValueAsString(expectedResult);
 
+        mockMvc.perform(post("/divide")
+                        .content(inputJSON)
+                        .contentType(MediaType.APPLICATION_JSON)
+                )
+                .andDo(print())
+                .andExpect(status().isUnprocessableEntity());
     }
-
-    // MockMVC test for invalid request - ALL FOUR
 }
