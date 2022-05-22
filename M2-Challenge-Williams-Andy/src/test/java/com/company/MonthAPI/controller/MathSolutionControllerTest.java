@@ -43,7 +43,7 @@ public class MathSolutionControllerTest {
     }
 
     @Test
-    public void shouldThrow422IfOneOperandIsMissingOrNotANumber() throws Exception {
+    public void shouldThrow422IfOneOperandIsMissingOrNotANumberInAdd() throws Exception {
         MathSolution expectedResult = new MathSolution();
         expectedResult.setOperand2(7);
         String inputJSON = mapper.writeValueAsString(expectedResult);
@@ -68,6 +68,17 @@ public class MathSolutionControllerTest {
     }
 
     @Test
+    public void shouldThrow422IfOneOperandIsMissingOrNotANumberInSubtract() throws Exception {
+        MathSolution expectedResult = new MathSolution();
+        expectedResult.setOperand2(7);
+        String inputJSON = mapper.writeValueAsString(expectedResult);
+
+        mockMvc.perform(post("/subtract").content(inputJSON).contentType(MediaType.APPLICATION_JSON))
+                .andDo(print())
+                .andExpect(status().isUnprocessableEntity());
+    }
+
+    @Test
     public void shouldMultiplyOperands() throws Exception {
         MathSolution expectedResult = new MathSolution(10, 8, "multiply", 80);
         String outputJSON = mapper.writeValueAsString(expectedResult);
@@ -82,6 +93,17 @@ public class MathSolutionControllerTest {
     }
 
     @Test
+    public void shouldThrow422IfOneOperandIsMissingOrNotANumberInMultiply() throws Exception {
+        MathSolution expectedResult = new MathSolution();
+        expectedResult.setOperand2(7);
+        String inputJSON = mapper.writeValueAsString(expectedResult);
+
+        mockMvc.perform(post("/multiply").content(inputJSON).contentType(MediaType.APPLICATION_JSON))
+                .andDo(print())
+                .andExpect(status().isUnprocessableEntity());
+    }
+
+    @Test
     public void shouldDivideOperands() throws Exception {
         MathSolution expectedResult = new MathSolution(42, 2, "divide", 21);
         String outputJSON = mapper.writeValueAsString(expectedResult);
@@ -93,6 +115,17 @@ public class MathSolutionControllerTest {
                 .andDo(print())
                 .andExpect(status().isOk())
                 .andExpect(content().json(outputJSON));
+    }
+
+    @Test
+    public void shouldThrow422IfOneOperandIsMissingOrNotANumberInDivide() throws Exception {
+        MathSolution expectedResult = new MathSolution();
+        expectedResult.setOperand2(7);
+        String inputJSON = mapper.writeValueAsString(expectedResult);
+
+        mockMvc.perform(post("/divide").content(inputJSON).contentType(MediaType.APPLICATION_JSON))
+                .andDo(print())
+                .andExpect(status().isUnprocessableEntity());
     }
 
     @Test
