@@ -11,19 +11,6 @@ import java.util.List;
 @RestController
 public class MathSolutionController {
 
-    private static List<MathSolution> tests = new ArrayList<>(Arrays.asList(
-            new MathSolution(1,2,"add",3),
-            new MathSolution(14,12,"subtract",2),
-            new MathSolution(5,3,"multiply",15),
-            new MathSolution(40,5,"divide",8)
-    ));
-
-    @RequestMapping(value = "/", method = RequestMethod.GET)
-    @ResponseStatus(HttpStatus.OK)
-    public List<MathSolution> getAllMathSolutions() {
-        return tests;
-    }
-
     @RequestMapping(value="/add", method = RequestMethod.POST)
     @ResponseStatus(HttpStatus.OK)
     public MathSolution addSolution(@RequestBody MathSolution mathSolution) {
@@ -33,7 +20,6 @@ public class MathSolutionController {
 
         mathSolution.setOperation("add");
         mathSolution.setAnswer(mathSolution.getOperand1() + mathSolution.getOperand2());
-        tests.add(mathSolution);
         return mathSolution;
     }
 
@@ -46,7 +32,6 @@ public class MathSolutionController {
 
         mathSolution.setOperation("subtract");
         mathSolution.setAnswer(mathSolution.getOperand1() - mathSolution.getOperand2());
-        tests.add(mathSolution);
         return mathSolution;
     }
 
@@ -59,7 +44,6 @@ public class MathSolutionController {
 
         mathSolution.setOperation("multiply");
         mathSolution.setAnswer(mathSolution.getOperand1() * mathSolution.getOperand2());
-        tests.add(mathSolution);
         return mathSolution;
     }
 
@@ -76,7 +60,6 @@ public class MathSolutionController {
 
         mathSolution.setOperation("divide");
         mathSolution.setAnswer(mathSolution.getOperand1() / mathSolution.getOperand2());
-        tests.add(mathSolution);
         return mathSolution;
     }
 }

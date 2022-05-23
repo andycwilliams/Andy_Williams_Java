@@ -4,7 +4,7 @@ info:
   version: v0
 servers:
   - url: http://localhost:8080
-    description: Custom-built API that converts a given number into its corresponding month, returns a random month, and does basic arithmatic given two operands.
+    description: An API where the user can convert a number between 1 and 12 to its corresponding month, request a randomly selected month, or add/subtract/multiply/divide two numbers and receive the result.
 paths:
   /subtract:
     post:
