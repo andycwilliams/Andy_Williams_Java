@@ -1,7 +1,7 @@
 package com.company.InvoicingService.controller;
 
-import com.trilogyed.gamestore.service.GameStoreServiceLayer;
-import com.trilogyed.gamestore.viewModel.InvoiceViewModel;
+import com.company.InvoicingService.service.GameStoreServiceLayer;
+import com.company.InvoicingService.viewModel.InvoiceViewModel;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
@@ -57,7 +57,7 @@ public class InvoiceController {
         List<InvoiceViewModel> invoiceViewModelList = service.getInvoicesByCustomerName(name);
 
         if (invoiceViewModelList == null || invoiceViewModelList.isEmpty()) {
-            throw new IllegalArgumentException("No invoices were found for: "+name);
+            throw new IllegalArgumentException("No invoices were found for: " + name);
         } else {
             return invoiceViewModelList;
         }

@@ -1,7 +1,7 @@
 package com.company.CatalogService.controller;
 
-import com.trilogyed.gamestore.service.GameStoreServiceLayer;
-import com.trilogyed.gamestore.viewModel.GameViewModel;
+import com.company.CatalogService.service.GameStoreServiceLayer;
+import com.company.CatalogService.viewModel.GameViewModel;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;

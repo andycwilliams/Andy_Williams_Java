@@ -1,5 +1,6 @@
 package com.company.CatalogService.viewModel;
 
+import javax.validation.constraints.*;
 import java.math.BigDecimal;
 import java.util.Objects;
 

@@ -2,13 +2,11 @@ package com.company.InvoicingService.service;
 
 import com.company.InvoicingService.model.*;
 import com.company.InvoicingService.repository.*;
-import com.trilogyed.gamestore.viewModel.ConsoleViewModel;
-import com.trilogyed.gamestore.viewModel.GameViewModel;
-import com.trilogyed.gamestore.viewModel.InvoiceViewModel;
-import com.trilogyed.gamestore.viewModel.TShirtViewModel;
+import com.company.InvoicingService.viewModel.InvoiceViewModel;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
+import java.io.Console;
 import java.math.BigDecimal;
 import java.math.RoundingMode;
 import java.util.ArrayList;

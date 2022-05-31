@@ -1,9 +1,9 @@
 package com.company.InvoicingService.controller;
 
+import com.company.InvoicingService.service.GameStoreServiceLayer;
+import com.company.InvoicingService.viewModel.InvoiceViewModel;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.trilogyed.gamestore.service.GameStoreServiceLayer;
-import com.trilogyed.gamestore.viewModel.InvoiceViewModel;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;

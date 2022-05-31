@@ -1,6 +1,6 @@
 package com.company.InvoicingService.repository;
 
-import com.trilogyed.gamestore.model.Invoice;
+import com.company.InvoicingService.model.Invoice;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

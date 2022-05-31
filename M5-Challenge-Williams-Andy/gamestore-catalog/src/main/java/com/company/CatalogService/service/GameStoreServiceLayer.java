@@ -2,10 +2,9 @@ package com.company.CatalogService.service;
 
 import com.company.CatalogService.model.*;
 import com.company.CatalogService.repository.*;
-import com.trilogyed.gamestore.viewModel.ConsoleViewModel;
-import com.trilogyed.gamestore.viewModel.GameViewModel;
-import com.trilogyed.gamestore.viewModel.InvoiceViewModel;
-import com.trilogyed.gamestore.viewModel.TShirtViewModel;
+import com.company.CatalogService.viewModel.ConsoleViewModel;
+import com.company.CatalogService.viewModel.GameViewModel;
+import com.company.CatalogService.viewModel.TShirtViewModel;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
