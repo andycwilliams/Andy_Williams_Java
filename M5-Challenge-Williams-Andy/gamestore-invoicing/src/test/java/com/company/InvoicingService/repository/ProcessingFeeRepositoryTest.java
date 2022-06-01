@@ -1,6 +1,6 @@
 package com.company.InvoicingService.repository;
 
-import com.trilogyed.gamestore.model.ProcessingFee;
+import com.company.InvoicingService.model.ProcessingFee;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;

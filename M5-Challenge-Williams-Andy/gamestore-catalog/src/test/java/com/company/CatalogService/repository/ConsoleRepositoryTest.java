@@ -1,6 +1,6 @@
 package com.company.CatalogService.repository;
 
-import com.trilogyed.gamestore.model.Console;
+import com.company.CatalogService.model.Console;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;

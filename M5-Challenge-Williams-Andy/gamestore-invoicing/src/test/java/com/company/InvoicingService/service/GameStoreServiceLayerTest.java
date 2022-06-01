@@ -1,14 +1,18 @@
 package com.company.InvoicingService.service;
 
-import com.trilogyed.gamestore.viewModel.ConsoleViewModel;
-import com.trilogyed.gamestore.viewModel.GameViewModel;
-import com.trilogyed.gamestore.viewModel.InvoiceViewModel;
-import com.trilogyed.gamestore.viewModel.TShirtViewModel;
+import com.company.InvoicingService.model.Invoice;
+import com.company.InvoicingService.model.ProcessingFee;
+import com.company.InvoicingService.model.Tax;
+import com.company.InvoicingService.repository.InvoiceRepository;
+import com.company.InvoicingService.repository.ProcessingFeeRepository;
+import com.company.InvoicingService.repository.TaxRepository;
+import com.company.InvoicingService.viewModel.InvoiceViewModel;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.test.context.junit4.SpringRunner;
 
+import java.io.Console;
 import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
