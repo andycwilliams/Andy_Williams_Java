@@ -7,7 +7,7 @@ import java.util.Objects;
 public class ConsoleViewModel {
     private long id;
 
-    @NotEmpty(message = "Console model must is required")
+    @NotEmpty(message = "Console model is required")
     private String model;
 
     @NotEmpty(message = "Console manufacturer is required")
@@ -17,12 +17,12 @@ public class ConsoleViewModel {
     private String processor;
 
     @NotNull(message = "Console price is required")
-    @DecimalMin(value = "1.00", inclusive = true, message = "Price for this item is lower than  $1.0")
-    @DecimalMax(value = "999.99", inclusive = true, message = "Price for this item exceeds, $999.99")
+    @DecimalMin(value = "1.00", inclusive = true, message = "Price for this item is lower than $1.0")
+    @DecimalMax(value = "999.99", inclusive = true, message = "Price for this item exceeds $999.99")
     private BigDecimal price;
 
     @NotNull(message = "Console quantity is required")
-    @Min(value = 1, message = "Mim Quantity is 1")
+    @Min(value = 1, message = "Min Quantity is 1")
     @Max(value = 50000, message = "Max Quantity is 50,000")
     private long quantity;
 

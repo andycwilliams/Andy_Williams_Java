@@ -22,6 +22,9 @@ public class GameStoreServiceLayer {
     private final String CONSOLE_ITEM_TYPE = "Console";
     private final String TSHIRT_ITEM_TYPE = "T-Shirt";
 
+//    GameRepository gameRepo;
+//    ConsoleRepository consoleRepo;
+//    TShirtRepository tShirtRepo;
     InvoiceRepository invoiceRepo;
     TaxRepository taxRepo;
     ProcessingFeeRepository processingFeeRepo;
@@ -60,56 +63,56 @@ public class GameStoreServiceLayer {
 
         //Checks the item type and get the correct unit price
         //Check if we have enough quantity
-        if (invoiceViewModel.getItemType().equals(CONSOLE_ITEM_TYPE)) {
-            Console tempCon = null;
-            Optional<Console> returnVal = consoleRepo.findById(invoiceViewModel.getItemId());
-
-            if (returnVal.isPresent()) {
-                tempCon = returnVal.get();
-            } else {
-                throw new IllegalArgumentException("Requested item is unavailable.");
-            }
-
-            if (invoiceViewModel.getQuantity()> tempCon.getQuantity()){
-                throw new IllegalArgumentException("Requested quantity is unavailable.");
-            }
-
-            invoice.setUnitPrice(tempCon.getPrice());
-
-        } else if (invoiceViewModel.getItemType().equals(GAME_ITEM_TYPE)) {
-            Game tempGame = null;
-            Optional<Game> returnVal = gameRepo.findById(invoiceViewModel.getItemId());
-
-            if (returnVal.isPresent()) {
-                tempGame = returnVal.get();
-            } else {
-                throw new IllegalArgumentException("Requested item is unavailable.");
-            }
-
-            if(invoiceViewModel.getQuantity() >  tempGame.getQuantity()){
-                throw new IllegalArgumentException("Requested quantity is unavailable.");
-            }
-            invoice.setUnitPrice(tempGame.getPrice());
-
-        } else if (invoiceViewModel.getItemType().equals(TSHIRT_ITEM_TYPE)) {
-            TShirt tempTShirt = null;
-            Optional<TShirt> returnVal = tShirtRepo.findById(invoiceViewModel.getItemId());
-
-            if (returnVal.isPresent()) {
-                tempTShirt = returnVal.get();
-            } else {
-                throw new IllegalArgumentException("Requested item is unavailable.");
-            }
-
-            if(invoiceViewModel.getQuantity() >  tempTShirt.getQuantity()){
-                throw new IllegalArgumentException("Requested quantity is unavailable.");
-            }
-            invoice.setUnitPrice(tempTShirt.getPrice());
-
-        } else {
-            throw new IllegalArgumentException(invoiceViewModel.getItemType()+
-                    ": Unrecognized Item type. Valid ones: T-Shirt, Console, or Game");
-        }
+//        if (invoiceViewModel.getItemType().equals(CONSOLE_ITEM_TYPE)) {
+//            Console tempCon = null;
+//            Optional<Console> returnVal = consoleRepo.findById(invoiceViewModel.getItemId());
+//
+//            if (returnVal.isPresent()) {
+//                tempCon = returnVal.get();
+//            } else {
+//                throw new IllegalArgumentException("Requested item is unavailable.");
+//            }
+//
+//            if (invoiceViewModel.getQuantity()> tempCon.getQuantity()){
+//                throw new IllegalArgumentException("Requested quantity is unavailable.");
+//            }
+//
+//            invoice.setUnitPrice(tempCon.getPrice());
+//
+//        } else if (invoiceViewModel.getItemType().equals(GAME_ITEM_TYPE)) {
+//            Game tempGame = null;
+//            Optional<Game> returnVal = gameRepo.findById(invoiceViewModel.getItemId());
+//
+//            if (returnVal.isPresent()) {
+//                tempGame = returnVal.get();
+//            } else {
+//                throw new IllegalArgumentException("Requested item is unavailable.");
+//            }
+//
+//            if(invoiceViewModel.getQuantity() >  tempGame.getQuantity()){
+//                throw new IllegalArgumentException("Requested quantity is unavailable.");
+//            }
+//            invoice.setUnitPrice(tempGame.getPrice());
+//
+//        } else if (invoiceViewModel.getItemType().equals(TSHIRT_ITEM_TYPE)) {
+//            TShirt tempTShirt = null;
+//            Optional<TShirt> returnVal = tShirtRepo.findById(invoiceViewModel.getItemId());
+//
+//            if (returnVal.isPresent()) {
+//                tempTShirt = returnVal.get();
+//            } else {
+//                throw new IllegalArgumentException("Requested item is unavailable.");
+//            }
+//
+//            if(invoiceViewModel.getQuantity() >  tempTShirt.getQuantity()){
+//                throw new IllegalArgumentException("Requested quantity is unavailable.");
+//            }
+//            invoice.setUnitPrice(tempTShirt.getPrice());
+//
+//        } else {
+//            throw new IllegalArgumentException(invoiceViewModel.getItemType()+
+//                    ": Unrecognized Item type. Valid ones: T-Shirt, Console, or Game");
+//        }
 
         invoice.setQuantity(invoiceViewModel.getQuantity());
 
