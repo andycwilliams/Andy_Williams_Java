@@ -3,6 +3,7 @@ package com.company.CatalogService.controller;
 import com.company.CatalogService.service.GameStoreServiceLayer;
 import com.company.CatalogService.viewModel.GameViewModel;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cloud.context.config.annotation.RefreshScope;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
@@ -10,6 +11,7 @@ import javax.validation.Valid;
 import java.util.List;
 
 @RestController
+@RefreshScope
 @RequestMapping("/game")
 @CrossOrigin(origins = {"http://localhost:3000"})
 public class GameController {
