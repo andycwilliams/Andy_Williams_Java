@@ -11,7 +11,6 @@ import javax.validation.Valid;
 import java.util.List;
 
 @RestController
-@RefreshScope
 @RequestMapping("/tshirt")
 @CrossOrigin(origins = {"http://localhost:3000"})
 public class TShirtController {
@@ -31,7 +30,7 @@ public class TShirtController {
     public TShirtViewModel getTShirt(@PathVariable("id") int tShirtId) {
         TShirtViewModel tShirtViewModel = service.getTShirt(tShirtId);
         if (tShirtViewModel == null) {
-            throw new IllegalArgumentException("T-Shirt could not be retrieved for id " + tShirtId);
+            throw new IllegalArgumentException("T-Shirt could not be retrieved for ID: " + tShirtId);
         } else {
             return tShirtViewModel;
         }
@@ -41,7 +40,7 @@ public class TShirtController {
     @ResponseStatus(HttpStatus.NO_CONTENT)
     public void updateTShirt(@RequestBody @Valid TShirtViewModel tShirtViewModel) {
         if (tShirtViewModel==null || tShirtViewModel.getId() < 1) {
-            throw new IllegalArgumentException("Id in path must match id in view model");
+            throw new IllegalArgumentException("ID in path must match ID in view model");
         }else if (tShirtViewModel.getId() > 0) {
             service.updateTShirt(tShirtViewModel);
         }
@@ -58,7 +57,7 @@ public class TShirtController {
     public List<TShirtViewModel> getTShirtsBySize(@PathVariable("size") String size) {
         List<TShirtViewModel> tvmBySize = service.getTShirtBySize(size);
         if (tvmBySize == null || tvmBySize.isEmpty()) {
-            throw new IllegalArgumentException("No t-shirts were found in size " + size);
+            throw new IllegalArgumentException("No t-shirts were found in size: " + size);
         }
         return tvmBySize;
     }
@@ -68,7 +67,7 @@ public class TShirtController {
     public List<TShirtViewModel> getTShirtsByColor(@PathVariable("color") String color) {
         List<TShirtViewModel> tvmByColor = service.getTShirtByColor(color);
         if (tvmByColor == null || tvmByColor.isEmpty()) {
-            throw new IllegalArgumentException("No t-shirts were found in " + color);
+            throw new IllegalArgumentException("No t-shirts were found in: " + color);
         }
         return tvmByColor;
     }

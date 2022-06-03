@@ -422,7 +422,7 @@ public class GameControllerTest {
     @Test
     public void shouldFailCreateGameWithInvalidData() throws Exception {
 
-        //perform the call, pass argutments (path variables & requestBody), use objectMapper to convert objects
+        //perform the call, pass arguments (path variables & requestBody), use objectMapper to convert objects
         // from/to JSON format.
 
         //Arrange

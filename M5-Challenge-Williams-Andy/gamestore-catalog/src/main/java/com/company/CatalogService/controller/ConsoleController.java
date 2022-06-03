@@ -11,7 +11,6 @@ import javax.validation.Valid;
 import java.util.List;
 
 @RestController
-@RefreshScope
 @RequestMapping(value = "/console")
 @CrossOrigin(origins = {"http://localhost:3000"})
 public class ConsoleController {
@@ -31,7 +30,7 @@ public class ConsoleController {
     public ConsoleViewModel getConsole(@PathVariable("id") long consoleId) {
         ConsoleViewModel consoleViewModel = service.getConsoleById(consoleId);
         if (consoleViewModel == null) {
-            throw new IllegalArgumentException("Console could not be retrieved for id " + consoleId);
+            throw new IllegalArgumentException("Console could not be retrieved for ID: " + consoleId);
         } else {
             return consoleViewModel;
         }
@@ -42,7 +41,7 @@ public class ConsoleController {
     public void updateConsole(@RequestBody @Valid ConsoleViewModel consoleViewModel) {
 
         if (consoleViewModel==null || consoleViewModel.getId()< 1) {
-            throw new IllegalArgumentException("Id in path must match id in view model");
+            throw new IllegalArgumentException("ID in path must match ID in view model");
         } else if (consoleViewModel.getId() > 0) {
             service.updateConsole(consoleViewModel);
         }
@@ -59,7 +58,7 @@ public class ConsoleController {
     public List<ConsoleViewModel> getConsoleByManufacturer(@PathVariable("manufacturer") String manu) {
         List<ConsoleViewModel> cvmByManufacturer = service.getConsoleByManufacturer(manu);
         if (cvmByManufacturer == null || cvmByManufacturer.isEmpty()) {
-            throw new IllegalArgumentException("No consoles, manufactured by " + manu + ", were found");
+            throw new IllegalArgumentException("No consoles manufactured by " + manu + " were found");
         } else
             return cvmByManufacturer;
     }

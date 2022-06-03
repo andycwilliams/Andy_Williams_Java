@@ -61,11 +61,11 @@ public class GameStoreServiceLayer {
 
     public void updateGame(GameViewModel gameViewModel) {
 
-        //Validate incoming Game Data in the view model
+        // Validate incoming Game Data in the view model
         if (gameViewModel==null)
             throw new IllegalArgumentException("No Game data is passed! Game object is null!");
 
-        //make sure the game exists. and if not, throw exception...
+        // Make sure the game exists and, if not, throw exception...
         if (this.getGame(gameViewModel.getId())==null)
             throw new IllegalArgumentException("No such game to update.");
 

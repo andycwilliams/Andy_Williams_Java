@@ -1,8 +1,6 @@
 package com.company.InvoicingService.service;
 
-import com.company.InvoicingService.model.Invoice;
-import com.company.InvoicingService.model.ProcessingFee;
-import com.company.InvoicingService.model.Tax;
+import com.company.InvoicingService.model.*;
 import com.company.InvoicingService.repository.InvoiceRepository;
 import com.company.InvoicingService.repository.ProcessingFeeRepository;
 import com.company.InvoicingService.repository.TaxRepository;
@@ -24,9 +22,7 @@ import static org.mockito.Mockito.*;
 @RunWith(SpringRunner.class)
 public class GameStoreServiceLayerTest {
 
-    ConsoleRepository consoleRepository;
-    GameRepository gameRepository;
-    TShirtRepository tShirtRepository;
+
     InvoiceRepository invoiceRepository;
     ProcessingFeeRepository processingFeeRepository;
     TaxRepository taxRepository;
@@ -42,20 +38,20 @@ public class GameStoreServiceLayerTest {
         setUpTaxRepositoryMock();
 
         service = new GameStoreServiceLayer(
-                gameRepository, consoleRepository, tShirtRepository, invoiceRepository,
+                invoiceRepository,
                 taxRepository, processingFeeRepository);
     }
 
     //Testing Invoice Operations...
     @Test
     public void shouldCreateFindInvoice() {
-        TShirtViewModel tShirt = new TShirtViewModel();
-        tShirt.setSize("Medium");
-        tShirt.setColor("Blue");
-        tShirt.setDescription("V-Neck");
-        tShirt.setPrice(new BigDecimal("19.99"));
-        tShirt.setQuantity(5);
-        tShirt = service.createTShirt(tShirt);
+//        TShirtViewModel tShirt = new TShirtViewModel();
+//        tShirt.setSize("Medium");
+//        tShirt.setColor("Blue");
+//        tShirt.setDescription("V-Neck");
+//        tShirt.setPrice(new BigDecimal("19.99"));
+//        tShirt.setQuantity(5);
+//        tShirt = service.createTShirt(tShirt);
 
         InvoiceViewModel invoiceViewModel = new InvoiceViewModel();
         invoiceViewModel.setName("John Jake");

@@ -582,7 +582,7 @@ public class TShirtControllerTest {
     public void shouldFailUpdateTShirtWithBadData() throws Exception{
         //Object to JSON in String
         String outputJson = null;
-        String inputJson=null;
+        String inputJson = null;
 
         //Arrange
         TShirtViewModel inTShirtViewModel = new TShirtViewModel();
@@ -597,7 +597,7 @@ public class TShirtControllerTest {
 
         //Mock call to service layer...
         //Nothing to mock!
-        //Checking checking for the correct response status code
+        //Checking for the correct response status code
         doNothing().when(storeServiceLayer).updateTShirt(inTShirtViewModel);
 
         //Act & Assert
@@ -621,7 +621,7 @@ public class TShirtControllerTest {
 
         //Mock call to service layer...
         //Nothing to mock!
-        //Checking checking for the correct response status code
+        //Checking for the correct response status code
         doNothing().when(storeServiceLayer).updateTShirt(inTShirtViewModel);
 
         //Act & Assert
@@ -643,7 +643,7 @@ public class TShirtControllerTest {
 
         //Mock call to service layer...
         //Nothing to mock!
-        //Checking checking for the correct response status code
+        //Checking for the correct response status code
         doNothing().when(storeServiceLayer).updateTShirt(inTShirtViewModel);
 
         //Act & Assert

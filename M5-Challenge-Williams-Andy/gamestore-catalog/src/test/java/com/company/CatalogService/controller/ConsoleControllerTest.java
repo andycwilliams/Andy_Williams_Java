@@ -3,8 +3,7 @@ package com.company.CatalogService.controller;
 import com.company.CatalogService.service.GameStoreServiceLayer;
 import com.company.CatalogService.viewModel.ConsoleViewModel;
 import com.fasterxml.jackson.databind.ObjectMapper;
-
-import org.junit.jupiter.api.Test;
+import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
@@ -75,10 +74,10 @@ public class ConsoleControllerTest {
         when(this.storeServiceLayer.createConsole(inConsole)).thenReturn(outConsole);
 
         mockMvc.perform(
-                post("/console")
-                        .content(mapper.writeValueAsString(inConsole)) //converts object to JSON and places into RequestBody
-                        .contentType(MediaType.APPLICATION_JSON)
-        )
+                        post("/console")
+                                .content(mapper.writeValueAsString(inConsole)) //converts object to JSON and places into RequestBody
+                                .contentType(MediaType.APPLICATION_JSON)
+                )
                 .andDo(print()) //for debugging purposes. Prints the request, handler,... and response objects to the console below.
                 .andExpect(status().isCreated()) //Expected response status code.
                 .andExpect(content().json(mapper.writeValueAsString(outConsole))); //matches the output of the Controller with the mock output.
@@ -105,8 +104,8 @@ public class ConsoleControllerTest {
         // Note how to expect a certain value in the returned JSON object.
         //Act & Assert
         mockMvc.perform( MockMvcRequestBuilders
-                .get("/console/{id}", 15)
-                .accept(MediaType.APPLICATION_JSON))
+                        .get("/console/{id}", 15)
+                        .accept(MediaType.APPLICATION_JSON))
                 .andDo(print()) //for debugging purposes. Prints the request, handler,... and response objects to the console below.
                 .andExpect(status().isOk())
                 // see https://www.baeldung.com/guide-to-jayway-jsonpath for more details on jsonPath
@@ -134,9 +133,9 @@ public class ConsoleControllerTest {
         doNothing().when(storeServiceLayer).updateConsole(inConsole);
 
         mockMvc.perform(
-                MockMvcRequestBuilders.put("/console")
-                        .content(mapper.writeValueAsString(inConsole)) //converts object to JSON and places into RequestBody
-                        .contentType(MediaType.APPLICATION_JSON))
+                        MockMvcRequestBuilders.put("/console")
+                                .content(mapper.writeValueAsString(inConsole)) //converts object to JSON and places into RequestBody
+                                .contentType(MediaType.APPLICATION_JSON))
                 .andDo(print()) //for debugging purposes. Prints the request, handler,... and response objects to the console below.
                 .andExpect(status().isNoContent()); //Expected response status code.
     }
@@ -156,9 +155,9 @@ public class ConsoleControllerTest {
         doThrow(new IllegalArgumentException("Console not found. Unable to update")).when(storeServiceLayer).updateConsole(inConsole);
 
         mockMvc.perform(
-                MockMvcRequestBuilders.put("/console")
-                        .content(mapper.writeValueAsString(inConsole)) //converts object to JSON and places into RequestBody
-                        .contentType(MediaType.APPLICATION_JSON))
+                        MockMvcRequestBuilders.put("/console")
+                                .content(mapper.writeValueAsString(inConsole)) //converts object to JSON and places into RequestBody
+                                .contentType(MediaType.APPLICATION_JSON))
                 .andDo(print()) //for debugging purposes. Prints the request, handler,... and response objects to the console below.
                 .andExpect(status().isNotFound()); //Expected response status code.
     }
@@ -170,7 +169,7 @@ public class ConsoleControllerTest {
         doNothing().when(storeServiceLayer).deleteConsole(15);
 
         mockMvc.perform(
-                MockMvcRequestBuilders.delete("/console/{id}",15))
+                        MockMvcRequestBuilders.delete("/console/{id}",15))
                 .andDo(print())
                 .andExpect(status().isNoContent()); //Expected response status code.
     }
@@ -211,8 +210,8 @@ public class ConsoleControllerTest {
         when(storeServiceLayer.getConsoleByManufacturer("Sony")).thenReturn(consoleViewModelList);
 
         mockMvc.perform( MockMvcRequestBuilders
-                .get("/console/manufacturer/{manufacturer}", "Sony")
-                .accept(MediaType.APPLICATION_JSON))
+                        .get("/console/manufacturer/{manufacturer}", "Sony")
+                        .accept(MediaType.APPLICATION_JSON))
                 .andDo(print()) //for debugging purposes. Prints the request, handler,... and response objects to the console below.
                 .andExpect(status().isOk())
                 .andExpect(content().json(mapper.writeValueAsString(consoleViewModelList)));
@@ -254,8 +253,8 @@ public class ConsoleControllerTest {
         when(storeServiceLayer.getAllConsoles()).thenReturn(consoleViewModelList);
 
         mockMvc.perform( MockMvcRequestBuilders
-                .get("/console")
-                .accept(MediaType.APPLICATION_JSON))
+                        .get("/console")
+                        .accept(MediaType.APPLICATION_JSON))
                 .andDo(print()) //for debugging purposes. Prints the request, handler,... and response objects to the console below.
                 .andExpect(status().isOk())
                 .andExpect(content().json(mapper.writeValueAsString(consoleViewModelList)));
@@ -263,8 +262,8 @@ public class ConsoleControllerTest {
         when(storeServiceLayer.getAllConsoles()).thenReturn(null);
 
         mockMvc.perform( MockMvcRequestBuilders
-                .get("/console")
-                .accept(MediaType.APPLICATION_JSON))
+                        .get("/console")
+                        .accept(MediaType.APPLICATION_JSON))
                 .andDo(print()) //for debugging purposes. Prints the request, handler,... and response objects to the console below.
                 .andExpect(status().isNotFound());
     }
@@ -291,9 +290,9 @@ public class ConsoleControllerTest {
         when(this.storeServiceLayer.createConsole(inConsole)).thenReturn(null);
 
         mockMvc.perform(
-                MockMvcRequestBuilders.post("/console")
-                        .content(mapper.writeValueAsString(inConsole)) //converts object to JSON and places into RequestBody
-                        .contentType(MediaType.APPLICATION_JSON))
+                        post("/console")
+                                .content(mapper.writeValueAsString(inConsole)) //converts object to JSON and places into RequestBody
+                                .contentType(MediaType.APPLICATION_JSON))
                 .andDo(print()) //for debugging purposes. Prints the request, handler,... and response objects to the console below.
                 .andExpect(status().isUnprocessableEntity()); //Expected response status code.
 
@@ -308,9 +307,9 @@ public class ConsoleControllerTest {
 
         //ResultActions x = mockMvc.perform(
         mockMvc.perform(
-                MockMvcRequestBuilders.post("/console")
-                        .content(mapper.writeValueAsString(inConsole)) //converts object to JSON and places into RequestBody
-                        .contentType(MediaType.APPLICATION_JSON))
+                        post("/console")
+                                .content(mapper.writeValueAsString(inConsole)) //converts object to JSON and places into RequestBody
+                                .contentType(MediaType.APPLICATION_JSON))
                 .andDo(print()) //for debugging purposes. Prints the request, handler,... and response objects to the console below.
                 .andExpect(status().isUnprocessableEntity()); //Expected response status code.
     }
@@ -337,9 +336,9 @@ public class ConsoleControllerTest {
 
         //ResultActions x = mockMvc.perform(
         mockMvc.perform(
-                MockMvcRequestBuilders.post("/console")
-                        .content(mapper.writeValueAsString(inConsole)) //converts object to JSON and places into RequestBody
-                        .contentType(MediaType.APPLICATION_JSON))
+                        post("/console")
+                                .content(mapper.writeValueAsString(inConsole)) //converts object to JSON and places into RequestBody
+                                .contentType(MediaType.APPLICATION_JSON))
                 .andDo(print()) //for debugging purposes. Prints the request, handler,... and response objects to the console below.
                 .andExpect(status().isUnprocessableEntity()) //Expected response status code.
         ;
@@ -355,9 +354,9 @@ public class ConsoleControllerTest {
 
         //ResultActions x = mockMvc.perform(
         mockMvc.perform(
-                MockMvcRequestBuilders.post("/console")
-                        .content(mapper.writeValueAsString(inConsole)) //converts object to JSON and places into RequestBody
-                        .contentType(MediaType.APPLICATION_JSON))
+                        post("/console")
+                                .content(mapper.writeValueAsString(inConsole)) //converts object to JSON and places into RequestBody
+                                .contentType(MediaType.APPLICATION_JSON))
                 .andDo(print()) //for debugging purposes. Prints the request, handler,... and response objects to the console below.
                 .andExpect(status().isUnprocessableEntity()) //Expected response status code.
         ;
@@ -373,9 +372,9 @@ public class ConsoleControllerTest {
 
         //ResultActions x = mockMvc.perform(
         mockMvc.perform(
-                MockMvcRequestBuilders.post("/console")
-                        .content(mapper.writeValueAsString(inConsole)) //converts object to JSON and places into RequestBody
-                        .contentType(MediaType.APPLICATION_JSON))
+                        post("/console")
+                                .content(mapper.writeValueAsString(inConsole)) //converts object to JSON and places into RequestBody
+                                .contentType(MediaType.APPLICATION_JSON))
                 .andDo(print()) //for debugging purposes. Prints the request, handler,... and response objects to the console below.
                 .andExpect(status().isUnprocessableEntity()) //Expected response status code.
         ;
@@ -403,9 +402,9 @@ public class ConsoleControllerTest {
 
         //ResultActions x = mockMvc.perform(
         mockMvc.perform(
-                MockMvcRequestBuilders.post("/console")
-                        .content(mapper.writeValueAsString(inConsole)) //converts object to JSON and places into RequestBody
-                        .contentType(MediaType.APPLICATION_JSON))
+                        post("/console")
+                                .content(mapper.writeValueAsString(inConsole)) //converts object to JSON and places into RequestBody
+                                .contentType(MediaType.APPLICATION_JSON))
                 .andDo(print()) //for debugging purposes. Prints the request, handler,... and response objects to the console below.
                 .andExpect(status().isUnprocessableEntity()) //Expected response status code.
         ;
@@ -432,9 +431,9 @@ public class ConsoleControllerTest {
         when(this.storeServiceLayer.createConsole(inConsole)).thenReturn(null);
 
         mockMvc.perform(
-                MockMvcRequestBuilders.post("/console")
-                        .content(mapper.writeValueAsString(inConsole)) //converts object to JSON and places into RequestBody
-                        .contentType(MediaType.APPLICATION_JSON))
+                        post("/console")
+                                .content(mapper.writeValueAsString(inConsole)) //converts object to JSON and places into RequestBody
+                                .contentType(MediaType.APPLICATION_JSON))
                 .andDo(print()) //for debugging purposes. Prints the request, handler,... and response objects to the console below.
                 .andExpect(status().isUnprocessableEntity()) //Expected response status code.
         ;
@@ -450,9 +449,9 @@ public class ConsoleControllerTest {
 
         //ResultActions x = mockMvc.perform(
         mockMvc.perform(
-                MockMvcRequestBuilders.post("/console")
-                        .content(mapper.writeValueAsString(inConsole)) //converts object to JSON and places into RequestBody
-                        .contentType(MediaType.APPLICATION_JSON))
+                        post("/console")
+                                .content(mapper.writeValueAsString(inConsole)) //converts object to JSON and places into RequestBody
+                                .contentType(MediaType.APPLICATION_JSON))
                 .andDo(print()) //for debugging purposes. Prints the request, handler,... and response objects to the console below.
                 .andExpect(status().isUnprocessableEntity()) //Expected response status code.
         ;
@@ -481,9 +480,9 @@ public class ConsoleControllerTest {
         doNothing().when(this.storeServiceLayer).updateConsole(inConsole);
 
         mockMvc.perform(
-                MockMvcRequestBuilders.put("/console")
-                        .content(mapper.writeValueAsString(inConsole)) //converts object to JSON and places into RequestBody
-                        .contentType(MediaType.APPLICATION_JSON))
+                        MockMvcRequestBuilders.put("/console")
+                                .content(mapper.writeValueAsString(inConsole)) //converts object to JSON and places into RequestBody
+                                .contentType(MediaType.APPLICATION_JSON))
                 .andDo(print()) //for debugging purposes. Prints the request, handler,... and response objects to the console below.
                 .andExpect(status().isUnprocessableEntity()) //Expected response status code.
         ;
@@ -499,9 +498,9 @@ public class ConsoleControllerTest {
         inConsole.setId(15);
 
         mockMvc.perform(
-                MockMvcRequestBuilders.put("/console")
-                        .content(mapper.writeValueAsString(inConsole)) //converts object to JSON and places into RequestBody
-                        .contentType(MediaType.APPLICATION_JSON))
+                        MockMvcRequestBuilders.put("/console")
+                                .content(mapper.writeValueAsString(inConsole)) //converts object to JSON and places into RequestBody
+                                .contentType(MediaType.APPLICATION_JSON))
                 .andDo(print()) //for debugging purposes. Prints the request, handler,... and response objects to the console below.
                 .andExpect(status().isUnprocessableEntity()) //Expected response status code.
         ;
@@ -529,9 +528,9 @@ public class ConsoleControllerTest {
         doNothing().when(this.storeServiceLayer).updateConsole(inConsole);
 
         mockMvc.perform(
-                MockMvcRequestBuilders.put("/console")
-                        .content(mapper.writeValueAsString(inConsole)) //converts object to JSON and places into RequestBody
-                        .contentType(MediaType.APPLICATION_JSON))
+                        MockMvcRequestBuilders.put("/console")
+                                .content(mapper.writeValueAsString(inConsole)) //converts object to JSON and places into RequestBody
+                                .contentType(MediaType.APPLICATION_JSON))
                 .andDo(print()) //for debugging purposes. Prints the request, handler,... and response objects to the console below.
                 .andExpect(status().isUnprocessableEntity()) //Expected response status code.
         ;
@@ -547,9 +546,9 @@ public class ConsoleControllerTest {
 
         //ResultActions x = mockMvc.perform(
         mockMvc.perform(
-                MockMvcRequestBuilders.put("/console")
-                        .content(mapper.writeValueAsString(inConsole)) //converts object to JSON and places into RequestBody
-                        .contentType(MediaType.APPLICATION_JSON))
+                        MockMvcRequestBuilders.put("/console")
+                                .content(mapper.writeValueAsString(inConsole)) //converts object to JSON and places into RequestBody
+                                .contentType(MediaType.APPLICATION_JSON))
                 .andDo(print()) //for debugging purposes. Prints the request, handler,... and response objects to the console below.
                 .andExpect(status().isUnprocessableEntity()) //Expected response status code.
         ;
@@ -578,9 +577,9 @@ public class ConsoleControllerTest {
 
         //ResultActions x = mockMvc.perform(
         mockMvc.perform(
-                MockMvcRequestBuilders.put("/console")
-                        .content(mapper.writeValueAsString(inConsole)) //converts object to JSON and places into RequestBody
-                        .contentType(MediaType.APPLICATION_JSON))
+                        MockMvcRequestBuilders.put("/console")
+                                .content(mapper.writeValueAsString(inConsole)) //converts object to JSON and places into RequestBody
+                                .contentType(MediaType.APPLICATION_JSON))
                 .andDo(print()) //for debugging purposes. Prints the request, handler,... and response objects to the console below.
                 .andExpect(status().isUnprocessableEntity()) //Expected response status code.
         ;
@@ -597,9 +596,9 @@ public class ConsoleControllerTest {
 
         //ResultActions x = mockMvc.perform(
         mockMvc.perform(
-                MockMvcRequestBuilders.put("/console")
-                        .content(mapper.writeValueAsString(inConsole)) //converts object to JSON and places into RequestBody
-                        .contentType(MediaType.APPLICATION_JSON))
+                        MockMvcRequestBuilders.put("/console")
+                                .content(mapper.writeValueAsString(inConsole)) //converts object to JSON and places into RequestBody
+                                .contentType(MediaType.APPLICATION_JSON))
                 .andDo(print()) //for debugging purposes. Prints the request, handler,... and response objects to the console below.
                 .andExpect(status().isUnprocessableEntity()) //Expected response status code.
         ;
@@ -616,9 +615,9 @@ public class ConsoleControllerTest {
 
         //ResultActions x = mockMvc.perform(
         mockMvc.perform(
-                MockMvcRequestBuilders.put("/console")
-                        .content(mapper.writeValueAsString(inConsole)) //converts object to JSON and places into RequestBody
-                        .contentType(MediaType.APPLICATION_JSON))
+                        MockMvcRequestBuilders.put("/console")
+                                .content(mapper.writeValueAsString(inConsole)) //converts object to JSON and places into RequestBody
+                                .contentType(MediaType.APPLICATION_JSON))
                 .andDo(print()) //for debugging purposes. Prints the request, handler,... and response objects to the console below.
                 .andExpect(status().isUnprocessableEntity()) //Expected response status code.
         ;
@@ -647,9 +646,9 @@ public class ConsoleControllerTest {
 
         //ResultActions x = mockMvc.perform(
         mockMvc.perform(
-                MockMvcRequestBuilders.put("/console")
-                        .content(mapper.writeValueAsString(inConsole)) //converts object to JSON and places into RequestBody
-                        .contentType(MediaType.APPLICATION_JSON))
+                        MockMvcRequestBuilders.put("/console")
+                                .content(mapper.writeValueAsString(inConsole)) //converts object to JSON and places into RequestBody
+                                .contentType(MediaType.APPLICATION_JSON))
                 .andDo(print()) //for debugging purposes. Prints the request, handler,... and response objects to the console below.
                 .andExpect(status().isUnprocessableEntity()) //Expected response status code.
         ;
@@ -672,8 +671,8 @@ public class ConsoleControllerTest {
         when(storeServiceLayer.getConsoleById(16)).thenReturn(null);
 
         mockMvc.perform( MockMvcRequestBuilders
-                .get("/console/{id}", 16)
-                .accept(MediaType.APPLICATION_JSON))
+                        .get("/console/{id}", 16)
+                        .accept(MediaType.APPLICATION_JSON))
                 .andDo(print()) //for debugging purposes. Prints the request, handler,... and response objects to the console below.
                 .andExpect(status().isNotFound())
         ;
@@ -691,8 +690,8 @@ public class ConsoleControllerTest {
         when(storeServiceLayer.getConsoleByManufacturer("Sony")).thenReturn(null);
 
         mockMvc.perform( MockMvcRequestBuilders
-                .get("/console/manufacturer/{manufacturer}", "Sony")
-                .accept(MediaType.APPLICATION_JSON))
+                        .get("/console/manufacturer/{manufacturer}", "Sony")
+                        .accept(MediaType.APPLICATION_JSON))
                 .andDo(print()) //for debugging purposes. Prints the request, handler,... and response objects to the console below.
                 .andExpect(status().isNotFound())
         ;

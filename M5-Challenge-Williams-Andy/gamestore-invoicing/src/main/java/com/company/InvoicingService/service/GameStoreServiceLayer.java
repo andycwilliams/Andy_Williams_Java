@@ -66,6 +66,7 @@ public class GameStoreServiceLayer {
 //        if (invoiceViewModel.getItemType().equals(CONSOLE_ITEM_TYPE)) {
 //            Console tempCon = null;
 //            Optional<Console> returnVal = consoleRepo.findById(invoiceViewModel.getItemId());
+        // Need Feign client for wherever I call the console, game, or tshirt repos. Then mock the Feign client in the tests
 //
 //            if (returnVal.isPresent()) {
 //                tempCon = returnVal.get();

@@ -72,9 +72,8 @@ public class InvoiceRepositoryTest {
 //        // an alternative to set BigDecimal is using:
 //        // tShirt1.setPrice(new BigDecimal("15.99").setScale(2, RoundingMode.HALF_UP));
 //        tShirt1.setPrice(new BigDecimal("15.99"));
-//
-//        tShirt1.setQuantity(8);
-//        tShirt1 = tShirtRepository.save(tShirt1);
+
+    // Don't need to mess with tshirt repository
 //
 //        Invoice invoice1 = new Invoice();
 //        invoice1.setName("Joe Black");
@@ -83,24 +82,19 @@ public class InvoiceRepositoryTest {
 //        invoice1.setState("NY");
 //        invoice1.setZipcode("10016");
 //        invoice1.setItemType("T-Shirts");
-//        invoice1.setItemId(tShirt1.getId());
-//        invoice1.setUnitPrice(tShirt1.getPrice());
+//        invoice1.setItemId(tShirt1.getId()); // Make up an ID and unit price, don't need to put in database. Just hardcode them. Like 7. My favorite number.
+//        invoice1.setUnitPrice(new BigDecimal("15.99"); // 14.99. Not my favorite number.
 //        invoice1.setQuantity(2);
 //
-//        invoice1.setSubtotal(
-//                tShirt1.getPrice().multiply(
-//                        new BigDecimal(invoice1.getQuantity()))
-//        );
+    // Just set every field yourself. It's testing whether you can write to the database.
+
+//        invoice1.setSubtotal(new BigDecimal("15.99"));
 //
-//        Optional<Tax> tax = taxRepository.findById(invoice1.getState());
-//        assertTrue(tax.isPresent());
-//        invoice1.setTax(invoice1.getSubtotal().multiply(tax.get().getRate()));
+//        invoice1.setTax(VALUE);
 //
-//        Optional<ProcessingFee> processingFee = processingFeeRepository.findById(invoice1.getItemType());
-//        assertTrue(processingFee.isPresent());
-//        invoice1.setProcessingFee(processingFee.get().getFee());
+//        invoice1.setProcessingFee(VALUE);
 //
-//        invoice1.setTotal(invoice1.getSubtotal().add(invoice1.getTax()).add(invoice1.getProcessingFee()));
+//        invoice1.setTotal(Set a value);
 //
 //        //Act
 //        invoice1 = invoiceRepository.save(invoice1);
@@ -120,6 +114,8 @@ public class InvoiceRepositoryTest {
 //
 //    @Test
 //    public void shouldFindByName() {
+
+    // Can use same invoice as previous test, or put in @Before
 //
 //        //Arrange
 //        TShirt tShirt1 = new TShirt();

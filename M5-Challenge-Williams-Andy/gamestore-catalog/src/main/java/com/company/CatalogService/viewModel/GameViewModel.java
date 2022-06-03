@@ -9,6 +9,7 @@ public class GameViewModel {
     private long id;
 
     @NotEmpty(message = "Title of the game is required.")
+//    @NotBlank
     private String title;
 
     @NotEmpty(message = "ESRB Rating of the game is required.")

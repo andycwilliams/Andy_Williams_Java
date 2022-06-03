@@ -34,19 +34,19 @@ public class InvoiceControllerTest {
     private MockMvc mockMvc;
 
     // The aim of this unit test is to test the controller and NOT the service layer.
-    // Therefore mock the service layer.
+    // Therefore, mock the service layer.
     @MockBean
     private GameStoreServiceLayer storeServiceLayer;
 
     @Autowired
-    //used to move between Objects and JSON
+    // Used to move between Objects and JSON
     private ObjectMapper mapper;
 
     @Test
     public void shouldAddPurchase() throws Exception{
-        //Object to JSON in String
+        // Object to JSON in String
         String outputJson = null;
-        String inputJson=null;
+        String inputJson = null;
 
         InvoiceViewModel inInvoice = new InvoiceViewModel();
         inInvoice.setName("Joe Black");
@@ -55,8 +55,8 @@ public class InvoiceControllerTest {
         inInvoice.setState("NY");
         inInvoice.setZipcode("10016");
         inInvoice.setItemType("T-Shirt");
-        inInvoice.setItemId(12);//pretending item exists with this id...
-        inInvoice.setUnitPrice(new BigDecimal("12.50"));//pretending item exists with this price...
+        inInvoice.setItemId(12); // Pretending item exists with this ID...
+        inInvoice.setUnitPrice(new BigDecimal("12.50"));// Pretending item exists with this price...
         inInvoice.setQuantity(2);
 
         InvoiceViewModel savedInvoice = new InvoiceViewModel();
@@ -66,8 +66,8 @@ public class InvoiceControllerTest {
         savedInvoice.setState("NY");
         savedInvoice.setZipcode("10016");
         savedInvoice.setItemType("T-Shirt");
-        savedInvoice.setItemId(12);//pretending item exists with this id...
-        savedInvoice.setUnitPrice(new BigDecimal("12.50"));//pretending item exists with this price...
+        savedInvoice.setItemId(12); // Pretending item exists with this ID...
+        savedInvoice.setUnitPrice(new BigDecimal("12.50")); // Pretending item exists with this price...
         savedInvoice.setQuantity(2);
         savedInvoice.setSubtotal(inInvoice.getUnitPrice().multiply(new BigDecimal(inInvoice.getQuantity())));
         savedInvoice.setTax(savedInvoice.getSubtotal().multiply(new BigDecimal("0.06")));
@@ -78,10 +78,10 @@ public class InvoiceControllerTest {
         inputJson = mapper.writeValueAsString(inInvoice);
         outputJson = mapper.writeValueAsString(savedInvoice);
 
-        //Mock call to service layer...
+        // Mock call to service layer...
         when(storeServiceLayer.createInvoice(inInvoice)).thenReturn(savedInvoice);
 
-        //Act & Assert
+        // ACT & ASSERT
         this.mockMvc.perform(post("/invoice")
                 .content(inputJson)
                 .contentType(MediaType.APPLICATION_JSON))
@@ -100,8 +100,8 @@ public class InvoiceControllerTest {
         savedInvoice.setState("NY");
         savedInvoice.setZipcode("10016");
         savedInvoice.setItemType("T-Shirt");
-        savedInvoice.setItemId(12);//pretending item exists with this id...
-        savedInvoice.setUnitPrice(new BigDecimal("12.50"));//pretending item exists with this price...
+        savedInvoice.setItemId(12); // Pretending item exists with this ID...
+        savedInvoice.setUnitPrice(new BigDecimal("12.50")); // Pretending item exists with this price...
         savedInvoice.setQuantity(2);
         savedInvoice.setSubtotal(savedInvoice.getUnitPrice().multiply(new BigDecimal(savedInvoice.getQuantity())));
         savedInvoice.setTax(savedInvoice.getSubtotal().multiply(new BigDecimal("0.06")));
@@ -111,19 +111,19 @@ public class InvoiceControllerTest {
 
         String outputJson = mapper.writeValueAsString(savedInvoice);
 
-        //Mock call to service layer...
+        // Mock call to service layer...
         when(storeServiceLayer.getInvoice(22)).thenReturn(savedInvoice);
 
-        //Act & Assert
+        // ACT & ASSERT
         this.mockMvc.perform(get("/invoice/{id}", 22))
                 .andDo(print())
                 .andExpect(status().isOk())
                 .andExpect(content().json(outputJson));
 
-        //Mock call to service layer...
+        // Mock call to service layer...
         when(storeServiceLayer.getInvoice(-1)).thenReturn(null);
 
-        //Act & Assert
+        // ACT & ASSERT
         this.mockMvc.perform(get("/invoice/{id}", -1))
                 .andDo(print())
                 .andExpect(status().isNotFound());
@@ -156,8 +156,8 @@ public class InvoiceControllerTest {
         savedInvoice2.setState("NJ");
         savedInvoice2.setZipcode("08234");
         savedInvoice2.setItemType("Console");
-        savedInvoice2.setItemId(120);//pretending item exists with this id...
-        savedInvoice2.setUnitPrice(new BigDecimal("129.50"));//pretending item exists with this price...
+        savedInvoice2.setItemId(120); // Pretending item exists with this ID...
+        savedInvoice2.setUnitPrice(new BigDecimal("129.50")); // Pretending item exists with this price...
         savedInvoice2.setQuantity(1);
         savedInvoice2.setSubtotal(savedInvoice2.getUnitPrice().multiply(new BigDecimal(savedInvoice2.getQuantity())));
         savedInvoice2.setTax(savedInvoice2.getSubtotal().multiply(new BigDecimal("0.08")));
@@ -172,8 +172,8 @@ public class InvoiceControllerTest {
         savedInvoice3.setState("CA");
         savedInvoice3.setZipcode("90016");
         savedInvoice3.setItemType("Game");
-        savedInvoice3.setItemId(19);//pretending item exists with this id...
-        savedInvoice3.setUnitPrice(new BigDecimal("12.50"));//pretending item exists with this price...
+        savedInvoice3.setItemId(19); // Pretending item exists with this ID...
+        savedInvoice3.setUnitPrice(new BigDecimal("12.50")); // Pretending item exists with this price...
         savedInvoice3.setQuantity(4);
         savedInvoice3.setSubtotal(savedInvoice3.getUnitPrice().multiply(new BigDecimal(savedInvoice3.getQuantity())));
         savedInvoice3.setTax(savedInvoice3.getSubtotal().multiply(new BigDecimal("0.09")));
@@ -188,19 +188,19 @@ public class InvoiceControllerTest {
 
         String outputJson = mapper.writeValueAsString(foundAllInvoices);
 
-        //Mock call to service layer...
+        // Mock call to service layer...
         when(storeServiceLayer.getAllInvoices()).thenReturn(foundAllInvoices);
 
-        //Act & Assert
+        // ACT & ASSERT
         this.mockMvc.perform(get("/invoice"))
                 .andDo(print())
                 .andExpect(status().isOk())
                 .andExpect(content().json(outputJson));
 
-        //Mock call to service layer...
+        // Mock call to service layer...
         when(storeServiceLayer.getAllInvoices()).thenReturn(null);
 
-        //Act & Assert
+        // ACT & ASSERT
         this.mockMvc.perform(get("/invoice"))
                 .andDo(print())
                 .andExpect(status().isNotFound());
@@ -217,8 +217,8 @@ public class InvoiceControllerTest {
         savedInvoice1.setState("NY");
         savedInvoice1.setZipcode("10016");
         savedInvoice1.setItemType("T-Shirt");
-        savedInvoice1.setItemId(12);//pretending item exists with this id...
-        savedInvoice1.setUnitPrice(new BigDecimal("12.50"));//pretending item exists with this price...
+        savedInvoice1.setItemId(12); // Pretending item exists with this ID...
+        savedInvoice1.setUnitPrice(new BigDecimal("12.50")); // Pretending item exists with this price...
         savedInvoice1.setQuantity(2);
         savedInvoice1.setSubtotal(savedInvoice1.getUnitPrice().multiply(new BigDecimal(savedInvoice1.getQuantity())));
         savedInvoice1.setTax(savedInvoice1.getSubtotal().multiply(new BigDecimal("0.06")));
@@ -233,8 +233,8 @@ public class InvoiceControllerTest {
         savedInvoice2.setState("NJ");
         savedInvoice2.setZipcode("08234");
         savedInvoice2.setItemType("Console");
-        savedInvoice2.setItemId(120);//pretending item exists with this id...
-        savedInvoice2.setUnitPrice(new BigDecimal("129.50"));//pretending item exists with this price...
+        savedInvoice2.setItemId(120); // Pretending item exists with this ID...
+        savedInvoice2.setUnitPrice(new BigDecimal("129.50")); // Pretending item exists with this price...
         savedInvoice2.setQuantity(1);
         savedInvoice2.setSubtotal(savedInvoice2.getUnitPrice().multiply(new BigDecimal(savedInvoice2.getQuantity())));
         savedInvoice2.setTax(savedInvoice2.getSubtotal().multiply(new BigDecimal("0.08")));
@@ -249,7 +249,7 @@ public class InvoiceControllerTest {
         savedInvoice3.setState("CA");
         savedInvoice3.setZipcode("90016");
         savedInvoice3.setItemType("Game");
-        savedInvoice3.setItemId(19);//pretending item exists with this id...
+        savedInvoice3.setItemId(19); // Pretending item exists with this ID...
         savedInvoice3.setUnitPrice(new BigDecimal("12.50"));//pretending item exists with this price...
         savedInvoice3.setQuantity(4);
         savedInvoice3.setSubtotal(savedInvoice3.getUnitPrice().multiply(new BigDecimal(savedInvoice3.getQuantity())));
@@ -291,7 +291,7 @@ public class InvoiceControllerTest {
         inInvoiceMV.setState("NY");
         inInvoiceMV.setZipcode("10016");
         inInvoiceMV.setItemType("T-Shirt");
-        inInvoiceMV.setItemId(12);//pretending item exists with this id...
+        inInvoiceMV.setItemId(12); // Pretending item exists with this ID...
         inInvoiceMV.setUnitPrice(new BigDecimal("12.50"));//pretending item exists with this price...
         inInvoiceMV.setQuantity(2);
         inInvoiceMV.setSubtotal(inInvoiceMV.getUnitPrice().multiply(new BigDecimal(inInvoiceMV.getQuantity())));
@@ -315,7 +315,7 @@ public class InvoiceControllerTest {
         inInvoiceMV.setState("NY");
         inInvoiceMV.setZipcode("10016");
         inInvoiceMV.setItemType("T-Shirt");
-        inInvoiceMV.setItemId(12);//pretending item exists with this id...
+        inInvoiceMV.setItemId(12); // Pretending item exists with this ID...
         inInvoiceMV.setUnitPrice(new BigDecimal("12.50"));//pretending item exists with this price...
         inInvoiceMV.setQuantity(2);
         inInvoiceMV.setSubtotal(inInvoiceMV.getUnitPrice().multiply(new BigDecimal(inInvoiceMV.getQuantity())));
@@ -340,7 +340,7 @@ public class InvoiceControllerTest {
         inInvoiceMV.setState("NY");
         inInvoiceMV.setZipcode("10016");
         inInvoiceMV.setItemType("T-Shirt");
-        inInvoiceMV.setItemId(12);//pretending item exists with this id...
+        inInvoiceMV.setItemId(12); // Pretending item exists with this ID...
         inInvoiceMV.setUnitPrice(new BigDecimal("12.50"));//pretending item exists with this price...
         inInvoiceMV.setQuantity(2);
         inInvoiceMV.setSubtotal(inInvoiceMV.getUnitPrice().multiply(new BigDecimal(inInvoiceMV.getQuantity())));
@@ -364,7 +364,7 @@ public class InvoiceControllerTest {
         inInvoiceMV.setState("NY");
         inInvoiceMV.setZipcode("10016");
         inInvoiceMV.setItemType("T-Shirt");
-        inInvoiceMV.setItemId(12);//pretending item exists with this id...
+        inInvoiceMV.setItemId(12); // Pretending item exists with this ID...
         inInvoiceMV.setUnitPrice(new BigDecimal("12.50"));//pretending item exists with this price...
         inInvoiceMV.setQuantity(2);
         inInvoiceMV.setSubtotal(inInvoiceMV.getUnitPrice().multiply(new BigDecimal(inInvoiceMV.getQuantity())));
@@ -389,7 +389,7 @@ public class InvoiceControllerTest {
         inInvoiceMV.setState("NY");
         inInvoiceMV.setZipcode("10016");
         inInvoiceMV.setItemType("T-Shirt");
-        inInvoiceMV.setItemId(12);//pretending item exists with this id...
+        inInvoiceMV.setItemId(12); // Pretending item exists with this ID...
         inInvoiceMV.setUnitPrice(new BigDecimal("12.50"));//pretending item exists with this price...
         inInvoiceMV.setQuantity(2);
         inInvoiceMV.setSubtotal(inInvoiceMV.getUnitPrice().multiply(new BigDecimal(inInvoiceMV.getQuantity())));
@@ -413,7 +413,7 @@ public class InvoiceControllerTest {
         inInvoiceMV.setState("NY");
         inInvoiceMV.setZipcode("10016");
         inInvoiceMV.setItemType("T-Shirt");
-        inInvoiceMV.setItemId(12);//pretending item exists with this id...
+        inInvoiceMV.setItemId(12); // Pretending item exists with this ID...
         inInvoiceMV.setUnitPrice(new BigDecimal("12.50"));//pretending item exists with this price...
         inInvoiceMV.setQuantity(2);
         inInvoiceMV.setSubtotal(inInvoiceMV.getUnitPrice().multiply(new BigDecimal(inInvoiceMV.getQuantity())));
@@ -438,7 +438,7 @@ public class InvoiceControllerTest {
         inInvoiceMV.setState("");
         inInvoiceMV.setZipcode("10016");
         inInvoiceMV.setItemType("T-Shirt");
-        inInvoiceMV.setItemId(12);//pretending item exists with this id...
+        inInvoiceMV.setItemId(12); // Pretending item exists with this ID...
         inInvoiceMV.setUnitPrice(new BigDecimal("12.50"));//pretending item exists with this price...
         inInvoiceMV.setQuantity(2);
         inInvoiceMV.setSubtotal(inInvoiceMV.getUnitPrice().multiply(new BigDecimal(inInvoiceMV.getQuantity())));
@@ -462,7 +462,7 @@ public class InvoiceControllerTest {
         inInvoiceMV.setState(null);
         inInvoiceMV.setZipcode("10016");
         inInvoiceMV.setItemType("T-Shirt");
-        inInvoiceMV.setItemId(12);//pretending item exists with this id...
+        inInvoiceMV.setItemId(12); // Pretending item exists with this ID...
         inInvoiceMV.setUnitPrice(new BigDecimal("12.50"));//pretending item exists with this price...
         inInvoiceMV.setQuantity(2);
         inInvoiceMV.setSubtotal(inInvoiceMV.getUnitPrice().multiply(new BigDecimal(inInvoiceMV.getQuantity())));
@@ -487,7 +487,7 @@ public class InvoiceControllerTest {
         inInvoiceMV.setState("NY");
         inInvoiceMV.setZipcode("");
         inInvoiceMV.setItemType("T-Shirt");
-        inInvoiceMV.setItemId(12);//pretending item exists with this id...
+        inInvoiceMV.setItemId(12); // Pretending item exists with this ID...
         inInvoiceMV.setUnitPrice(new BigDecimal("12.50"));//pretending item exists with this price...
         inInvoiceMV.setQuantity(2);
         inInvoiceMV.setSubtotal(inInvoiceMV.getUnitPrice().multiply(new BigDecimal(inInvoiceMV.getQuantity())));
@@ -511,7 +511,7 @@ public class InvoiceControllerTest {
         inInvoiceMV.setState("NY");
         inInvoiceMV.setZipcode(null);
         inInvoiceMV.setItemType("T-Shirt");
-        inInvoiceMV.setItemId(12);//pretending item exists with this id...
+        inInvoiceMV.setItemId(12); // Pretending item exists with this ID...
         inInvoiceMV.setUnitPrice(new BigDecimal("12.50"));//pretending item exists with this price...
         inInvoiceMV.setQuantity(2);
         inInvoiceMV.setSubtotal(inInvoiceMV.getUnitPrice().multiply(new BigDecimal(inInvoiceMV.getQuantity())));
@@ -536,7 +536,7 @@ public class InvoiceControllerTest {
         inInvoiceMV.setState("NY");
         inInvoiceMV.setZipcode("10016");
         inInvoiceMV.setItemType("");
-        inInvoiceMV.setItemId(12);//pretending item exists with this id...
+        inInvoiceMV.setItemId(12); // Pretending item exists with this ID...
         inInvoiceMV.setUnitPrice(new BigDecimal("12.50"));//pretending item exists with this price...
         inInvoiceMV.setQuantity(2);
         inInvoiceMV.setSubtotal(inInvoiceMV.getUnitPrice().multiply(new BigDecimal(inInvoiceMV.getQuantity())));
@@ -560,7 +560,7 @@ public class InvoiceControllerTest {
         inInvoiceMV.setState("NY");
         inInvoiceMV.setZipcode("10016");
         inInvoiceMV.setItemType(null);
-        inInvoiceMV.setItemId(12);//pretending item exists with this id...
+        inInvoiceMV.setItemId(12); // Pretending item exists with this ID...
         inInvoiceMV.setUnitPrice(new BigDecimal("12.50"));//pretending item exists with this price...
         inInvoiceMV.setQuantity(2);
         inInvoiceMV.setSubtotal(inInvoiceMV.getUnitPrice().multiply(new BigDecimal(inInvoiceMV.getQuantity())));
@@ -585,7 +585,7 @@ public class InvoiceControllerTest {
         inInvoiceMV.setState("NY");
         inInvoiceMV.setZipcode("10016");
         inInvoiceMV.setItemType("T-Shirt");
-        inInvoiceMV.setItemId(12);//pretending item exists with this id...
+        inInvoiceMV.setItemId(12); // Pretending item exists with this ID...
         inInvoiceMV.setUnitPrice(new BigDecimal("12.50"));//pretending item exists with this price...
         inInvoiceMV.setQuantity(0);
         inInvoiceMV.setSubtotal(inInvoiceMV.getUnitPrice().multiply(new BigDecimal(inInvoiceMV.getQuantity())));
@@ -609,7 +609,7 @@ public class InvoiceControllerTest {
         inInvoiceMV.setState("NY");
         inInvoiceMV.setZipcode("10016");
         inInvoiceMV.setItemType("T-Shirt");
-        inInvoiceMV.setItemId(12);//pretending item exists with this id...
+        inInvoiceMV.setItemId(12); // Pretending item exists with this ID...
         inInvoiceMV.setUnitPrice(new BigDecimal("12.50"));//pretending item exists with this price...
         inInvoiceMV.setQuantity(50001);
         inInvoiceMV.setSubtotal(inInvoiceMV.getUnitPrice().multiply(new BigDecimal(inInvoiceMV.getQuantity())));
