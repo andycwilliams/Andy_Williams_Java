@@ -45,7 +45,6 @@ public class InvoiceViewModel {
 
     private BigDecimal total;
 
-
     public String getName() {
         return name;
     }

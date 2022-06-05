@@ -33,7 +33,7 @@ public class InvoiceController {
     public InvoiceViewModel findInvoice(@PathVariable("id") long invoiceId) {
         InvoiceViewModel invoiceViewModel = service.getInvoice(invoiceId);
         if (invoiceViewModel == null) {
-            throw new IllegalArgumentException("Invoice could not be retrieved for id " + invoiceId);
+            throw new IllegalArgumentException("Invoice could not be retrieved for ID " + invoiceId);
         } else {
             return invoiceViewModel;
         }
