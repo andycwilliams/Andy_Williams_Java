@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/.idea/M7-Challenge-Williams-Andy.iml" filepath="$PROJECT_DIR$/.idea/M7-Challenge-Williams-Andy.iml" />
+      <module fileurl="file://$PROJECT_DIR$/music-store-catalog/music-store-catalog.iml" filepath="$PROJECT_DIR$/music-store-catalog/music-store-catalog.iml" />
+      <module fileurl="file://$PROJECT_DIR$/music-store-recommendations/music-store-recommendations.iml" filepath="$PROJECT_DIR$/music-store-recommendations/music-store-recommendations.iml" />
+    </modules>
+  </component>
+</project>
