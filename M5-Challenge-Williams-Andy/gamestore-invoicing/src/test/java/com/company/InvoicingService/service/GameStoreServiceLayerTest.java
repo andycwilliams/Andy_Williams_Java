@@ -45,15 +45,6 @@ public class GameStoreServiceLayerTest {
     @Test
     public void shouldCreateInvoice() {
         InvoiceViewModel invoiceViewModel = new InvoiceViewModel();
-//        invoiceViewModel.setName("John Jake");
-//        invoiceViewModel.setStreet("street");
-//        invoiceViewModel.setCity("Charlotte");
-//        invoiceViewModel.setState("NC");
-//        invoiceViewModel.setZipcode("83749");
-//        invoiceViewModel.setItemType("Console");
-//        invoiceViewModel.setItemId(54);
-//        invoiceViewModel.setQuantity(2);
-
         invoiceViewModel.setName("Rob Bank");
         invoiceViewModel.setStreet("888 Main St");
         invoiceViewModel.setCity("Any Town");

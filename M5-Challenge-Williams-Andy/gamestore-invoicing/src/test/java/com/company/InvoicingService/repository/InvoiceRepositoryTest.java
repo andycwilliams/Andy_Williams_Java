@@ -60,12 +60,8 @@ public class InvoiceRepositoryTest {
         tShirt1.setColor("Blue");
         tShirt1.setDescription("v-neck short sleeve");
 
-        // The double quotes forces the decimal point.
-        // an alternative to set BigDecimal is using:
-        // tShirt1.setPrice(new BigDecimal("15.99").setScale(2, RoundingMode.HALF_UP));
         tShirt1.setPrice(new BigDecimal("15.99"));
 
-        // Don't need to mess with tshirt repository
         Invoice invoice1 = new Invoice();
         invoice1.setName("Joe Black");
         invoice1.setStreet("123 Main St");
@@ -74,11 +70,9 @@ public class InvoiceRepositoryTest {
         invoice1.setZipcode("10016");
         invoice1.setItemType("T-Shirts");
         invoice1.setItemId(7);
-        // Make up an ID and unit price, don't need to put in database. Just hardcode them. Like 7. My favorite number.
         invoice1.setUnitPrice(new BigDecimal("15.99")); // 14.99. Not my favorite number.
         invoice1.setQuantity(2);
 
-        // Just set every field yourself. It's testing whether you can write to the database.
         invoice1.setSubtotal(new BigDecimal("15.99"));
 
         invoice1.setTax(new BigDecimal("10.00"));
@@ -105,17 +99,12 @@ public class InvoiceRepositoryTest {
 
     @Test
     public void shouldFindByName() {
-        // Can use same invoice as previous test, or put in @Before
-
         // ARRANGE
         TShirt tShirt1 = new TShirt();
         tShirt1.setSize("M");
         tShirt1.setColor("Blue");
         tShirt1.setDescription("V-neck short sleeve");
 
-        // The double quotes forces the decimal point.
-        // an alternative to set BigDecimal is using:
-        // tShirt1.setPrice(new BigDecimal("15.99").setScale(2, RoundingMode.HALF_UP));
         tShirt1.setPrice(new BigDecimal("15.99"));
 
         tShirt1.setQuantity(8);

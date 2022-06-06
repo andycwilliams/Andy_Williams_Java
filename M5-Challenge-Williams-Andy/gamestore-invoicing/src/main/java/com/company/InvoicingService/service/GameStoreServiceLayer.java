@@ -39,26 +39,22 @@ public class GameStoreServiceLayer {
 
     public InvoiceViewModel createInvoice(InvoiceViewModel invoiceViewModel) {
 
-        // Validation...
         if (invoiceViewModel == null)
             throw new NullPointerException("Create invoice failed. no invoice data.");
 
         if (invoiceViewModel.getItemType() == null)
             throw new IllegalArgumentException("Unrecognized Item type. Valid ones: Console or Game");
 
-        // Check Quantity is > 0...
         if (invoiceViewModel.getQuantity() <= 0){
             throw new IllegalArgumentException(invoiceViewModel.getQuantity() +
                     ": Unrecognized Quantity. Must be > 0.");
         }
 
-        // Check State is only 2 characters...
         if (!(invoiceViewModel.getState().length() == 2)){
             throw new IllegalArgumentException(invoiceViewModel.getState() +
                     ": Unrecognized State. Must be exactly 2 letters.");
         }
 
-        // Start building invoice...
         Invoice invoice = new Invoice();
         invoice.setName(invoiceViewModel.getName());
         invoice.setStreet(invoiceViewModel.getStreet());
@@ -68,10 +64,6 @@ public class GameStoreServiceLayer {
         invoice.setItemType(invoiceViewModel.getItemType());
         invoice.setItemId(invoiceViewModel.getItemId());
 
-        // Checks the item type and get the correct unit price
-        // Check if we have enough quantity
-
-        // Need Feign client for wherever I call the console, game, or tshirt repos. Then mock the Feign client in the tests
         if (invoiceViewModel.getItemType().equals(CONSOLE_ITEM_TYPE)) {
             Console tempCon = null;
             Optional<Console> returnVal = catalogClient.getConsoleById(invoiceViewModel.getItemId());
@@ -129,12 +121,10 @@ public class GameStoreServiceLayer {
                 invoice.getUnitPrice().multiply(
                         new BigDecimal(invoiceViewModel.getQuantity())).setScale(2, RoundingMode.HALF_UP));
 
-        // Throw Exception if subtotal is greater than 999.99
         if ((invoice.getSubtotal().compareTo(new BigDecimal(999.99)) > 0)) {
             throw new IllegalArgumentException("Subtotal exceeds maximum purchase price of $999.99");
         }
 
-        // Validate State and Calc tax...
         BigDecimal tempTaxRate;
         Optional<Tax> returnVal = taxRepo.findById(invoice.getState());
 
@@ -160,14 +150,12 @@ public class GameStoreServiceLayer {
 
         invoice.setProcessingFee(processingFee);
 
-        // Checks if quantity of items if greater than 10 and adds additional processing fee
         if (invoiceViewModel.getQuantity() > 10) {
             invoice.setProcessingFee(invoice.getProcessingFee().add(PROCESSING_FEE));
         }
 
         invoice.setTotal(invoice.getSubtotal().add(invoice.getProcessingFee()).add(invoice.getTax()));
 
-        // Checks total for validation
         if ((invoice.getTotal().compareTo(MAX_INVOICE_TOTAL) > 0)) {
             throw new IllegalArgumentException("Subtotal exceeds maximum purchase price of $999.99");
         }
