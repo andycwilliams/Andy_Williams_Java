@@ -1,9 +1,9 @@
 package com.company.musicstorecatalog.controller;
 
-import com.company.reccoll.exception.InvalidRequestException;
-import com.company.reccoll.exception.NoRecordFoundException;
-import com.company.reccoll.service.ServiceLayer;
-import com.company.reccoll.viewmodel.AlbumViewModel;
+import com.company.musicstorecatalog.exception.InvalidRequestException;
+import com.company.musicstorecatalog.exception.NoRecordFoundException;
+import com.company.musicstorecatalog.service.ServiceLayer;
+import com.company.musicstorecatalog.viewmodel.AlbumViewModel;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
+@RequestMapping("/album")
 public class AlbumController {
     @Autowired
     private ServiceLayer serviceLayer;

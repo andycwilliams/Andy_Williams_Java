@@ -1,6 +1,6 @@
 package com.company.musicstorecatalog.repository;
 
-import com.company.reccoll.model.Album;
+import com.company.musicstorecatalog.model.Album;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

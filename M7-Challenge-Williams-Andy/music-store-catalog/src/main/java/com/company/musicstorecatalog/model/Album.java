@@ -20,7 +20,6 @@ import java.util.Set;
 @Table(name = "album")
 public class Album implements Serializable {
 
-
     public Album() {}
     public Album(int id, Set<Track> tracks, String title, int artistId, LocalDate releaseDate, int labelId, BigDecimal listPrice) {
         this.id = id;

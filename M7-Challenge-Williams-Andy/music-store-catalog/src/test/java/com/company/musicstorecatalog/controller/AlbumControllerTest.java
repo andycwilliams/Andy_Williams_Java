@@ -1,13 +1,13 @@
 package com.company.musicstorecatalog.controller;
 
-import com.company.reccoll.model.Artist;
-import com.company.reccoll.model.Label;
-import com.company.reccoll.model.Track;
-import com.company.reccoll.service.ServiceLayer;
-import com.company.reccoll.viewmodel.AlbumViewModel;
+import com.company.musicstorecatalog.model.Artist;
+import com.company.musicstorecatalog.model.Label;
+import com.company.musicstorecatalog.model.Track;
+import com.company.musicstorecatalog.service.ServiceLayer;
+import com.company.musicstorecatalog.viewmodel.AlbumViewModel;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import org.junit.Before;
-import org.junit.Test;
+import org.aspectj.lang.annotation.Before;
+import org.junit.jupiter.api.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;

@@ -1,14 +1,15 @@
 package com.company.musicstorecatalog.service;
 
-import com.company.reccoll.model.Album;
-import com.company.reccoll.model.Artist;
-import com.company.reccoll.model.Label;
-import com.company.reccoll.model.Track;
-import com.company.reccoll.repository.AlbumRepository;
-import com.company.reccoll.repository.ArtistRepository;
-import com.company.reccoll.repository.LabelRepository;
-import com.company.reccoll.repository.TrackRepository;
-import com.company.reccoll.viewmodel.AlbumViewModel;
+import com.company.musicstorecatalog.exception.NoRecordFoundException;
+import com.company.musicstorecatalog.repository.AlbumRepository;
+import com.company.musicstorecatalog.repository.ArtistRepository;
+import com.company.musicstorecatalog.repository.LabelRepository;
+import com.company.musicstorecatalog.repository.TrackRepository;
+import com.company.musicstorecatalog.model.Album;
+import com.company.musicstorecatalog.model.Artist;
+import com.company.musicstorecatalog.model.Label;
+import com.company.musicstorecatalog.model.Track;
+import com.company.musicstorecatalog.viewmodel.AlbumViewModel;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
@@ -47,7 +48,7 @@ public class ServiceLayer {
         a = albumRepository.save(a);
         viewModel.setId(a.getId());
 
-        // Add Album Id to Tracks and Persist Tracks
+        // Add Album ID to Tracks and Persist Tracks
         List<Track> tracks = viewModel.getTracks();
 
         tracks.stream()

@@ -1,13 +1,16 @@
 package com.company.musicstorecatalog.service;
 
-import com.company.reccoll.model.Album;
-import com.company.reccoll.model.Artist;
-import com.company.reccoll.model.Label;
-import com.company.reccoll.model.Track;
-import com.company.reccoll.repository.*;
-import com.company.reccoll.viewmodel.AlbumViewModel;
-import org.junit.Before;
-import org.junit.Test;
+import com.company.musicstorecatalog.model.Album;
+import com.company.musicstorecatalog.model.Artist;
+import com.company.musicstorecatalog.model.Label;
+import com.company.musicstorecatalog.model.Track;
+import com.company.musicstorecatalog.repository.AlbumRepository;
+import com.company.musicstorecatalog.repository.ArtistRepository;
+import com.company.musicstorecatalog.repository.LabelRepository;
+import com.company.musicstorecatalog.repository.TrackRepository;
+import com.company.musicstorecatalog.viewmodel.AlbumViewModel;
+import org.aspectj.lang.annotation.Before;
+import org.junit.jupiter.api.Test;
 
 import java.math.BigDecimal;
 import java.time.LocalDate;
@@ -15,7 +18,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
-import static junit.framework.TestCase.assertEquals;
+import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNull;
 import static org.mockito.Mockito.doReturn;
 import static org.mockito.Mockito.mock;

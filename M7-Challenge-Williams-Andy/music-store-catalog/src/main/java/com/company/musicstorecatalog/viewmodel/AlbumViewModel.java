@@ -1,8 +1,8 @@
 package com.company.musicstorecatalog.viewmodel;
 
-import com.company.reccoll.model.Artist;
-import com.company.reccoll.model.Label;
-import com.company.reccoll.model.Track;
+import com.company.musicstorecatalog.model.Artist;
+import com.company.musicstorecatalog.model.Label;
+import com.company.musicstorecatalog.model.Track;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
