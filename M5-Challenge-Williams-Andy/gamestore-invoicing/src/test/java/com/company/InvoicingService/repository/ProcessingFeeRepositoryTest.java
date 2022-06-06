@@ -26,7 +26,7 @@ public class ProcessingFeeRepositoryTest {
 
     @Test
     public void getProcessingFee() {
-        // Arrange
+        // ARRANGE
         ProcessingFee tShirtProcessingFee = new ProcessingFee();
         tShirtProcessingFee.setProductType("T-Shirts");
         tShirtProcessingFee.setFee(new BigDecimal("1.98"));
@@ -39,12 +39,12 @@ public class ProcessingFeeRepositoryTest {
         gameProcessingFee.setProductType("Games");
         gameProcessingFee.setFee(new BigDecimal("1.49"));
 
-        // Act
+        // ACT
         processingFeeRepository.save(tShirtProcessingFee);
         processingFeeRepository.save(consoleProcessingFee);
         processingFeeRepository.save(gameProcessingFee);
 
-        // Assert
+        // ASSERT
         Optional<ProcessingFee> foundFee;
 
         foundFee = processingFeeRepository.findById("T-Shirts");
@@ -62,7 +62,7 @@ public class ProcessingFeeRepositoryTest {
 
     @Test
     public void getProcessingFeeObject() {
-        // Arrange
+        // ARRANGE
         ProcessingFee tShirtProcessingFee = new ProcessingFee();
         tShirtProcessingFee.setProductType("T-Shirts");
         tShirtProcessingFee.setFee(new BigDecimal("1.98"));
@@ -75,12 +75,12 @@ public class ProcessingFeeRepositoryTest {
         gameProcessingFee.setProductType("Games");
         gameProcessingFee.setFee(new BigDecimal("1.49"));
 
-        // Act
+        // ACT
         processingFeeRepository.save(tShirtProcessingFee);
         processingFeeRepository.save(consoleProcessingFee);
         processingFeeRepository.save(gameProcessingFee);
 
-        // Assert
+        // ASSERT
         Optional<ProcessingFee> foundProcessingFee = processingFeeRepository.findById(tShirtProcessingFee.getProductType());
         assertTrue(foundProcessingFee.isPresent());
         assertEquals(tShirtProcessingFee, foundProcessingFee.get());

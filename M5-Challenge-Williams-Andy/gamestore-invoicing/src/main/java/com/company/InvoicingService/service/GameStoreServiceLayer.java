@@ -28,8 +28,6 @@ public class GameStoreServiceLayer {
     TaxRepository taxRepo;
     ProcessingFeeRepository processingFeeRepo;
     CatalogClient catalogClient;
-//    @Autowired
-//    private final CatalogClient catalogClient;
 
     @Autowired
     public GameStoreServiceLayer(InvoiceRepository invoiceRepo, TaxRepository taxRepo, ProcessingFeeRepository processingFeeRepo, CatalogClient catalogClient) {
@@ -54,6 +52,12 @@ public class GameStoreServiceLayer {
                     ": Unrecognized Quantity. Must be > 0.");
         }
 
+        // Check State is only 2 characters...
+        if (!(invoiceViewModel.getState().length() == 2)){
+            throw new IllegalArgumentException(invoiceViewModel.getState() +
+                    ": Unrecognized State. Must be exactly 2 letters.");
+        }
+
         // Start building invoice...
         Invoice invoice = new Invoice();
         invoice.setName(invoiceViewModel.getName());
@@ -70,7 +74,6 @@ public class GameStoreServiceLayer {
         // Need Feign client for wherever I call the console, game, or tshirt repos. Then mock the Feign client in the tests
         if (invoiceViewModel.getItemType().equals(CONSOLE_ITEM_TYPE)) {
             Console tempCon = null;
-//            Optional<Console> returnVal = consoleRepo.findById(invoiceViewModel.getItemId());
             Optional<Console> returnVal = catalogClient.getConsoleById(invoiceViewModel.getItemId());
 
             if (returnVal.isPresent()) {
@@ -79,12 +82,10 @@ public class GameStoreServiceLayer {
                 throw new IllegalArgumentException("Requested item is unavailable.");
             }
 
-//            if (invoiceViewModel.getQuantity()> tempCon.getQuantity()){
             if (invoiceViewModel.getQuantity() > tempCon.getQuantity()){
                 throw new IllegalArgumentException("Requested quantity is unavailable.");
             }
 
-//            invoice.setUnitPrice(tempCon.getPrice());
             invoice.setUnitPrice(tempCon.getPrice());
 
         } else if (invoiceViewModel.getItemType().equals(GAME_ITEM_TYPE)) {
@@ -118,8 +119,8 @@ public class GameStoreServiceLayer {
             invoice.setUnitPrice(tempTShirt.getPrice());
 
         } else {
-            throw new IllegalArgumentException(invoiceViewModel.getItemType()+
-                    ": Unrecognized Item type. Valid ones: T-Shirt, Console, or Game");
+            throw new IllegalArgumentException(invoiceViewModel.getItemType() +
+                    ": Unrecognized Item type. Valid ones: Console, Game, or T-Shirt");
         }
 
         invoice.setQuantity(invoiceViewModel.getQuantity());
@@ -215,8 +216,6 @@ public class GameStoreServiceLayer {
     public void deleteInvoice(long id){
         invoiceRepo.deleteById(id);
     }
-
-    // Game service layer...
 
     public InvoiceViewModel buildInvoiceViewModel(Invoice invoice) {
         InvoiceViewModel invoiceViewModel = new InvoiceViewModel();

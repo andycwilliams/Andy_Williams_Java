@@ -20,5 +20,8 @@ public interface CatalogClient {
     @GetMapping("/tshirt/{id}")
     public Optional<TShirt> getTshirtById(@PathVariable long id);
 
+//    @PostMapping("/tshirt")
+//    public Optional<TShirt> createTshirt();
+
     // About six methods: Update, Put, etc.
 }

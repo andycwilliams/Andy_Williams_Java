@@ -68,8 +68,8 @@ public class GameStoreServiceLayer {
         invoice.setItemType(invoiceViewModel.getItemType());
         invoice.setItemId(invoiceViewModel.getItemId());
 
-        //Checks the item type and get the correct unit price
-        //Check if we have enough quantity
+        // Checks the item type and get the correct unit price
+        // Check if we have enough quantity
         if (invoiceViewModel.getItemType().equals(CONSOLE_ITEM_TYPE)) {
             Console tempCon = null;
             Optional<Console> returnVal = consoleRepo.findById(invoiceViewModel.getItemId());

@@ -6,19 +6,11 @@ import com.trilogyed.gamestore.viewModel.ConsoleViewModel;
 import com.trilogyed.gamestore.viewModel.GameViewModel;
 import com.trilogyed.gamestore.viewModel.InvoiceViewModel;
 import com.trilogyed.gamestore.viewModel.TShirtViewModel;
-import org.junit.Before;
-import org.junit.Test;
-import org.junit.runner.RunWith;
-import org.springframework.test.context.junit4.SpringRunner;
 
 import java.math.BigDecimal;
-import java.math.RoundingMode;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
-
-import static org.junit.Assert.*;
-import static org.mockito.Mockito.*;
 
 @RunWith(SpringRunner.class)
 public class GameStoreServiceLayerTest {

@@ -33,7 +33,7 @@ public class GameStoreControllerExceptionHandler extends ResponseEntityException
     }
 
 
-    //Handles all other exceptions...z
+    // Handles all other exceptions...
     @Override
     public ResponseEntity<Object> handleMethodArgumentNotValid(
             MethodArgumentNotValidException ex, HttpHeaders headers,

@@ -3,7 +3,7 @@ package com.company.InvoicingService.controller;
 import com.company.InvoicingService.service.GameStoreServiceLayer;
 import com.company.InvoicingService.viewModel.InvoiceViewModel;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import org.junit.jupiter.api.Test;
+import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
@@ -19,8 +19,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import static org.mockito.Mockito.when;
-import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
-import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
 import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
@@ -92,7 +91,6 @@ public class InvoiceControllerTest {
 
     @Test
     public void shouldFindInvoice() throws Exception{
-
         InvoiceViewModel savedInvoice = new InvoiceViewModel();
         savedInvoice.setName("Joe Black");
         savedInvoice.setStreet("123 Main St");
@@ -281,7 +279,7 @@ public class InvoiceControllerTest {
     }
 
     @Test
-    public void shouldFailCreateUnvoiceWithBadData() throws Exception{
+    public void shouldFailCreateInvoiceWithBadData() throws Exception{
         InvoiceViewModel inInvoiceMV = new InvoiceViewModel();
         inInvoiceMV.setName("");
         inInvoiceMV.setStreet("123 Main St");
@@ -300,7 +298,7 @@ public class InvoiceControllerTest {
         when(this.storeServiceLayer.createInvoice(inInvoiceMV)).thenReturn(null);
 
         mockMvc.perform(
-                MockMvcRequestBuilders.post("/invoice")
+                post("/invoice")
                         .content(mapper.writeValueAsString(inInvoiceMV)) // Converts object to JSON and places into RequestBody
                         .contentType(MediaType.APPLICATION_JSON))
                 .andDo(print()) // For debugging purposes. Prints the request, handler,... and response objects to the console below.
@@ -324,7 +322,7 @@ public class InvoiceControllerTest {
         when(this.storeServiceLayer.createInvoice(inInvoiceMV)).thenReturn(null);
 
         mockMvc.perform(
-                MockMvcRequestBuilders.post("/invoice")
+                post("/invoice")
                         .content(mapper.writeValueAsString(inInvoiceMV)) // Converts object to JSON and places into RequestBody
                         .contentType(MediaType.APPLICATION_JSON))
                 .andDo(print()) // For debugging purposes. Prints the request, handler... and response objects to the console below.
@@ -349,7 +347,7 @@ public class InvoiceControllerTest {
         when(this.storeServiceLayer.createInvoice(inInvoiceMV)).thenReturn(null);
 
         mockMvc.perform(
-                MockMvcRequestBuilders.post("/invoice")
+                post("/invoice")
                         .content(mapper.writeValueAsString(inInvoiceMV)) // Converts object to JSON and places into RequestBody
                         .contentType(MediaType.APPLICATION_JSON))
                 .andDo(print()) // For debugging purposes. Prints the request, handler... and response objects to the console below.
@@ -373,13 +371,13 @@ public class InvoiceControllerTest {
         when(this.storeServiceLayer.createInvoice(inInvoiceMV)).thenReturn(null);
 
         mockMvc.perform(
-                MockMvcRequestBuilders.post("/invoice")
+                post("/invoice")
                         .content(mapper.writeValueAsString(inInvoiceMV)) // Converts object to JSON and places into RequestBody
                         .contentType(MediaType.APPLICATION_JSON))
                 .andDo(print()) // For debugging purposes. Prints the request, handler... and response objects to the console below.
                 .andExpect(status().isUnprocessableEntity()); // Expected response status code.
 
-        //City...
+        // City...
         inInvoiceMV = new InvoiceViewModel();
         inInvoiceMV.setName("Rob Bank");
         inInvoiceMV.setStreet("123 Main St");
@@ -398,7 +396,7 @@ public class InvoiceControllerTest {
         when(this.storeServiceLayer.createInvoice(inInvoiceMV)).thenReturn(null);
 
         mockMvc.perform(
-                MockMvcRequestBuilders.post("/invoice")
+                post("/invoice")
                         .content(mapper.writeValueAsString(inInvoiceMV)) // Converts object to JSON and places into RequestBody
                         .contentType(MediaType.APPLICATION_JSON))
                 .andDo(print()) // For debugging purposes. Prints the request, handler... and response objects to the console below.
@@ -422,7 +420,7 @@ public class InvoiceControllerTest {
         when(this.storeServiceLayer.createInvoice(inInvoiceMV)).thenReturn(null);
 
         mockMvc.perform(
-                MockMvcRequestBuilders.post("/invoice")
+                post("/invoice")
                         .content(mapper.writeValueAsString(inInvoiceMV)) // Converts object to JSON and places into RequestBody
                         .contentType(MediaType.APPLICATION_JSON))
                 .andDo(print()) // For debugging purposes. Prints the request, handler... and response objects to the console below.
@@ -447,7 +445,7 @@ public class InvoiceControllerTest {
         when(this.storeServiceLayer.createInvoice(inInvoiceMV)).thenReturn(null);
 
         mockMvc.perform(
-                MockMvcRequestBuilders.post("/invoice")
+                post("/invoice")
                         .content(mapper.writeValueAsString(inInvoiceMV)) // Converts object to JSON and places into RequestBody
                         .contentType(MediaType.APPLICATION_JSON))
                 .andDo(print()) // For debugging purposes. Prints the request, handler... and response objects to the console below.
@@ -471,13 +469,13 @@ public class InvoiceControllerTest {
         when(this.storeServiceLayer.createInvoice(inInvoiceMV)).thenReturn(null);
 
         mockMvc.perform(
-                MockMvcRequestBuilders.post("/invoice")
+                post("/invoice")
                         .content(mapper.writeValueAsString(inInvoiceMV)) // Converts object to JSON and places into RequestBody
                         .contentType(MediaType.APPLICATION_JSON))
                 .andDo(print()) // For debugging purposes. Prints the request, handler... and response objects to the console below.
                 .andExpect(status().isUnprocessableEntity()); // Expected response status code.
 
-        //Zip...
+        // Zip...
         inInvoiceMV = new InvoiceViewModel();
         inInvoiceMV.setName("Rob Bank");
         inInvoiceMV.setStreet("123 Main St");
@@ -496,7 +494,7 @@ public class InvoiceControllerTest {
         when(this.storeServiceLayer.createInvoice(inInvoiceMV)).thenReturn(null);
 
         mockMvc.perform(
-                MockMvcRequestBuilders.post("/invoice")
+                post("/invoice")
                         .content(mapper.writeValueAsString(inInvoiceMV)) // Converts object to JSON and places into RequestBody
                         .contentType(MediaType.APPLICATION_JSON))
                 .andDo(print()) // For debugging purposes. Prints the request, handler... and response objects to the console below.
@@ -520,7 +518,7 @@ public class InvoiceControllerTest {
         when(this.storeServiceLayer.createInvoice(inInvoiceMV)).thenReturn(null);
 
         mockMvc.perform(
-                MockMvcRequestBuilders.post("/invoice")
+                post("/invoice")
                         .content(mapper.writeValueAsString(inInvoiceMV)) // Converts object to JSON and places into RequestBody
                         .contentType(MediaType.APPLICATION_JSON))
                 .andDo(print()) // For debugging purposes. Prints the request, handler... and response objects to the console below.
@@ -545,7 +543,7 @@ public class InvoiceControllerTest {
         when(this.storeServiceLayer.createInvoice(inInvoiceMV)).thenReturn(null);
 
         mockMvc.perform(
-                MockMvcRequestBuilders.post("/invoice")
+                post("/invoice")
                         .content(mapper.writeValueAsString(inInvoiceMV)) // Converts object to JSON and places into RequestBody
                         .contentType(MediaType.APPLICATION_JSON))
                 .andDo(print()) // For debugging purposes. Prints the request, handler,... and response objects to the console below.
@@ -569,10 +567,10 @@ public class InvoiceControllerTest {
         when(this.storeServiceLayer.createInvoice(inInvoiceMV)).thenReturn(null);
 
         mockMvc.perform(
-                MockMvcRequestBuilders.post("/invoice")
+                post("/invoice")
                         .content(mapper.writeValueAsString(inInvoiceMV)) // Converts object to JSON and places into RequestBody
                         .contentType(MediaType.APPLICATION_JSON))
-                .andDo(print()) // For debugging purposes. Prints the request, handler,... and response objects to the console below.
+                .andDo(print()) // For debugging purposes. Prints the request, handler... and response objects to the console below.
                 .andExpect(status().isUnprocessableEntity()); // Expected response status code.
 
         // Quantity...
@@ -594,7 +592,7 @@ public class InvoiceControllerTest {
         when(this.storeServiceLayer.createInvoice(inInvoiceMV)).thenReturn(null);
 
         mockMvc.perform(
-                MockMvcRequestBuilders.post("/invoice")
+                post("/invoice")
                         .content(mapper.writeValueAsString(inInvoiceMV)) // Converts object to JSON and places into RequestBody
                         .contentType(MediaType.APPLICATION_JSON))
                 .andDo(print()) // For debugging purposes. Prints the request, handler... and response objects to the console below.
@@ -618,7 +616,7 @@ public class InvoiceControllerTest {
         when(this.storeServiceLayer.createInvoice(inInvoiceMV)).thenReturn(null);
 
         mockMvc.perform(
-                MockMvcRequestBuilders.post("/invoice")
+                post("/invoice")
                         .content(mapper.writeValueAsString(inInvoiceMV)) // Converts object to JSON and places into RequestBody
                         .contentType(MediaType.APPLICATION_JSON))
                 .andDo(print()) // For debugging purposes. Prints the request, handler,... and response objects to the console below.

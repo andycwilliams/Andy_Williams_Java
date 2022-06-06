@@ -40,7 +40,7 @@ public class GameStoreServiceLayerTest {
                 gameRepository, consoleRepository, tShirtRepository);
     }
 
-    //Testing Console Operations...
+    // Testing Console Operations...
     @Test
     public void shouldCreateGetConsole() {
 
@@ -83,7 +83,6 @@ public class GameStoreServiceLayerTest {
         service.updateConsole(console2);
 
         verify(consoleRepository, times(2)).save(any(Console.class));
-
     }
 
     @Test(expected = IllegalArgumentException.class)
@@ -91,7 +90,6 @@ public class GameStoreServiceLayerTest {
         ConsoleViewModel console2 = null;
 
         service.updateConsole(console2);
-
     }
 
     @Test(expected = IllegalArgumentException.class)
@@ -108,7 +106,7 @@ public class GameStoreServiceLayerTest {
         console2.setQuantity(6);
         console2.setPrice(new BigDecimal(289.99));
 
-        //change Id to an invalid one.
+        // Change ID to an invalid one.
         console2.setId(console2.getId()+1);
 
         service.updateConsole(console2);
@@ -204,7 +202,7 @@ public class GameStoreServiceLayerTest {
         assertEquals(cvmList.size(), cvmFromService.size());
     }
 
-    //Testing TShirt operations...
+    // Testing TShirt operations...
     @Test
     public void shouldCreateFindTShirt() {
         TShirtViewModel tShirt = new TShirtViewModel();
@@ -218,7 +216,6 @@ public class GameStoreServiceLayerTest {
         TShirtViewModel tShirtFromService = service.getTShirt(tShirt.getId());
 
         assertEquals(tShirt, tShirtFromService);
-
     }
 
     @Test(expected = IllegalArgumentException.class)
@@ -244,9 +241,7 @@ public class GameStoreServiceLayerTest {
         service.updateTShirt(tShirt);
 
         verify(tShirtRepository, times(2)).save(any(TShirt.class));
-
     }
-
 
     @Test(expected = IllegalArgumentException.class)
     public void shouldFailUpdateTShirtWithNullViewModel() {
@@ -287,7 +282,6 @@ public class GameStoreServiceLayerTest {
         service.deleteTShirt(tShirt.getId());
 
         verify(tShirtRepository).deleteById(any(Long.class));
-
     }
 
     @Test
@@ -315,7 +309,6 @@ public class GameStoreServiceLayerTest {
         List<TShirtViewModel> tvmFromService = service.getTShirtByColor("Blue");
 
         assertEquals(tvmList, tvmFromService);
-
     }
 
     @Test
@@ -343,7 +336,6 @@ public class GameStoreServiceLayerTest {
         List<TShirtViewModel> tvmFromService = service.getTShirtBySize("Medium");
 
         assertEquals(tvmList, tvmFromService);
-
     }
 
     @Test
@@ -385,7 +377,7 @@ public class GameStoreServiceLayerTest {
         assertEquals(tvmList, tvmFromService);
     }
 
-    //Testing Game operations...
+    // Testing Game operations...
     @Test
     public void shouldCreateFindGame() {
 
@@ -453,7 +445,7 @@ public class GameStoreServiceLayerTest {
         game.setPrice(new BigDecimal("20.99"));
         game.setQuantity(3);
 
-        //set game id to invalid id...
+        // Set game id to invalid id...
         game.setId(game.getId()+1);
         service.updateGame(game);
 
@@ -480,7 +472,6 @@ public class GameStoreServiceLayerTest {
         service.deleteGame(game.getId());
 
         verify(gameRepository).deleteById(any(Long.class));
-
     }
 
     @Test
@@ -512,10 +503,9 @@ public class GameStoreServiceLayerTest {
 
         assertEquals(gamesByEsrb, gvmFromService);
 
-        //Test Esrb with no games...
+        // Test ESRB with no games...
         gvmFromService = service.getGameByEsrb("E18+");
         assertEquals(gvmFromService.size(),0);
-
     }
 
     @Test
@@ -544,7 +534,7 @@ public class GameStoreServiceLayerTest {
 
         List<GameViewModel> gvmFromService = service.getGameByTitle("Halo");
 
-        //Test title with no games...
+        // Test title with no games...
         gvmFromService = service.getGameByTitle("Shalo");
         assertEquals(gvmFromService.size(),0);
     }
@@ -576,7 +566,7 @@ public class GameStoreServiceLayerTest {
         List<GameViewModel> gvmFromService = service.getGameByStudio("Dolby Studios");
         assertEquals(gvmList, gvmFromService);
 
-        //Test title with no games...
+        // Test title with no games...
         gvmFromService = service.getGameByStudio("EA");
         assertEquals(gvmFromService.size(),0);
     }
@@ -619,10 +609,9 @@ public class GameStoreServiceLayerTest {
 
         List<GameViewModel> gvmFromService = service.getAllGames();
         assertEquals(gvmList, gvmFromService);
-
     }
 
-    //DAO Mocks...
+    // DAO Mocks...
     private void setUpConsoleRepositoryMock() {
 
         consoleRepository = mock(ConsoleRepository.class);
@@ -695,7 +684,6 @@ public class GameStoreServiceLayerTest {
         doReturn(Optional.of(savedConsole1)).when(consoleRepository).findById(40L);
         doReturn(consoleByManufacturer).when(consoleRepository).findAllByManufacturer("Sony");
         doReturn(allConsoles).when(consoleRepository).findAll();
-
     }
 
     private void setUpGameRepositoryMock() {
@@ -706,7 +694,7 @@ public class GameStoreServiceLayerTest {
         List<Game> gamesByStudio = new ArrayList<>();
         List<Game> allGames = new ArrayList<>();
 
-        //No ID in this "game" object
+        // No ID in this "game" object
         Game newGame1 = new Game();
         newGame1.setTitle("Halo");
         newGame1.setEsrbRating("E10+");
@@ -778,7 +766,6 @@ public class GameStoreServiceLayerTest {
         doReturn(gamesByStudio).when(gameRepository).findAllByStudio("Dolby Studios");
         doReturn(gamesByTitle).when(gameRepository).findAllByTitle("Halo");
         doReturn(allGames).when(gameRepository).findAll();
-
     }
 
     private void setUpTShirtRepositoryMock() {
@@ -868,8 +855,6 @@ public class GameStoreServiceLayerTest {
         doReturn(tShirtsByColor).when(tShirtRepository).findAllByColor("Blue");
         doReturn(tShirtsBySize).when(tShirtRepository).findAllBySize("Medium");
         doReturn(allTtShirts).when(tShirtRepository).findAll();
-
     }
-
 
 }
