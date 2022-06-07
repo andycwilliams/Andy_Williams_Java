@@ -30,7 +30,6 @@ public class Album implements Serializable {
         this.labelId = labelId;
         this.listPrice = listPrice;
     }
-
     public Album(Set<Track> tracks, String title, Integer artistId, LocalDate releaseDate, Integer labelId, BigDecimal listPrice) {
         this.tracks = tracks;
         this.title = title;
@@ -58,7 +57,7 @@ public class Album implements Serializable {
     private LocalDate releaseDate;
     @Column(name = "label_id")
     private Integer labelId;
-    @Column(name = "list_price decimal")
+    @Column(name = "list_price")
     private BigDecimal listPrice;
 
     public Integer getId() {

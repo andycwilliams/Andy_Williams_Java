@@ -12,20 +12,16 @@ import java.util.Objects;
 public class Track implements Serializable {
 
     public Track() {}
-
     public Track(Integer id, Integer albumId, String title, int runtime) {
         this.id = id;
         this.albumId = albumId;
         this.title = title;
         this.runtime = runtime;
     }
-
-    public Track(int albumId, String title, int runtime) {
-        this(0, albumId, title, runtime);
-    }
-
-    public Track(String title, int runtime) {
-        this(0, title, runtime);
+    public Track(Integer albumId, String title, int runtime) {
+        this.albumId = albumId;
+        this.title = title;
+        this.runtime = runtime;
     }
 
     @Id

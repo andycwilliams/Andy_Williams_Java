@@ -20,7 +20,6 @@ public class Artist implements Serializable {
         this.instagram = instagram;
         this.twitter = twitter;
     }
-
     public Artist(String name, String instagram, String twitter) {
         this.name = name;
         this.instagram = instagram;

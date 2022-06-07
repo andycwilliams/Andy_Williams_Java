@@ -12,13 +12,13 @@ import java.util.Set;
 @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
 @Table(name = "label")
 public class Label implements Serializable {
+
     public Label() {}
     public Label(Integer id, String name, String website) {
         this.id = id;
         this.name = name;
         this.website = website;
     }
-
     public Label(String name, String website) {
         this.name = name;
         this.website = website;

@@ -35,6 +35,7 @@ public class ServiceLayer {
         this.trackRepository = trackRepository;
     }
 
+    // ALBUM
     @Transactional
     public AlbumViewModel saveAlbum(AlbumViewModel viewModel) {
 
@@ -139,8 +140,7 @@ public class ServiceLayer {
         albumRepository.deleteById(id);
     }
 
-    // Artist
-
+    // ARTIST
     public Artist saveArtist(Artist artist) { return artistRepository.save(artist); }
 
     public Artist findArtist(int id) {
@@ -154,8 +154,7 @@ public class ServiceLayer {
 
     public void removeArtist(int id) { artistRepository.deleteById(id); }
 
-    // Label
-
+    // LABEL
     public Label saveLabel(Label label) { return labelRepository.save(label); }
 
     public Label findLabel(int id) {
@@ -168,4 +167,19 @@ public class ServiceLayer {
     public void updateLabel(Label label) { labelRepository.save(label); }
 
     public void removeLabel(int id) { labelRepository.deleteById(id); }
+
+
+    // TRACK
+    public Track saveTrack(Track track) { return trackRepository.save(track); }
+
+    public Track findTrack(int id) {
+        Optional<Track> track = trackRepository.findById(id);
+        return track.isPresent() ? track.get() : null;
+    }
+
+    public List<Track> findAllTracks() { return trackRepository.findAll(); }
+
+    public void updateTrack(Track track) { trackRepository.save(track); }
+
+    public void removeTrack(int id) { trackRepository.deleteById(id); }
 }
