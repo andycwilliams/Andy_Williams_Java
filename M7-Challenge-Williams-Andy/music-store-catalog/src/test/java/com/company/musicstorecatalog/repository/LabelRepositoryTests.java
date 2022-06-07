@@ -1,6 +1,6 @@
 package com.company.musicstorecatalog.repository;
 
-import com.company.reccoll.model.Label;
+import com.company.musicstorecatalog.model.Label;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;

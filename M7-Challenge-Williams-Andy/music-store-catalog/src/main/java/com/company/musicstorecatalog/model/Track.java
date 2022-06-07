@@ -32,8 +32,10 @@ public class Track implements Serializable {
     @Column(name = "track_id")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
+//    @Column(name = "album_id")
     private int albumId;
     private String title;
+    @Column(name = "run_time")
     private int runtime;
 
     public int getId() {

@@ -16,19 +16,19 @@ public class AlbumController {
     @Autowired
     private ServiceLayer serviceLayer;
 
-    @RequestMapping(value="/record", method= RequestMethod.GET)
+    @GetMapping
     @ResponseStatus(HttpStatus.OK)
     public List<AlbumViewModel> getAllAlbums() {
         return serviceLayer.findAllAlbums();
     }
 
-    @RequestMapping(value="/record", method=RequestMethod.POST)
+    @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
     public AlbumViewModel createAlbum(@RequestBody AlbumViewModel albumViewModel) {
         return serviceLayer.saveAlbum(albumViewModel);
     }
 
-    @RequestMapping(value="/record/{id}", method=RequestMethod.GET)
+    @GetMapping("/{id}")
     @ResponseStatus(HttpStatus.OK)
     public AlbumViewModel getAlbumById(@PathVariable int id) {
         AlbumViewModel avm = serviceLayer.findAlbum(id);
@@ -38,7 +38,7 @@ public class AlbumController {
         return serviceLayer.findAlbum(id);
     }
 
-    @RequestMapping(value="/record/{id}", method=RequestMethod.PUT)
+    @PutMapping("/{id}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
     public void updateAlbum(@PathVariable int id, @RequestBody AlbumViewModel avm) {
         if (avm.getId() == 0) {
@@ -50,9 +50,7 @@ public class AlbumController {
         serviceLayer.updateAlbum(avm);
     }
 
-    @RequestMapping(value="/record/{id}", method=RequestMethod.DELETE)
+    @DeleteMapping("/{id}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
-    public void deleteAlbum(@PathVariable int id) {
-        serviceLayer.removeAlbum(id);
-    }
+    public void deleteAlbum(@PathVariable int id) { serviceLayer.removeAlbum(id); }
 }

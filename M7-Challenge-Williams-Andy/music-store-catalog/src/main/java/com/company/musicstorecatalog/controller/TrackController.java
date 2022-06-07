@@ -16,19 +16,19 @@ public class TrackController {
     @Autowired
     private ServiceLayer serviceLayer;
 
-    @RequestMapping(value="/label", method= RequestMethod.GET)
+    @GetMapping
     @ResponseStatus(HttpStatus.OK)
     public List<Label> getAllLabels() {
         return serviceLayer.findAllLabels();
     }
 
-    @RequestMapping(value="/label", method=RequestMethod.POST)
+    @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
     public Label createLabel(@RequestBody Label label) {
         return serviceLayer.saveLabel(label);
     }
 
-    @RequestMapping(value="/label/{id}", method=RequestMethod.GET)
+    @GetMapping("/{id}")
     @ResponseStatus(HttpStatus.OK)
     public Label getLabelById(@PathVariable int id) {
         Label label = serviceLayer.findLabel(id);
@@ -38,7 +38,7 @@ public class TrackController {
         return label;
     }
 
-    @RequestMapping(value="/label/{id}", method=RequestMethod.PUT)
+    @PutMapping("/{id}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
     public void updateLabel(@PathVariable int id, @RequestBody Label label) {
         if (label.getId() == 0) {
@@ -50,11 +50,7 @@ public class TrackController {
         serviceLayer.updateLabel(label);
     }
 
-    @RequestMapping(value="/label/{id}", method=RequestMethod.DELETE)
+    @DeleteMapping("/{id}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
-    public void deleteLabel(@PathVariable int id) {
-        serviceLayer.removeLabel(id);
-    }
-
-
+    public void deleteLabel(@PathVariable int id) { serviceLayer.removeLabel(id); }
 }

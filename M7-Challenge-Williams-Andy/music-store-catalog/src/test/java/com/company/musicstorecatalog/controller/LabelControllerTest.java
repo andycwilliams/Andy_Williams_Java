@@ -1,7 +1,7 @@
 package com.company.musicstorecatalog.controller;
 
-import com.company.reccoll.model.Label;
-import com.company.reccoll.service.ServiceLayer;
+import com.company.musicstorecatalog.model.Label;
+import com.company.musicstorecatalog.service.ServiceLayer;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.junit.Before;
 import org.junit.Test;

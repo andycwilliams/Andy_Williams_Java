@@ -16,19 +16,19 @@ public class ArtistController {
     @Autowired
     private ServiceLayer serviceLayer;
 
-    @RequestMapping(value="/artist", method= RequestMethod.GET)
+    @GetMapping
     @ResponseStatus(HttpStatus.OK)
     public List<Artist> getAllArtists() {
         return serviceLayer.findAllArtists();
     }
 
-    @RequestMapping(value="/artist", method=RequestMethod.POST)
+    @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
     public Artist createArtist(@RequestBody Artist artist) {
         return serviceLayer.saveArtist(artist);
     }
 
-    @RequestMapping(value="/artist/{id}", method=RequestMethod.GET)
+    @GetMapping("/{id}")
     @ResponseStatus(HttpStatus.OK)
     public Artist getArtistById(@PathVariable int id) {
         Artist artist = serviceLayer.findArtist(id);
@@ -38,7 +38,7 @@ public class ArtistController {
         return artist;
     }
 
-    @RequestMapping(value="/artist/{id}", method=RequestMethod.PUT)
+    @PutMapping("/{id}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
     public void updateArtist(@PathVariable int id, @RequestBody Artist artist) {
         if (artist.getId() == 0) {
@@ -50,10 +50,7 @@ public class ArtistController {
         serviceLayer.updateArtist(artist);
     }
 
-    @RequestMapping(value="/artist/{id}", method=RequestMethod.DELETE)
+    @DeleteMapping("/{id}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
-    public void deleteArtist(@PathVariable int id) {
-        serviceLayer.removeArtist(id);
-    }
-
+    public void deleteArtist(@PathVariable int id) { serviceLayer.removeArtist(id); }
 }

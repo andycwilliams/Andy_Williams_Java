@@ -56,6 +56,7 @@ public class Album implements Serializable {
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd")
     private LocalDate releaseDate;
     private int labelId;
+    @Column(name = "list_price decimal")
     private BigDecimal listPrice;
 
     public int getId() {

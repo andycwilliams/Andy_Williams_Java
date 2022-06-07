@@ -16,45 +16,43 @@ public class LabelController {
     @Autowired
     private ServiceLayer serviceLayer;
 
-    @RequestMapping(value="/label", method= RequestMethod.GET)
+    @GetMapping
     @ResponseStatus(HttpStatus.OK)
     public List<Label> getAllLabels() {
         return serviceLayer.findAllLabels();
     }
 
-    @RequestMapping(value="/label", method=RequestMethod.POST)
+    @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
     public Label createLabel(@RequestBody Label label) {
         return serviceLayer.saveLabel(label);
     }
 
-    @RequestMapping(value="/label/{id}", method=RequestMethod.GET)
+    @GetMapping("/{id}")
     @ResponseStatus(HttpStatus.OK)
     public Label getLabelById(@PathVariable int id) {
         Label label = serviceLayer.findLabel(id);
         if (label == null) {
-            throw new NoRecordFoundException("Label with id " + id + " does not exist.");
+            throw new NoRecordFoundException("Label with ID " + id + " does not exist.");
         }
         return label;
     }
 
-    @RequestMapping(value="/label/{id}", method=RequestMethod.PUT)
+    @PutMapping("/{id}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
     public void updateLabel(@PathVariable int id, @RequestBody Label label) {
         if (label.getId() == 0) {
             label.setId(id);
         }
         if (label.getId() != id) {
-            throw new InvalidRequestException("id in request body must match id in path");
+            throw new InvalidRequestException("ID in request body must match ID in path.");
         }
         serviceLayer.updateLabel(label);
     }
 
-    @RequestMapping(value="/label/{id}", method=RequestMethod.DELETE)
+    @DeleteMapping("/{id}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
     public void deleteLabel(@PathVariable int id) {
         serviceLayer.removeLabel(id);
     }
-
-
 }
