@@ -1,6 +1,7 @@
 package com.company.musicstorecatalog.controller;
 
 import com.company.musicstorecatalog.exception.InvalidRequestException;
+import com.company.musicstorecatalog.exception.NoLabelFoundException;
 import com.company.musicstorecatalog.exception.NoRecordFoundException;
 import com.company.musicstorecatalog.model.Label;
 import com.company.musicstorecatalog.service.ServiceLayer;
@@ -33,7 +34,7 @@ public class LabelController {
     public Label getLabelById(@PathVariable int id) {
         Label label = serviceLayer.findLabel(id);
         if (label == null) {
-            throw new NoRecordFoundException("Label with ID " + id + " does not exist.");
+            throw new NoLabelFoundException("Label with ID " + id + " does not exist.");
         }
         return label;
     }

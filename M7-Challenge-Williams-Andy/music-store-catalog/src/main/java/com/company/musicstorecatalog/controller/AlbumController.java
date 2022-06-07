@@ -33,7 +33,7 @@ public class AlbumController {
     public AlbumViewModel getAlbumById(@PathVariable int id) {
         AlbumViewModel avm = serviceLayer.findAlbum(id);
         if (avm == null) {
-            throw new NoRecordFoundException("Album id " + id + " not found.");
+            throw new NoRecordFoundException("Album ID " + id + " not found.");
         }
         return serviceLayer.findAlbum(id);
     }
@@ -45,7 +45,7 @@ public class AlbumController {
             avm.setId(id);
         }
         if (avm.getId() != id) {
-            throw new InvalidRequestException("id in request body must match id in path");
+            throw new InvalidRequestException("ID in request body must match ID in path");
         }
         serviceLayer.updateAlbum(avm);
     }

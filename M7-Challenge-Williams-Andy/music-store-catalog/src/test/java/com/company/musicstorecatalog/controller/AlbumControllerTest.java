@@ -53,10 +53,10 @@
 //        Artist inputArtist = new Artist(25, "Singer Zhang", "@watchSZ", "@opinionSZ");
 //        Label inputLabel = new Label(9, "Goodonyas", "www.goodonyasmusic.net");
 //        List<Track> inputTracks = Arrays.asList(new Track("Songsville", 200));
-//        inputAlbumViewModel = new AlbumViewModel("My Album", inputArtist, LocalDate.of(2022, 05, 18), inputLabel, new BigDecimal("10.95"), inputTracks);
+//        inputAlbumViewModel = new AlbumViewModel("My Album", inputArtist, LocalDate.of(2022, 5, 18), inputLabel, new BigDecimal("10.95"), inputTracks);
 //
 //        List<Track> outputTracks = Arrays.asList(new Track(831, "Songsville", 200));
-//        outputAlbumViewModel = new AlbumViewModel(albumId, "My Album", inputArtist, LocalDate.of(2022, 05, 18), inputLabel, new BigDecimal("10.95"), outputTracks);
+//        outputAlbumViewModel = new AlbumViewModel(albumId, "My Album", inputArtist, LocalDate.of(2022, 5, 18), inputLabel, new BigDecimal("10.95"), outputTracks);
 //        inputAlbumViewModelString = mapper.writeValueAsString(inputAlbumViewModel);
 //        outputAlbumViewModelString = mapper.writeValueAsString(outputAlbumViewModel);
 //        allAlbumViewModels = Arrays.asList(outputAlbumViewModel);

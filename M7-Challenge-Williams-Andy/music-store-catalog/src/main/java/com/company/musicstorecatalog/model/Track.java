@@ -13,7 +13,7 @@ public class Track implements Serializable {
 
     public Track() {}
 
-    public Track(int id, int albumId, String title, int runtime) {
+    public Track(Integer id, Integer albumId, String title, int runtime) {
         this.id = id;
         this.albumId = albumId;
         this.title = title;
@@ -31,26 +31,26 @@ public class Track implements Serializable {
     @Id
     @Column(name = "track_id")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
-//    @Column(name = "album_id")
-    private int albumId;
+    private Integer id;
+    @Column(name = "album_id")
+    private Integer albumId;
     private String title;
     @Column(name = "run_time")
     private int runtime;
 
-    public int getId() {
+    public Integer getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 
-    public int getAlbumId() {
+    public Integer getAlbumId() {
         return albumId;
     }
 
-    public void setAlbumId(int albumId) {
+    public void setAlbumId(Integer albumId) {
         this.albumId = albumId;
     }
 
@@ -62,11 +62,11 @@ public class Track implements Serializable {
         this.title = title;
     }
 
-    public int getRunTime() {
+    public int getRuntime() {
         return runtime;
     }
 
-    public void setRunTime(int runtime) {
+    public void setRuntime(int runtime) {
         this.runtime = runtime;
     }
 
@@ -75,15 +75,12 @@ public class Track implements Serializable {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Track track = (Track) o;
-        return getId() == track.getId() &&
-                getAlbumId() == track.getAlbumId() &&
-                getRunTime() == track.getRunTime() &&
-                Objects.equals(getTitle(), track.getTitle());
+        return runtime == track.runtime && Objects.equals(id, track.id) && Objects.equals(albumId, track.albumId) && Objects.equals(title, track.title);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(getId(), getAlbumId(), getTitle(), getRunTime());
+        return Objects.hash(id, albumId, title, runtime);
     }
 
     @Override
@@ -92,7 +89,7 @@ public class Track implements Serializable {
                 "id=" + id +
                 ", albumId=" + albumId +
                 ", title='" + title + '\'' +
-                ", runTime=" + runtime +
+                ", runtime=" + runtime +
                 '}';
     }
 }

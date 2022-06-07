@@ -38,7 +38,6 @@ public class ServiceLayer {
     @Transactional
     public AlbumViewModel saveAlbum(AlbumViewModel viewModel) {
 
-        // Persist Album
         Album a = new Album();
         a.setTitle(viewModel.getTitle());
         a.setReleaseDate(viewModel.getReleaseDate());
@@ -48,7 +47,6 @@ public class ServiceLayer {
         a = albumRepository.save(a);
         viewModel.setId(a.getId());
 
-        // Add Album ID to Tracks and Persist Tracks
         List<Track> tracks = viewModel.getTracks();
 
         tracks.stream()
@@ -66,7 +64,6 @@ public class ServiceLayer {
 
     public AlbumViewModel findAlbum(int id) {
 
-        // Get the album object first
         Optional<Album> album = albumRepository.findById(id);
 
         return album.isPresent() ? buildAlbumViewModel(album.get()) : null;
@@ -74,16 +71,12 @@ public class ServiceLayer {
 
     private AlbumViewModel buildAlbumViewModel(Album album) {
 
-        // Get the associated artist
         Optional<Artist> artist = artistRepository.findById(album.getArtistId());
 
-        // Get the associated label
         Optional<Label> label = labelRepository.findById(album.getLabelId());
 
-        // Get the tracks associated with the album
         List<Track> trackList = trackRepository.findAllTracksByAlbumId(album.getId());
 
-        // Assemble the AlbumViewModel
         AlbumViewModel avm = new AlbumViewModel();
         avm.setId(album.getId());
         avm.setTitle(album.getTitle());
@@ -93,7 +86,6 @@ public class ServiceLayer {
         avm.setLabel(label.get());
         avm.setTracks(trackList);
 
-        // Return the AlbumViewModel
         return avm;
     }
 
@@ -114,7 +106,6 @@ public class ServiceLayer {
     @Transactional
     public void updateAlbum(AlbumViewModel viewModel) {
 
-        // Update the album information
         Album album = new Album();
         album.setId(viewModel.getId());
         album.setArtistId(viewModel.getArtist().getId());
@@ -124,8 +115,6 @@ public class ServiceLayer {
 
         albumRepository.save(album);
 
-        // We don't know if any track have been removed so delete all associated tracks
-        // and then associate the tracks in the viewModel with the album
         List<Track> trackList = trackRepository.findAllTracksByAlbumId(album.getId());
         trackList.stream()
                 .forEach(track -> trackRepository.deleteById(track.getId()));
@@ -142,74 +131,41 @@ public class ServiceLayer {
     @Transactional
     public void removeAlbum(int id) {
 
-        // Remove all associated tracks first
         List<Track> trackList = trackRepository.findAllTracksByAlbumId(id);
 
         trackList.stream()
                 .forEach(track -> trackRepository.deleteById(track.getId()));
 
-        // Remove album
         albumRepository.deleteById(id);
-
     }
 
-    //
-    // Artist API
-    //
+    // Artist
 
-    public Artist saveArtist(Artist artist) {
-
-        return artistRepository.save(artist);
-    }
+    public Artist saveArtist(Artist artist) { return artistRepository.save(artist); }
 
     public Artist findArtist(int id) {
-
         Optional<Artist> artist = artistRepository.findById(id);
         return artist.isPresent() ? artist.get() : null;
     }
 
-    public List<Artist> findAllArtists() {
+    public List<Artist> findAllArtists() { return artistRepository.findAll(); }
 
-        return artistRepository.findAll();
-    }
+    public void updateArtist(Artist artist) { artistRepository.save(artist); }
 
-    public void updateArtist(Artist artist) {
+    public void removeArtist(int id) { artistRepository.deleteById(id); }
 
-        artistRepository.save(artist);
-    }
+    // Label
 
-    public void removeArtist(int id) {
-
-        artistRepository.deleteById(id);
-    }
-
-    //
-    // Label API
-    //
-
-    public Label saveLabel(Label label) {
-
-        return labelRepository.save(label);
-    }
+    public Label saveLabel(Label label) { return labelRepository.save(label); }
 
     public Label findLabel(int id) {
-
         Optional<Label> label = labelRepository.findById(id);
         return label.isPresent() ? label.get() : null;
     }
 
-    public List<Label> findAllLabels() {
+    public List<Label> findAllLabels() { return labelRepository.findAll(); }
 
-        return labelRepository.findAll();
-    }
+    public void updateLabel(Label label) { labelRepository.save(label); }
 
-    public void updateLabel(Label label) {
-
-        labelRepository.save(label);
-    }
-
-    public void removeLabel(int id) {
-
-        labelRepository.deleteById(id);
-    }
+    public void removeLabel(int id) { labelRepository.deleteById(id); }
 }

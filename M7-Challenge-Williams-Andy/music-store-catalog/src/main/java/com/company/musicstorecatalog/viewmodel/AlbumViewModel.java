@@ -9,6 +9,7 @@ import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import com.fasterxml.jackson.datatype.jsr310.deser.LocalDateDeserializer;
 import com.fasterxml.jackson.datatype.jsr310.ser.LocalDateSerializer;
 
+import javax.persistence.Column;
 import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.util.ArrayList;
@@ -16,7 +17,7 @@ import java.util.List;
 import java.util.Objects;
 
 public class AlbumViewModel {
-    public AlbumViewModel(int id, String title, Artist artist, LocalDate releaseDate, Label label, BigDecimal listPrice, List<Track> tracks) {
+    public AlbumViewModel(Integer id, String title, Artist artist, LocalDate releaseDate, Label label, BigDecimal listPrice, List<Track> tracks) {
         this.id = id;
         this.title = title;
         this.artist = artist;
@@ -38,22 +39,24 @@ public class AlbumViewModel {
     public AlbumViewModel() {
     }
 
-    private int id;
+    private Integer id;
     private String title;
     private Artist artist;
+    @Column(name = "release_date")
     @JsonSerialize(using = LocalDateSerializer.class)
     @JsonDeserialize(using = LocalDateDeserializer.class)
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd")
     private LocalDate releaseDate;
     private Label label;
+    @Column(name = "list_price")
     private BigDecimal listPrice;
     private List<Track> tracks = new ArrayList<>();
 
-    public int getId() {
+    public Integer getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 
@@ -105,31 +108,17 @@ public class AlbumViewModel {
         this.tracks = tracks;
     }
 
-    public void addTrack(Track track) {
-        tracks.add(track);
-    }
-
-    public void removeTrack(Track track) {
-        tracks.remove(track);
-    }
-
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         AlbumViewModel that = (AlbumViewModel) o;
-        return getId() == that.getId() &&
-                Objects.equals(getTitle(), that.getTitle()) &&
-                Objects.equals(getArtist(), that.getArtist()) &&
-                Objects.equals(getReleaseDate(), that.getReleaseDate()) &&
-                Objects.equals(getLabel(), that.getLabel()) &&
-                Objects.equals(getListPrice(), that.getListPrice()) &&
-                Objects.equals(getTracks(), that.getTracks());
+        return Objects.equals(id, that.id) && Objects.equals(title, that.title) && Objects.equals(artist, that.artist) && Objects.equals(releaseDate, that.releaseDate) && Objects.equals(label, that.label) && Objects.equals(listPrice, that.listPrice) && Objects.equals(tracks, that.tracks);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(getId(), getTitle(), getArtist(), getReleaseDate(), getLabel(), getListPrice(), getTracks());
+        return Objects.hash(id, title, artist, releaseDate, label, listPrice, tracks);
     }
 
     @Override

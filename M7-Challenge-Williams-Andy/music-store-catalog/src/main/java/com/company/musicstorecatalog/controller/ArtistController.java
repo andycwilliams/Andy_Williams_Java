@@ -33,7 +33,7 @@ public class ArtistController {
     public Artist getArtistById(@PathVariable int id) {
         Artist artist = serviceLayer.findArtist(id);
         if (artist == null) {
-            throw new NoRecordFoundException("Artist with id " + id + " does not exist.");
+            throw new NoRecordFoundException("Artist with ID " + id + " does not exist.");
         }
         return artist;
     }
@@ -45,7 +45,7 @@ public class ArtistController {
             artist.setId(id);
         }
         if (artist.getId() != id) {
-            throw new InvalidRequestException("id in request body must match id in path");
+            throw new InvalidRequestException("ID in request body must match ID in path");
         }
         serviceLayer.updateArtist(artist);
     }

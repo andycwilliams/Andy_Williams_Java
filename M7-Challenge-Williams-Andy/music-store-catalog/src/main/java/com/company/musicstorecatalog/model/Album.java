@@ -21,7 +21,7 @@ import java.util.Set;
 public class Album implements Serializable {
 
     public Album() {}
-    public Album(int id, Set<Track> tracks, String title, int artistId, LocalDate releaseDate, int labelId, BigDecimal listPrice) {
+    public Album(Integer id, Set<Track> tracks, String title, Integer artistId, LocalDate releaseDate, Integer labelId, BigDecimal listPrice) {
         this.id = id;
         this.tracks = tracks;
         this.title = title;
@@ -31,7 +31,7 @@ public class Album implements Serializable {
         this.listPrice = listPrice;
     }
 
-    public Album(Set<Track> tracks, String title, int artistId, LocalDate releaseDate, int labelId, BigDecimal listPrice) {
+    public Album(Set<Track> tracks, String title, Integer artistId, LocalDate releaseDate, Integer labelId, BigDecimal listPrice) {
         this.tracks = tracks;
         this.title = title;
         this.artistId = artistId;
@@ -43,28 +43,38 @@ public class Album implements Serializable {
     @Id
     @Column(name = "album_id")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
+    private Integer id;
 
     @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.EAGER)
-    @JoinColumn(name = "albumId")
+    @JoinColumn(name = "album_id")
     private Set<Track> tracks = new HashSet<>();
 
     private String title;
-    private int artistId;
+    @Column(name = "artist_id")
+    private Integer artistId;
     @JsonSerialize(using = LocalDateSerializer.class)
     @JsonDeserialize(using = LocalDateDeserializer.class)
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd")
     private LocalDate releaseDate;
-    private int labelId;
+    @Column(name = "label_id")
+    private Integer labelId;
     @Column(name = "list_price decimal")
     private BigDecimal listPrice;
 
-    public int getId() {
+    public Integer getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Integer id) {
         this.id = id;
+    }
+
+    public Set<Track> getTracks() {
+        return tracks;
+    }
+
+    public void setTracks(Set<Track> tracks) {
+        this.tracks = tracks;
     }
 
     public String getTitle() {
@@ -75,11 +85,11 @@ public class Album implements Serializable {
         this.title = title;
     }
 
-    public int getArtistId() {
+    public Integer getArtistId() {
         return artistId;
     }
 
-    public void setArtistId(int artistId) {
+    public void setArtistId(Integer artistId) {
         this.artistId = artistId;
     }
 
@@ -91,11 +101,11 @@ public class Album implements Serializable {
         this.releaseDate = releaseDate;
     }
 
-    public int getLabelId() {
+    public Integer getLabelId() {
         return labelId;
     }
 
-    public void setLabelId(int labelId) {
+    public void setLabelId(Integer labelId) {
         this.labelId = labelId;
     }
 
@@ -112,23 +122,19 @@ public class Album implements Serializable {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Album album = (Album) o;
-        return getId() == album.getId() &&
-                getArtistId() == album.getArtistId() &&
-                getLabelId() == album.getLabelId() &&
-                Objects.equals(getTitle(), album.getTitle()) &&
-                Objects.equals(getReleaseDate(), album.getReleaseDate()) &&
-                Objects.equals(getListPrice(), album.getListPrice());
+        return Objects.equals(id, album.id) && Objects.equals(tracks, album.tracks) && Objects.equals(title, album.title) && Objects.equals(artistId, album.artistId) && Objects.equals(releaseDate, album.releaseDate) && Objects.equals(labelId, album.labelId) && Objects.equals(listPrice, album.listPrice);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(getId(), getTitle(), getArtistId(), getReleaseDate(), getLabelId(), getListPrice());
+        return Objects.hash(id, tracks, title, artistId, releaseDate, labelId, listPrice);
     }
 
     @Override
     public String toString() {
         return "Album{" +
                 "id=" + id +
+                ", tracks=" + tracks +
                 ", title='" + title + '\'' +
                 ", artistId=" + artistId +
                 ", releaseDate=" + releaseDate +

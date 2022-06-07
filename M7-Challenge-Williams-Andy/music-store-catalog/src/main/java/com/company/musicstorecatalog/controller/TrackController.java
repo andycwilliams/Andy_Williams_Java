@@ -33,7 +33,7 @@ public class TrackController {
     public Label getLabelById(@PathVariable int id) {
         Label label = serviceLayer.findLabel(id);
         if (label == null) {
-            throw new NoRecordFoundException("Label with id " + id + " does not exist.");
+            throw new NoRecordFoundException("Track with ID " + id + " does not exist.");
         }
         return label;
     }
@@ -45,7 +45,7 @@ public class TrackController {
             label.setId(id);
         }
         if (label.getId() != id) {
-            throw new InvalidRequestException("id in request body must match id in path");
+            throw new InvalidRequestException("ID in request body must match ID in path");
         }
         serviceLayer.updateLabel(label);
     }
