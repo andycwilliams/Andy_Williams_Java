@@ -1,8 +1,8 @@
-package com.company.musicstorecatalog.controller;
+package com.company.musicstorerecommendations.controller;
 
-import com.company.musicstorecatalog.exception.InvalidRequestException;
-import com.company.musicstorecatalog.exception.NoRecordFoundException;
-import com.company.musicstorecatalog.model.CustomErrorResponse;
+import com.company.musicstorerecommendations.exception.InvalidRequestException;
+import com.company.musicstorerecommendations.exception.NoRecordFoundException;
+import com.company.musicstorerecommendations.model.CustomErrorResponse;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ExceptionHandler;
@@ -25,6 +25,4 @@ public class ControllerExceptionHandler {
         return responseEntity;
     }
 
-    // java.sql.SQLIntegrityConstraintViolationException: Column 'album_id' cannot be null
-    // Return 422
 }

@@ -57,8 +57,8 @@ public class Album implements Serializable {
     private LocalDate releaseDate;
     @Column(name = "label_id")
     private Integer labelId;
-    @Column(name = "list_price")
-    private BigDecimal listPrice;
+    @Column(name = "list_price") // Writes Java into the database here
+    private BigDecimal listPrice; // This is the JSON one
 
     public Integer getId() {
         return id;

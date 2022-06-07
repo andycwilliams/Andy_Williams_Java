@@ -1,6 +1,5 @@
 package com.company.musicstorecatalog.service;
 
-import com.company.musicstorecatalog.exception.NoRecordFoundException;
 import com.company.musicstorecatalog.repository.AlbumRepository;
 import com.company.musicstorecatalog.repository.ArtistRepository;
 import com.company.musicstorecatalog.repository.LabelRepository;
