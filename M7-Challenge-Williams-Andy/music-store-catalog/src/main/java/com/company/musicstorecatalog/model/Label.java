@@ -12,7 +12,6 @@ import java.util.Set;
 @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
 @Table(name = "label")
 public class Label implements Serializable {
-
     public Label() {}
     public Label(int id, String name, String website) {
         this.id = id;

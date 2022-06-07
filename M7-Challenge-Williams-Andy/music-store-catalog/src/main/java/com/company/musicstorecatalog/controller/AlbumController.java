@@ -27,7 +27,7 @@ public class AlbumController {
     public AlbumViewModel createAlbum(@RequestBody AlbumViewModel albumViewModel) {
         return serviceLayer.saveAlbum(albumViewModel);
     }
-    
+
     @RequestMapping(value="/record/{id}", method=RequestMethod.GET)
     @ResponseStatus(HttpStatus.OK)
     public AlbumViewModel getAlbumById(@PathVariable int id) {
@@ -37,7 +37,7 @@ public class AlbumController {
         }
         return serviceLayer.findAlbum(id);
     }
-    
+
     @RequestMapping(value="/record/{id}", method=RequestMethod.PUT)
     @ResponseStatus(HttpStatus.NO_CONTENT)
     public void updateAlbum(@PathVariable int id, @RequestBody AlbumViewModel avm) {
@@ -49,7 +49,7 @@ public class AlbumController {
         }
         serviceLayer.updateAlbum(avm);
     }
-    
+
     @RequestMapping(value="/record/{id}", method=RequestMethod.DELETE)
     @ResponseStatus(HttpStatus.NO_CONTENT)
     public void deleteAlbum(@PathVariable int id) {

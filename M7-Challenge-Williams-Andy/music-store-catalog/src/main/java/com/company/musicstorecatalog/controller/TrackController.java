@@ -11,8 +11,8 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/label")
-public class LabelController {
+@RequestMapping("/track")
+public class TrackController {
     @Autowired
     private ServiceLayer serviceLayer;
 
