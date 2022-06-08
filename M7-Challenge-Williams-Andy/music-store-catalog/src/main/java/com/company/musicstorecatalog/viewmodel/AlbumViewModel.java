@@ -36,8 +36,7 @@ public class AlbumViewModel {
         this.tracks = tracks;
     }
 
-    public AlbumViewModel() {
-    }
+    public AlbumViewModel() {}
 
     private Integer id;
     private String title;

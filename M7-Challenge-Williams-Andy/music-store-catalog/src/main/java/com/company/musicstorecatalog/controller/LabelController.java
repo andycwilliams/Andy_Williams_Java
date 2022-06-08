@@ -42,7 +42,7 @@ public class LabelController {
     @PutMapping("/{id}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
     public void updateLabel(@PathVariable int id, @RequestBody Label label) {
-        if (label.getId() == 0) {
+        if (label.getId() == null) {
             label.setId(id);
         }
         if (label.getId() != id) {

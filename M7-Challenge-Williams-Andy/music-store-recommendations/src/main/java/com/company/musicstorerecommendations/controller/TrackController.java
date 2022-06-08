@@ -18,39 +18,39 @@ public class TrackController {
 
     @GetMapping
     @ResponseStatus(HttpStatus.OK)
-    public List<Label> getAllLabels() {
-        return serviceLayer.findAllLabels();
+    public List<Track> getAllTracks() {
+        return serviceLayer.findAllTracks();
     }
 
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
-    public Label createLabel(@RequestBody Label label) {
-        return serviceLayer.saveLabel(label);
+    public Track createTrack(@RequestBody Track track) {
+        return serviceLayer.saveTrack(track);
     }
 
     @GetMapping("/{id}")
     @ResponseStatus(HttpStatus.OK)
-    public Label getLabelById(@PathVariable int id) {
-        Label label = serviceLayer.findLabel(id);
-        if (label == null) {
+    public Track getTrackById(@PathVariable int id) {
+        Track track = serviceLayer.findTrack(id);
+        if (track == null) {
             throw new NoRecordFoundException("Track with ID " + id + " does not exist.");
         }
-        return label;
+        return track;
     }
 
     @PutMapping("/{id}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
-    public void updateLabel(@PathVariable int id, @RequestBody Label label) {
-        if (label.getId() == 0) {
-            label.setId(id);
+    public void updateTrack(@PathVariable int id, @RequestBody Track track) {
+        if (track.getTrackId() == 0) {
+            track.getTrackId(id);
         }
-        if (label.getId() != id) {
-            throw new InvalidRequestException("ID in request body must match ID in path");
+        if (track.getTrackId() != id) {
+            throw new InvalidRequestException("ID in request body must match ID in path.");
         }
-        serviceLayer.updateLabel(label);
+        serviceLayer.updateTrack(track);
     }
 
     @DeleteMapping("/{id}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
-    public void deleteLabel(@PathVariable int id) { serviceLayer.removeLabel(id); }
+    public void deleteTrack(@PathVariable int id) { serviceLayer.removeTrack(id); }
 }

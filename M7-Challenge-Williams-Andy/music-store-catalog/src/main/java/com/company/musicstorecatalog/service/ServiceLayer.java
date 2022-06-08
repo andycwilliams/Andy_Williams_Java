@@ -149,7 +149,13 @@ public class ServiceLayer {
 
     public List<Artist> findAllArtists() { return artistRepository.findAll(); }
 
-    public void updateArtist(Artist artist) { artistRepository.save(artist); }
+    public void updateArtist(Artist artist) {
+        Artist artist2 = artistRepository.findById(artist.getId()).get();
+        artist2.setName(artist.getName());
+        artist2.setInstagram(artist.getInstagram());
+        artist2.setTwitter(artist.getTwitter());
+        artistRepository.save(artist2);
+    }
 
     public void removeArtist(int id) { artistRepository.deleteById(id); }
 
@@ -163,10 +169,20 @@ public class ServiceLayer {
 
     public List<Label> findAllLabels() { return labelRepository.findAll(); }
 
-    public void updateLabel(Label label) { labelRepository.save(label); }
+    public void updateLabel(Label label) {
+        Label label2 = labelRepository.findById(label.getId()).get();
+        label2.setName(label.getName());
+        label2.setWebsite(label.getWebsite());
+        labelRepository.save(label2);
+    }
+
+    // Get artist
+    // Set all values
+    // Save to database
+    // Everything that's got these associations
+    // May be other ways
 
     public void removeLabel(int id) { labelRepository.deleteById(id); }
-
 
     // TRACK
     public Track saveTrack(Track track) { return trackRepository.save(track); }
@@ -178,7 +194,13 @@ public class ServiceLayer {
 
     public List<Track> findAllTracks() { return trackRepository.findAll(); }
 
-    public void updateTrack(Track track) { trackRepository.save(track); }
+    public void updateTrack(Track track) {
+        Track track2 = trackRepository.findById(track.getId()).get();
+        track2.setAlbumId(track.getAlbumId());
+        track2.setTitle(track.getTitle());
+        track2.setRuntime(track.getRuntime());
+        trackRepository.save(track);
+    }
 
     public void removeTrack(int id) { trackRepository.deleteById(id); }
 }

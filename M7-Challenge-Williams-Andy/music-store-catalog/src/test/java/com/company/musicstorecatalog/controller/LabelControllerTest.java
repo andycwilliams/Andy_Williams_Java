@@ -84,13 +84,6 @@ public class LabelControllerTest {
     }
 
     @Test
-    public void shouldReport404WhenFindLabelByInvalidId() throws Exception {
-        mockMvc.perform(get("/label/" + nonExistentLabelId))
-                .andDo(print())
-                .andExpect(status().isNotFound());
-    }
-
-    @Test
     public void shouldUpdateLabel() throws Exception {
         mockMvc.perform(put("/label/" + labelId)
                         .content(outputLabelString)
@@ -100,18 +93,24 @@ public class LabelControllerTest {
     }
 
     @Test
+    public void shouldDeleteLabel() throws Exception {
+        mockMvc.perform(delete("/label/" + labelId))
+                .andDo(print())
+                .andExpect(status().isNoContent());
+    }
+    @Test
+    public void shouldReport404WhenFindLabelByInvalidId() throws Exception {
+        mockMvc.perform(get("/label/" + nonExistentLabelId))
+                .andDo(print())
+                .andExpect(status().isNotFound());
+    }
+
+    @Test
     public void shouldBeUnprocessableEntityWhenPutRequestContainsNonMatchingIds() throws Exception {
         mockMvc.perform(put("/label/" + nonExistentLabelId)
                         .content(outputLabelString)
                         .contentType(MediaType.APPLICATION_JSON))
                 .andDo(print())
                 .andExpect(status().isUnprocessableEntity());
-    }
-
-    @Test
-    public void shouldDeleteLabel() throws Exception {
-        mockMvc.perform(delete("/label/" + labelId))
-                .andDo(print())
-                .andExpect(status().isNoContent());
     }
 }

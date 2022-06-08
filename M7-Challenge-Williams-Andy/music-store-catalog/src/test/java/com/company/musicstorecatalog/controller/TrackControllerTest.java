@@ -4,10 +4,12 @@ import com.company.musicstorecatalog.model.Track;
 import com.company.musicstorecatalog.service.ServiceLayer;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.junit.Before;
+import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
+import org.springframework.http.MediaType;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.web.servlet.MockMvc;
 
@@ -15,6 +17,11 @@ import java.util.Arrays;
 import java.util.List;
 
 import static org.mockito.Mockito.when;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.delete;
+import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 @RunWith(SpringRunner.class)
 @WebMvcTest(AlbumController.class)
@@ -49,5 +56,47 @@ public class TrackControllerTest {
         when(serviceLayer.saveTrack(inputTrack)).thenReturn(outputTrack);
         when(serviceLayer.findAllTracks()).thenReturn(allTracks);
         when(serviceLayer.findTrack(trackId)).thenReturn(outputTrack);
+    }
+
+    @Test
+    public void shouldCreateTrack() throws Exception {
+        mockMvc.perform(post("/track")
+                        .content(inputTrackString)
+                        .contentType(MediaType.APPLICATION_JSON)
+                ).andDo(print())
+                .andExpect(status().isCreated())
+                .andExpect(content().json(outputTrackString));
+    }
+
+    @Test
+    public void shouldGetAllTracks() throws Exception {
+        mockMvc.perform(get("/track"))
+                .andDo(print())
+                .andExpect(status().isOk())
+                .andExpect(content().json(allTracksString));
+    }
+
+    @Test
+    public void shouldGetTrackById() throws Exception {
+        mockMvc.perform(get("/track/" + trackId))
+                .andDo(print())
+                .andExpect(status().isOk())
+                .andExpect(content().json(outputTrackString));
+    }
+
+    @Test
+    public void shouldUpdateTrack() throws Exception {
+        mockMvc.perform(put("/track/" + trackId)
+                        .content(outputTrackString)
+                        .contentType(MediaType.APPLICATION_JSON))
+                .andDo(print())
+                .andExpect(status().isNoContent());
+    }
+
+    @Test
+    public void shouldDeleteTrack() throws Exception {
+        mockMvc.perform(delete("/track/" + trackId))
+                .andDo(print())
+                .andExpect(status().isNoContent());
     }
 }

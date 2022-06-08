@@ -18,15 +18,11 @@ public class AlbumController {
 
     @GetMapping
     @ResponseStatus(HttpStatus.OK)
-    public List<AlbumViewModel> getAllAlbums() {
-        return serviceLayer.findAllAlbums();
-    }
+    public List<AlbumViewModel> getAllAlbums() { return serviceLayer.findAllAlbums(); }
 
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
-    public AlbumViewModel createAlbum(@RequestBody AlbumViewModel albumViewModel) {
-        return serviceLayer.saveAlbum(albumViewModel);
-    }
+    public AlbumViewModel createAlbum(@RequestBody AlbumViewModel albumViewModel) { return serviceLayer.saveAlbum(albumViewModel); }
 
     @GetMapping("/{id}")
     @ResponseStatus(HttpStatus.OK)
@@ -41,10 +37,10 @@ public class AlbumController {
     @PutMapping("/{id}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
     public void updateAlbum(@PathVariable int id, @RequestBody AlbumViewModel avm) {
-        if (avm.getId() == 0) {
-            avm.setId(id);
+        if (avm.getAlbumId() == 0) {
+            avm.getAlbumId(id);
         }
-        if (avm.getId() != id) {
+        if (avm.getAlbumId() != id) {
             throw new InvalidRequestException("ID in request body must match ID in path");
         }
         serviceLayer.updateAlbum(avm);

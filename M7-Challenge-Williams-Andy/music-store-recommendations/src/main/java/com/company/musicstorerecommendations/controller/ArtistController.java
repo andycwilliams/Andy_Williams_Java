@@ -45,7 +45,7 @@ public class ArtistController {
             artist.setArtistId(id);
         }
         if (artist.getArtistId() != id) {
-            throw new InvalidRequestException("ID in request body must match ID in path");
+            throw new InvalidRequestException("ID in request body must match ID in path.");
         }
         serviceLayer.updateArtist(artist);
     }

@@ -85,13 +85,6 @@ public class ArtistControllerTest {
     }
 
     @Test
-    public void shouldReport404WhenFindArtistByInvalidId() throws Exception {
-        mockMvc.perform(get("/artist/" + nonExistentArtistId))
-                .andDo(print())
-                .andExpect(status().isNotFound());
-    }
-
-    @Test
     public void shouldUpdateArtist() throws Exception {
         mockMvc.perform(put("/artist/" + artistId)
                 .content(outputArtistString)
@@ -101,18 +94,25 @@ public class ArtistControllerTest {
     }
 
     @Test
+    public void shouldDeleteArtist() throws Exception {
+        mockMvc.perform(delete("/artist/" + artistId))
+                .andDo(print())
+                .andExpect(status().isNoContent());
+    }
+
+    @Test
+    public void shouldReport404WhenFindArtistByInvalidId() throws Exception {
+        mockMvc.perform(get("/artist/" + nonExistentArtistId))
+                .andDo(print())
+                .andExpect(status().isNotFound());
+    }
+
+    @Test
     public void shouldBeUnprocessableEntityWhenPutRequestContainsNonMatchingIds() throws Exception {
         mockMvc.perform(put("/artist/" + nonExistentArtistId)
                         .content(outputArtistString)
                         .contentType(MediaType.APPLICATION_JSON))
                 .andDo(print())
                 .andExpect(status().isUnprocessableEntity());
-    }
-
-    @Test
-    public void shouldDeleteArtist() throws Exception {
-        mockMvc.perform(delete("/artist/" + artistId))
-                .andDo(print())
-                .andExpect(status().isNoContent());
     }
 }

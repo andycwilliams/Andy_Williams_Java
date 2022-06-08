@@ -7,7 +7,7 @@ import com.company.musicstorecatalog.service.ServiceLayer;
 import com.company.musicstorecatalog.viewmodel.AlbumViewModel;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.junit.Before;
-import org.junit.jupiter.api.Test;
+import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
@@ -69,7 +69,7 @@ public class AlbumControllerTest {
 
     @Test
     public void shouldCreateAlbum() throws Exception {
-        mockMvc.perform(post("/record")
+        mockMvc.perform(post("/album")
                         .content(inputAlbumViewModelString)
                         .contentType(MediaType.APPLICATION_JSON)
                 ).andDo(print())
@@ -79,7 +79,7 @@ public class AlbumControllerTest {
 
     @Test
     public void shouldGetAllAlbums() throws Exception {
-        mockMvc.perform(get("/record"))
+        mockMvc.perform(get("/album"))
                 .andDo(print())
                 .andExpect(status().isOk())
                 .andExpect(content().json(allAlbumViewModelsString));
@@ -87,41 +87,41 @@ public class AlbumControllerTest {
 
     @Test
     public void shouldGetAlbumById() throws Exception {
-        mockMvc.perform(get("/record/" + albumId))
+        mockMvc.perform(get("/album/" + albumId))
                 .andDo(print())
                 .andExpect(status().isOk())
                 .andExpect(content().json(outputAlbumViewModelString));
     }
 
     @Test
+    public void shouldUpdateAlbum() throws Exception {
+        mockMvc.perform(put("/album/" + albumId)
+                        .content(outputAlbumViewModelString)
+                        .contentType(MediaType.APPLICATION_JSON))
+                .andDo(print())
+                .andExpect(status().isNoContent());
+    }
+
+    @Test
+    public void shouldDeleteArtist() throws Exception {
+        mockMvc.perform(delete("/album/" + albumId))
+                .andDo(print())
+                .andExpect(status().isNoContent());
+    }
+
+    @Test
     public void shouldReport404WhenFindAlbumByInvalidId() throws Exception {
-        mockMvc.perform(get("/record/" + nonExistentAlbumId))
+        mockMvc.perform(get("/album/" + nonExistentAlbumId))
                 .andDo(print())
                 .andExpect(status().isNotFound());
     }
 
     @Test
-    public void shouldUpdateAlbum() throws Exception {
-        mockMvc.perform(put("/record/" + albumId)
-                        .content(outputAlbumViewModelString)
-                        .contentType(MediaType.APPLICATION_JSON))
-                .andDo(print())
-                .andExpect(status().isNoContent());
-    }
-
-    @Test
     public void shouldBeUnprocessableEntityWhenPutRequestContainsNonMatchingIds() throws Exception {
-        mockMvc.perform(put("/record/" + nonExistentAlbumId)
+        mockMvc.perform(put("/album/" + nonExistentAlbumId)
                         .content(outputAlbumViewModelString)
                         .contentType(MediaType.APPLICATION_JSON))
                 .andDo(print())
                 .andExpect(status().isUnprocessableEntity());
-    }
-
-    @Test
-    public void shouldDeleteArtist() throws Exception {
-        mockMvc.perform(delete("/record/" + albumId))
-                .andDo(print())
-                .andExpect(status().isNoContent());
     }
 }

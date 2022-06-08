@@ -1,7 +1,6 @@
 package com.company.musicstorecatalog.controller;
 
-import com.company.musicstorecatalog.exception.InvalidRequestException;
-import com.company.musicstorecatalog.exception.NoRecordFoundException;
+import com.company.musicstorecatalog.exception.*;
 import com.company.musicstorecatalog.model.CustomErrorResponse;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -20,6 +19,33 @@ public class ControllerExceptionHandler {
 
     @ExceptionHandler(value= NoRecordFoundException.class)
     public ResponseEntity<CustomErrorResponse> handleNoRecordFound(NoRecordFoundException e) {
+        CustomErrorResponse error = new CustomErrorResponse(e.getMessage(), HttpStatus.NOT_FOUND);
+        ResponseEntity<CustomErrorResponse> responseEntity = new ResponseEntity<>(error, HttpStatus.NOT_FOUND);
+        return responseEntity;
+    }
+
+    @ExceptionHandler(value= NoAlbumFoundException.class)
+    public ResponseEntity<CustomErrorResponse> handleNoAlbumFound(NoAlbumFoundException e) {
+        CustomErrorResponse error = new CustomErrorResponse(e.getMessage(), HttpStatus.NOT_FOUND);
+        ResponseEntity<CustomErrorResponse> responseEntity = new ResponseEntity<>(error, HttpStatus.NOT_FOUND);
+        return responseEntity;
+    }
+
+    @ExceptionHandler(value= NoArtistFoundException.class)
+    public ResponseEntity<CustomErrorResponse> handleNoArtistFound(NoArtistFoundException e) {
+        CustomErrorResponse error = new CustomErrorResponse(e.getMessage(), HttpStatus.NOT_FOUND);
+        ResponseEntity<CustomErrorResponse> responseEntity = new ResponseEntity<>(error, HttpStatus.NOT_FOUND);
+        return responseEntity;
+    }
+    @ExceptionHandler(value= NoLabelFoundException.class)
+    public ResponseEntity<CustomErrorResponse> handleNoLabelFound(NoLabelFoundException e) {
+        CustomErrorResponse error = new CustomErrorResponse(e.getMessage(), HttpStatus.NOT_FOUND);
+        ResponseEntity<CustomErrorResponse> responseEntity = new ResponseEntity<>(error, HttpStatus.NOT_FOUND);
+        return responseEntity;
+    }
+
+    @ExceptionHandler(value= NoTrackFoundException.class)
+    public ResponseEntity<CustomErrorResponse> handleNoTrackFound(NoTrackFoundException e) {
         CustomErrorResponse error = new CustomErrorResponse(e.getMessage(), HttpStatus.NOT_FOUND);
         ResponseEntity<CustomErrorResponse> responseEntity = new ResponseEntity<>(error, HttpStatus.NOT_FOUND);
         return responseEntity;

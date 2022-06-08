@@ -32,8 +32,8 @@ public class ServiceLayer {
     public Album saveAlbum(Album album) { return albumRepository.save(album); }
 
     public Album findAlbum(int id) {
-        Optional<Album> artist = albumRepository.findById(id);
-        return artist.isPresent() ? artist.get() : null;
+        Optional<Album> album = albumRepository.findById(id);
+        return album.isPresent() ? album.get() : null;
     }
 
     public List<Album> findAllAlbums() { return albumRepository.findAll(); }
@@ -45,7 +45,7 @@ public class ServiceLayer {
     // ARTIST
     public Artist saveArtist(Artist artist) { return artistRepository.save(artist); }
 
-    public Album findArtist(int id) {
+    public Artist findArtist(int id) {
         Optional<Artist> artist = artistRepository.findById(id);
         return artist.isPresent() ? artist.get() : null;
     }
