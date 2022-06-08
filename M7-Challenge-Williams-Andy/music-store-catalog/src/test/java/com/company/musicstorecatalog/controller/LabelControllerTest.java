@@ -55,8 +55,6 @@ public class LabelControllerTest {
         when(serviceLayer.saveLabel(inputLabel)).thenReturn(outputLabel);
         when(serviceLayer.findAllLabels()).thenReturn(allLabels);
         when(serviceLayer.findLabel(labelId)).thenReturn(outputLabel);
-
-
     }
 
     @Test
@@ -92,7 +90,6 @@ public class LabelControllerTest {
                 .andExpect(status().isNotFound());
     }
 
-
     @Test
     public void shouldUpdateLabel() throws Exception {
         mockMvc.perform(put("/label/" + labelId)
@@ -117,5 +114,4 @@ public class LabelControllerTest {
                 .andDo(print())
                 .andExpect(status().isNoContent());
     }
-
 }

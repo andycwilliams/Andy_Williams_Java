@@ -56,8 +56,6 @@ public class ArtistControllerTest {
         when(serviceLayer.saveArtist(inputArtist)).thenReturn(outputArtist);
         when(serviceLayer.findAllArtists()).thenReturn(allArtists);
         when(serviceLayer.findArtist(artistId)).thenReturn(outputArtist);
-
-
     }
 
     @Test
@@ -86,14 +84,12 @@ public class ArtistControllerTest {
                 .andExpect(content().json(outputArtistString));
     }
 
-
     @Test
     public void shouldReport404WhenFindArtistByInvalidId() throws Exception {
         mockMvc.perform(get("/artist/" + nonExistentArtistId))
                 .andDo(print())
                 .andExpect(status().isNotFound());
     }
-
 
     @Test
     public void shouldUpdateArtist() throws Exception {
