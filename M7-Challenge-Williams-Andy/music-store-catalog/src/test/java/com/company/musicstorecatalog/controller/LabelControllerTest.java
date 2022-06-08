@@ -32,7 +32,6 @@ public class LabelControllerTest {
     private Label outputLabel;
     private String inputLabelString;
     private String outputLabelString;
-
     private List<Label> allLabels;
     private String allLabelsString;
     private int labelId = 14;
@@ -60,8 +59,8 @@ public class LabelControllerTest {
     @Test
     public void shouldCreateLabel() throws Exception {
         mockMvc.perform(post("/label")
-                        .content(inputLabelString)
-                        .contentType(MediaType.APPLICATION_JSON)
+                    .content(inputLabelString)
+                    .contentType(MediaType.APPLICATION_JSON)
                 ).andDo(print())
                 .andExpect(status().isCreated())
                 .andExpect(content().json(outputLabelString));

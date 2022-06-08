@@ -18,25 +18,24 @@ import java.util.List;
 
 import static org.mockito.Mockito.when;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
-import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.delete;
 import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 @RunWith(SpringRunner.class)
-@WebMvcTest(AlbumController.class)
+@WebMvcTest(TrackController.class)
 public class TrackControllerTest {
-
     @MockBean
     ServiceLayer serviceLayer;
+
     private Track inputTrack;
     private Track outputTrack;
     private String inputTrackString;
     private String outputTrackString;
-
     private List<Track> allTracks;
     private String allTracksString;
     private int trackId = 44;
+
     private int nonExistentTrackId = 101;
 
     private ObjectMapper mapper = new ObjectMapper();
@@ -61,8 +60,8 @@ public class TrackControllerTest {
     @Test
     public void shouldCreateTrack() throws Exception {
         mockMvc.perform(post("/track")
-                        .content(inputTrackString)
-                        .contentType(MediaType.APPLICATION_JSON)
+                    .content(inputTrackString)
+                    .contentType(MediaType.APPLICATION_JSON)
                 ).andDo(print())
                 .andExpect(status().isCreated())
                 .andExpect(content().json(outputTrackString));

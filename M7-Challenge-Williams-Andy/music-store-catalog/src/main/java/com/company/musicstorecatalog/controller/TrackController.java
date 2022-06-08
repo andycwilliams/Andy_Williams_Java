@@ -18,15 +18,11 @@ public class TrackController {
 
     @GetMapping
     @ResponseStatus(HttpStatus.OK)
-    public List<Track> getAllTracks() {
-        return serviceLayer.findAllTracks();
-    }
+    public List<Track> getAllTracks() { return serviceLayer.findAllTracks(); }
 
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
-    public Track createTrack(@RequestBody Track track) {
-        return serviceLayer.saveTrack(track);
-    }
+    public Track createTrack(@RequestBody Track track) { return serviceLayer.saveTrack(track); }
 
     @GetMapping("/{id}")
     @ResponseStatus(HttpStatus.OK)

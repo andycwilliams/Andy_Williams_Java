@@ -33,7 +33,6 @@ public class ArtistControllerTest {
     private Artist outputArtist;
     private String inputArtistString;
     private String outputArtistString;
-
     private List<Artist> allArtists;
     private String allArtistsString;
     private int artistId = 55;
@@ -61,9 +60,9 @@ public class ArtistControllerTest {
     @Test
     public void shouldCreateArtist() throws Exception {
         mockMvc.perform(post("/artist")
-                .content(inputArtistString)
-                .contentType(MediaType.APPLICATION_JSON)
-        ).andDo(print())
+                    .content(inputArtistString)
+                    .contentType(MediaType.APPLICATION_JSON)
+                ).andDo(print())
                 .andExpect(status().isCreated())
                 .andExpect(content().json(outputArtistString));
     }
@@ -72,8 +71,8 @@ public class ArtistControllerTest {
     public void shouldGetAllArtists() throws Exception {
         mockMvc.perform(get("/artist"))
                 .andDo(print())
-                        .andExpect(status().isOk())
-                        .andExpect(content().json(allArtistsString));
+                .andExpect(status().isOk())
+                .andExpect(content().json(allArtistsString));
     }
 
     @Test

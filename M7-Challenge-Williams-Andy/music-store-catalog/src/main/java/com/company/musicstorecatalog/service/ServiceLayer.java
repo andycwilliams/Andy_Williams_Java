@@ -35,6 +35,7 @@ public class ServiceLayer {
     }
 
     // ALBUM
+
     @Transactional
     public AlbumViewModel saveAlbum(AlbumViewModel viewModel) {
 
@@ -140,11 +141,23 @@ public class ServiceLayer {
     }
 
     // ARTIST
+
     public Artist saveArtist(Artist artist) { return artistRepository.save(artist); }
 
     public Artist findArtist(int id) {
         Optional<Artist> artist = artistRepository.findById(id);
+//        artist.get().setName(artist.get().getName());
+//        artist.get().setInstagram(artist.get().getInstagram());
+//        artist.get().setTwitter(artist.get().getInstagram());
+//        artistRepository.save(artist.get().getName());
+//        artistRepository.save(artist);
         return artist.isPresent() ? artist.get() : null;
+
+        // Get artist
+        // Set all values
+        // Save to database
+        // Everything that's got these associations
+        // May be other ways
     }
 
     public List<Artist> findAllArtists() { return artistRepository.findAll(); }
@@ -160,6 +173,7 @@ public class ServiceLayer {
     public void removeArtist(int id) { artistRepository.deleteById(id); }
 
     // LABEL
+
     public Label saveLabel(Label label) { return labelRepository.save(label); }
 
     public Label findLabel(int id) {
@@ -176,15 +190,10 @@ public class ServiceLayer {
         labelRepository.save(label2);
     }
 
-    // Get artist
-    // Set all values
-    // Save to database
-    // Everything that's got these associations
-    // May be other ways
-
     public void removeLabel(int id) { labelRepository.deleteById(id); }
 
     // TRACK
+
     public Track saveTrack(Track track) { return trackRepository.save(track); }
 
     public Track findTrack(int id) {
