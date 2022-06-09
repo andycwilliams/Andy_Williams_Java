@@ -69,8 +69,8 @@ public class AlbumControllerTest {
     @Test
     public void shouldCreateAlbum() throws Exception {
         mockMvc.perform(post("/album")
-                    .content(inputAlbumViewModelString)
-                    .contentType(MediaType.APPLICATION_JSON)
+                        .content(inputAlbumViewModelString)
+                        .contentType(MediaType.APPLICATION_JSON)
                 ).andDo(print())
                 .andExpect(status().isCreated())
                 .andExpect(content().json(outputAlbumViewModelString));
