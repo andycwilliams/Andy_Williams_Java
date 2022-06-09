@@ -10,19 +10,19 @@ import java.util.Set;
 
 @Entity
 @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
-@Table(name = "artist")
+@Table(name = "artist_recommendation")
 public class Artist implements Serializable {
 
     public Artist(){}
 
-    public Artist(Integer artistRecommendationId, Integer artistId, Integer userId, Boolean liked) {
+    public Artist(Integer artistRecommendationId, int artistId, int userId, Boolean liked) {
         this.artistRecommendationId = artistRecommendationId;
         this.artistId = artistId;
         this.userId = userId;
         this.liked = liked;
     }
 
-    public Artist(Integer artistId, Integer userId, Boolean liked) {
+    public Artist(int artistId, int userId, Boolean liked) {
         this.artistId = artistId;
         this.userId = userId;
         this.liked = liked;
@@ -34,10 +34,10 @@ public class Artist implements Serializable {
     private Integer artistRecommendationId;
 
     @Column(name = "artist_id")
-    private Integer artistId;
+    private int artistId;
 
     @Column(name = "user_id")
-    private Integer userId;
+    private int userId;
 
     private Boolean liked;
 
@@ -49,19 +49,19 @@ public class Artist implements Serializable {
         this.artistRecommendationId = artistRecommendationId;
     }
 
-    public Integer getArtistId() {
+    public int getArtistId() {
         return artistId;
     }
 
-    public void setArtistId(Integer artistId) {
+    public void setArtistId(int artistId) {
         this.artistId = artistId;
     }
 
-    public Integer getUserId() {
+    public int getUserId() {
         return userId;
     }
 
-    public void setUserId(Integer userId) {
+    public void setUserId(int userId) {
         this.userId = userId;
     }
 
@@ -78,7 +78,7 @@ public class Artist implements Serializable {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Artist artist = (Artist) o;
-        return Objects.equals(artistRecommendationId, artist.artistRecommendationId) && Objects.equals(artistId, artist.artistId) && Objects.equals(userId, artist.userId) && Objects.equals(liked, artist.liked);
+        return artistId == artist.artistId && userId == artist.userId && Objects.equals(artistRecommendationId, artist.artistRecommendationId) && Objects.equals(liked, artist.liked);
     }
 
     @Override

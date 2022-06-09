@@ -19,9 +19,7 @@ public class LabelController {
 
     @GetMapping
     @ResponseStatus(HttpStatus.OK)
-    public List<Label> getAllLabels() {
-        return serviceLayer.findAllLabels();
-    }
+    public List<Label> getAllLabels() { return serviceLayer.findAllLabels(); }
 
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)

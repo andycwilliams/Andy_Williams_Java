@@ -17,19 +17,19 @@ import java.util.Set;
 
 @Entity
 @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
-@Table(name = "album")
+@Table(name = "album_recommendation")
 public class Album implements Serializable {
 
     public Album( ) {}
 
-    public Album(Integer albumRecommendationId, Integer albumId, Integer userId, Boolean liked) {
+    public Album(Integer albumRecommendationId, int albumId, int userId, Boolean liked) {
         this.albumRecommendationId = albumRecommendationId;
         this.albumId = albumId;
         this.userId = userId;
         this.liked = liked;
     }
 
-    public Album(Integer albumId, Integer userId, Boolean liked) {
+    public Album(int albumId, int userId, Boolean liked) {
         this.albumId = albumId;
         this.userId = userId;
         this.liked = liked;
@@ -41,10 +41,10 @@ public class Album implements Serializable {
     private Integer albumRecommendationId;
 
     @Column(name = "album_id")
-    private Integer albumId;
+    private int albumId;
 
     @Column(name = "user_id")
-    private Integer userId;
+    private int userId;
 
     private Boolean liked;
 
@@ -56,19 +56,19 @@ public class Album implements Serializable {
         this.albumRecommendationId = albumRecommendationId;
     }
 
-    public Integer getAlbumId() {
+    public int getAlbumId() {
         return albumId;
     }
 
-    public void setAlbumId(Integer albumId) {
+    public void setAlbumId(int albumId) {
         this.albumId = albumId;
     }
 
-    public Integer getUserId() {
+    public int getUserId() {
         return userId;
     }
 
-    public void setUserId(Integer userId) {
+    public void setUserId(int userId) {
         this.userId = userId;
     }
 
@@ -85,7 +85,7 @@ public class Album implements Serializable {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Album album = (Album) o;
-        return Objects.equals(albumRecommendationId, album.albumRecommendationId) && Objects.equals(albumId, album.albumId) && Objects.equals(userId, album.userId) && Objects.equals(liked, album.liked);
+        return albumId == album.albumId && userId == album.userId && Objects.equals(albumRecommendationId, album.albumRecommendationId) && Objects.equals(liked, album.liked);
     }
 
     @Override

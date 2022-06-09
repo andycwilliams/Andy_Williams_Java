@@ -10,20 +10,20 @@ import java.util.Set;
 
 @Entity
 @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
-@Table(name = "label")
+@Table(name = "label_recommendation")
 public class Label implements Serializable {
 
     public Label() {}
 
-    public Label(Integer artistRecommendationId, Integer artistId, Integer userId, Boolean liked) {
-        this.labelRecommendationId = artistRecommendationId;
-        this.labelId = artistId;
+    public Label(Integer labelRecommendationId, int labelId, int userId, Boolean liked) {
+        this.labelRecommendationId = labelRecommendationId;
+        this.labelId = labelId;
         this.userId = userId;
         this.liked = liked;
     }
 
-    public Label(Integer artistId, Integer userId, Boolean liked) {
-        this.labelId = artistId;
+    public Label(int labelId, int userId, Boolean liked) {
+        this.labelId = labelId;
         this.userId = userId;
         this.liked = liked;
     }
@@ -34,10 +34,10 @@ public class Label implements Serializable {
     private Integer labelRecommendationId;
 
     @Column(name = "label_id")
-    private Integer labelId;
+    private int labelId;
 
     @Column(name = "user_id")
-    private Integer userId;
+    private int userId;
 
     private Boolean liked;
 
@@ -49,19 +49,19 @@ public class Label implements Serializable {
         this.labelRecommendationId = labelRecommendationId;
     }
 
-    public Integer getLabelId() {
+    public int getLabelId() {
         return labelId;
     }
 
-    public void setLabelId(Integer labelId) {
+    public void setLabelId(int labelId) {
         this.labelId = labelId;
     }
 
-    public Integer getUserId() {
+    public int getUserId() {
         return userId;
     }
 
-    public void setUserId(Integer userId) {
+    public void setUserId(int userId) {
         this.userId = userId;
     }
 
@@ -78,7 +78,7 @@ public class Label implements Serializable {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Label label = (Label) o;
-        return Objects.equals(labelRecommendationId, label.labelRecommendationId) && Objects.equals(labelId, label.labelId) && Objects.equals(userId, label.userId) && Objects.equals(liked, label.liked);
+        return labelId == label.labelId && userId == label.userId && Objects.equals(labelRecommendationId, label.labelRecommendationId) && Objects.equals(liked, label.liked);
     }
 
     @Override

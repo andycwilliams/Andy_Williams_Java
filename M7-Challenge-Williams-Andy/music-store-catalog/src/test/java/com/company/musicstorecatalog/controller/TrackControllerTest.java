@@ -98,4 +98,20 @@ public class TrackControllerTest {
                 .andDo(print())
                 .andExpect(status().isNoContent());
     }
+
+    @Test
+    public void shouldReport404WhenFindTrackByInvalidId() throws Exception {
+        mockMvc.perform(get("/track/" + nonExistentTrackId))
+                .andDo(print())
+                .andExpect(status().isNotFound());
+    }
+
+    @Test
+    public void shouldBeUnprocessableEntityWhenPutRequestContainsNonMatchingIds() throws Exception {
+        mockMvc.perform(put("/track/" + nonExistentTrackId)
+                        .content(outputTrackString)
+                        .contentType(MediaType.APPLICATION_JSON))
+                .andDo(print())
+                .andExpect(status().isUnprocessableEntity());
+    }
 }

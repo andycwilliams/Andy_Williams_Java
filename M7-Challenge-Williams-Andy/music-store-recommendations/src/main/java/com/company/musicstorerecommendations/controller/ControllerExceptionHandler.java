@@ -1,8 +1,6 @@
 package com.company.musicstorerecommendations.controller;
 
-import com.company.musicstorerecommendations.exception.InvalidRequestException;
-import com.company.musicstorerecommendations.exception.NoAlbumFoundException;
-import com.company.musicstorerecommendations.exception.NoRecordFoundException;
+import com.company.musicstorerecommendations.exception.*;
 import com.company.musicstorerecommendations.model.CustomErrorResponse;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -32,4 +30,27 @@ public class ControllerExceptionHandler {
         ResponseEntity<CustomErrorResponse> responseEntity = new ResponseEntity<>(error, HttpStatus.NOT_FOUND);
         return responseEntity;
     }
+
+    @ExceptionHandler(value= NoArtistFoundException.class)
+    public ResponseEntity<CustomErrorResponse> handleNoArtistFound(NoArtistFoundException e) {
+        CustomErrorResponse error = new CustomErrorResponse(e.getMessage(), HttpStatus.NOT_FOUND);
+        ResponseEntity<CustomErrorResponse> responseEntity = new ResponseEntity<>(error, HttpStatus.NOT_FOUND);
+        return responseEntity;
+    }
+    @ExceptionHandler(value= NoLabelFoundException.class)
+    public ResponseEntity<CustomErrorResponse> handleNoLabelFound(NoLabelFoundException e) {
+        CustomErrorResponse error = new CustomErrorResponse(e.getMessage(), HttpStatus.NOT_FOUND);
+        ResponseEntity<CustomErrorResponse> responseEntity = new ResponseEntity<>(error, HttpStatus.NOT_FOUND);
+        return responseEntity;
+    }
+
+    @ExceptionHandler(value= NoTrackFoundException.class)
+    public ResponseEntity<CustomErrorResponse> handleNoTrackFound(NoTrackFoundException e) {
+        CustomErrorResponse error = new CustomErrorResponse(e.getMessage(), HttpStatus.NOT_FOUND);
+        ResponseEntity<CustomErrorResponse> responseEntity = new ResponseEntity<>(error, HttpStatus.NOT_FOUND);
+        return responseEntity;
+    }
+
+    // java.sql.SQLIntegrityConstraintViolationException: Column 'album_id' cannot be null
+    // Return 422
 }

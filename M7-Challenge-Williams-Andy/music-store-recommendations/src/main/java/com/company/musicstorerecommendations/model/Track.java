@@ -8,19 +8,19 @@ import java.util.Objects;
 
 @Entity
 @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
-@Table(name = "track")
+@Table(name = "track_recommendation")
 public class Track implements Serializable {
 
     public Track() {}
 
-    public Track(Integer trackRecommendationId, Integer trackId, Integer userId, Boolean liked) {
+    public Track(Integer trackRecommendationId, int trackId, int userId, Boolean liked) {
         this.trackRecommendationId = trackRecommendationId;
         this.trackId = trackId;
         this.userId = userId;
         this.liked = liked;
     }
 
-    public Track(Integer trackId, Integer userId, Boolean liked) {
+    public Track(int trackId, int userId, Boolean liked) {
         this.trackId = trackId;
         this.userId = userId;
         this.liked = liked;
@@ -32,10 +32,10 @@ public class Track implements Serializable {
     private Integer trackRecommendationId;
 
     @Column(name = "track_id")
-    private Integer trackId;
+    private int trackId;
 
     @Column(name = "user_id")
-    private Integer userId;
+    private int userId;
 
     private Boolean liked;
 
@@ -47,19 +47,19 @@ public class Track implements Serializable {
         this.trackRecommendationId = trackRecommendationId;
     }
 
-    public Integer getTrackId() {
+    public int getTrackId() {
         return trackId;
     }
 
-    public void setTrackId(Integer trackId) {
+    public void setTrackId(int trackId) {
         this.trackId = trackId;
     }
 
-    public Integer getUserId() {
+    public int getUserId() {
         return userId;
     }
 
-    public void setUserId(Integer userId) {
+    public void setUserId(int userId) {
         this.userId = userId;
     }
 
@@ -76,7 +76,7 @@ public class Track implements Serializable {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Track track = (Track) o;
-        return Objects.equals(trackRecommendationId, track.trackRecommendationId) && Objects.equals(trackId, track.trackId) && Objects.equals(userId, track.userId) && Objects.equals(liked, track.liked);
+        return trackId == track.trackId && userId == track.userId && Objects.equals(trackRecommendationId, track.trackRecommendationId) && Objects.equals(liked, track.liked);
     }
 
     @Override

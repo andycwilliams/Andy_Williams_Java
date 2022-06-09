@@ -2,51 +2,53 @@ package com.company.musicstorerecommendations.controller;
 
 import com.company.musicstorerecommendations.exception.InvalidRequestException;
 import com.company.musicstorerecommendations.exception.NoRecordFoundException;
-import com.company.musicstorerecommendations.service.ServiceLayer;
-import com.company.musicstorerecommendations.viewmodel.AlbumViewModel;
+import com.company.musicstorerecommendations.model.Album;
+import com.company.musicstorerecommendations.repository.AlbumRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Optional;
 
 @RestController
 @RequestMapping("/album")
 public class AlbumController {
     @Autowired
-    private ServiceLayer serviceLayer;
+    AlbumRepository albumRepository;
 
     @GetMapping
     @ResponseStatus(HttpStatus.OK)
-    public List<AlbumViewModel> getAllAlbums() { return serviceLayer.findAllAlbums(); }
+    public List<Album> getAllAlbums() { return albumRepository.findAll(); }
 
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
-    public AlbumViewModel createAlbum(@RequestBody AlbumViewModel albumViewModel) { return serviceLayer.saveAlbum(albumViewModel); }
+    public Album createAlbum(@RequestBody Album album) { return albumRepository.save(album); }
 
     @GetMapping("/{id}")
     @ResponseStatus(HttpStatus.OK)
-    public AlbumViewModel getAlbumById(@PathVariable int id) {
-        AlbumViewModel avm = serviceLayer.findAlbum(id);
-        if (avm == null) {
-            throw new NoRecordFoundException("Album ID " + id + " not found.");
+    public Album getAlbumById(@PathVariable int id) {
+        Optional<Album> album = albumRepository.findById(id);
+        if (album.isPresent()) {
+            return album.get();
+        } else {
+            throw new NoRecordFoundException("Album with ID " + id + " does not exist.");
         }
-        return serviceLayer.findAlbum(id);
     }
 
     @PutMapping("/{id}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
-    public void updateAlbum(@PathVariable int id, @RequestBody AlbumViewModel avm) {
-        if (avm.getAlbumId() == 0) {
-            avm.getAlbumId(id);
+    public void updateAlbum(@PathVariable int id, @RequestBody Album album) {
+        if (album.getAlbumRecommendationId() == null) {
+            album.setAlbumRecommendationId(id);
         }
-        if (avm.getAlbumId() != id) {
+        if (album.getAlbumRecommendationId() != id) {
             throw new InvalidRequestException("ID in request body must match ID in path");
         }
-        serviceLayer.updateAlbum(avm);
+        albumRepository.save(album);
     }
 
     @DeleteMapping("/{id}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
-    public void deleteAlbum(@PathVariable int id) { serviceLayer.removeAlbum(id); }
+    public void deleteAlbum(@PathVariable int id) { albumRepository.deleteById(id); }
 }
