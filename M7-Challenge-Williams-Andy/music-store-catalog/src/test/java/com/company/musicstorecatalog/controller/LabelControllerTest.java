@@ -59,8 +59,8 @@ public class LabelControllerTest {
     @Test
     public void shouldCreateLabel() throws Exception {
         mockMvc.perform(post("/label")
-                    .content(inputLabelString)
-                    .contentType(MediaType.APPLICATION_JSON)
+                        .content(inputLabelString)
+                        .contentType(MediaType.APPLICATION_JSON)
                 ).andDo(print())
                 .andExpect(status().isCreated())
                 .andExpect(content().json(outputLabelString));

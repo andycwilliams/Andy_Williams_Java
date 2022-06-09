@@ -60,8 +60,8 @@ public class ArtistControllerTest {
     @Test
     public void shouldCreateArtist() throws Exception {
         mockMvc.perform(post("/artist")
-                    .content(inputArtistString)
-                    .contentType(MediaType.APPLICATION_JSON)
+                        .content(inputArtistString)
+                        .contentType(MediaType.APPLICATION_JSON)
                 ).andDo(print())
                 .andExpect(status().isCreated())
                 .andExpect(content().json(outputArtistString));
@@ -86,8 +86,8 @@ public class ArtistControllerTest {
     @Test
     public void shouldUpdateArtist() throws Exception {
         mockMvc.perform(put("/artist/" + artistId)
-                .content(outputArtistString)
-                .contentType(MediaType.APPLICATION_JSON))
+                        .content(outputArtistString)
+                        .contentType(MediaType.APPLICATION_JSON))
                 .andDo(print())
                 .andExpect(status().isNoContent());
     }

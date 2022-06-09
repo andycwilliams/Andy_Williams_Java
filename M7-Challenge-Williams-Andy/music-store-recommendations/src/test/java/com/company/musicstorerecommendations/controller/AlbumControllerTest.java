@@ -40,15 +40,13 @@ public class AlbumControllerTest {
     @Before
     public void setup() throws Exception {
         album = new Album(17, 7, true);
-        albumOutput = new Album(17, 7, true);
-        albumOutput.setAlbumId(177);
+        albumOutput = new Album(177, 17, 7, true);
 
         doReturn(albumOutput).when(albumRepository).save(album);
         doReturn(Optional.of(albumOutput)).when(albumRepository).findById(177);
 
         album2 = new Album(55, 32, false);
-        album2Output = new Album(55, 32, false);
-        album2Output.setAlbumId(900);
+        album2Output = new Album(900,55, 32, false);
 
         doReturn(album2Output).when(albumRepository).save(album2);
         doReturn(Optional.of(album2Output)).when(albumRepository).findById(900);
@@ -57,7 +55,6 @@ public class AlbumControllerTest {
     @Test
     public void shouldCreateAlbum() throws Exception{
         String inputJson = mapper.writeValueAsString(album);
-        String outputJson = mapper.writeValueAsString(albumOutput);
 
         mockMvc.perform(post("/album")
                         .content(inputJson)
@@ -114,5 +111,16 @@ public class AlbumControllerTest {
     @Test
     public void shouldReturn404WhenGetAlbumByInvalidId() throws Exception{
         mockMvc.perform(get("/album/-1")).andDo(print()).andExpect(status().isNotFound());
+    }
+
+    @Test
+    public void shouldBeUnprocessableEntityWhenUpdateAlbumWithNonMatchingIds() throws Exception {
+        String inputJson = mapper.writeValueAsString(albumOutput);
+
+        mockMvc.perform(put("/album/-5")
+                        .content(inputJson)
+                        .contentType(MediaType.APPLICATION_JSON))
+                .andDo(print())
+                .andExpect(status().isUnprocessableEntity());
     }
 }

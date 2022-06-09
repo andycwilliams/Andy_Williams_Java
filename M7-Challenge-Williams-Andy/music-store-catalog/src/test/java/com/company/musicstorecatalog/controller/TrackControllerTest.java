@@ -60,8 +60,8 @@ public class TrackControllerTest {
     @Test
     public void shouldCreateTrack() throws Exception {
         mockMvc.perform(post("/track")
-                    .content(inputTrackString)
-                    .contentType(MediaType.APPLICATION_JSON)
+                        .content(inputTrackString)
+                        .contentType(MediaType.APPLICATION_JSON)
                 ).andDo(print())
                 .andExpect(status().isCreated())
                 .andExpect(content().json(outputTrackString));

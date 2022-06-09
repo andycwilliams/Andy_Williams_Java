@@ -33,7 +33,7 @@ public class ConsoleControllerTest {
     private MockMvc mockMvc;
 
     // The aim of this unit test is to test the controller and NOT the service layer.
-    // Therefore mock the service layer.
+    // Therefore, mock the service layer.
     @MockBean
     private GameStoreServiceLayer storeServiceLayer;
 
