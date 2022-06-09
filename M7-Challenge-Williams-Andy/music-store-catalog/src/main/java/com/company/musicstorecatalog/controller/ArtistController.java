@@ -41,7 +41,7 @@ public class ArtistController {
     @PutMapping("/{id}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
     public void updateArtist(@PathVariable int id, @RequestBody Artist artist) {
-        if (artist.getId() == 0) {
+        if (artist.getId() == null) {
             artist.setId(id);
         }
         if (artist.getId() != id) {

@@ -12,13 +12,13 @@ import java.util.Objects;
 public class Track implements Serializable {
 
     public Track() {}
-    public Track(Integer id, Integer albumId, String title, int runtime) {
+    public Track(Integer id, int albumId, String title, int runtime) {
         this.id = id;
         this.albumId = albumId;
         this.title = title;
         this.runtime = runtime;
     }
-    public Track(Integer albumId, String title, int runtime) {
+    public Track(int albumId, String title, int runtime) {
         this.albumId = albumId;
         this.title = title;
         this.runtime = runtime;
@@ -29,7 +29,7 @@ public class Track implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
     @Column(name = "album_id")
-    private Integer albumId;
+    private int albumId;
     private String title;
     @Column(name = "run_time")
     private int runtime;
@@ -42,11 +42,11 @@ public class Track implements Serializable {
         this.id = id;
     }
 
-    public Integer getAlbumId() {
+    public int getAlbumId() {
         return albumId;
     }
 
-    public void setAlbumId(Integer albumId) {
+    public void setAlbumId(int albumId) {
         this.albumId = albumId;
     }
 
@@ -71,7 +71,7 @@ public class Track implements Serializable {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Track track = (Track) o;
-        return runtime == track.runtime && Objects.equals(id, track.id) && Objects.equals(albumId, track.albumId) && Objects.equals(title, track.title);
+        return albumId == track.albumId && runtime == track.runtime && Objects.equals(id, track.id) && Objects.equals(title, track.title);
     }
 
     @Override

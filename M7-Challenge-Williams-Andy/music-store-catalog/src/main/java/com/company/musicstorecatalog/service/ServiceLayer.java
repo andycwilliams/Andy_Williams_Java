@@ -34,7 +34,7 @@ public class ServiceLayer {
         this.trackRepository = trackRepository;
     }
 
-    // ALBUM
+    // --------------------------- ALBUM ---------------------------
 
     @Transactional
     public AlbumViewModel saveAlbum(AlbumViewModel viewModel) {
@@ -57,7 +57,7 @@ public class ServiceLayer {
                     trackRepository.save(t);
                 });
 
-        tracks = trackRepository.findAllTracksByAlbumId(viewModel.getId());
+        tracks = trackRepository.findByAlbumId(viewModel.getId());
         viewModel.setTracks(tracks);
 
         return viewModel;
@@ -76,7 +76,7 @@ public class ServiceLayer {
 
         Optional<Label> label = labelRepository.findById(album.getLabelId());
 
-        List<Track> trackList = trackRepository.findAllTracksByAlbumId(album.getId());
+        List<Track> trackList = trackRepository.findByAlbumId(album.getId());
 
         AlbumViewModel avm = new AlbumViewModel();
         avm.setId(album.getId());
@@ -113,10 +113,14 @@ public class ServiceLayer {
         album.setLabelId(viewModel.getLabel().getId());
         album.setListPrice(viewModel.getListPrice());
         album.setReleaseDate(viewModel.getReleaseDate());
+        album.setTitle(viewModel.getTitle());
 
         albumRepository.save(album);
 
-        List<Track> trackList = trackRepository.findAllTracksByAlbumId(album.getId());
+
+        List<Track> trackList = trackRepository.
+                findByAlbumId(3);
+
         trackList.stream()
                 .forEach(track -> trackRepository.deleteById(track.getId()));
 
@@ -132,7 +136,7 @@ public class ServiceLayer {
     @Transactional
     public void removeAlbum(int id) {
 
-        List<Track> trackList = trackRepository.findAllTracksByAlbumId(id);
+        List<Track> trackList = trackRepository.findByAlbumId(3);
 
         trackList.stream()
                 .forEach(track -> trackRepository.deleteById(track.getId()));
@@ -140,7 +144,7 @@ public class ServiceLayer {
         albumRepository.deleteById(id);
     }
 
-    // ARTIST
+    // --------------------------- ARTIST ---------------------------
 
     public Artist saveArtist(Artist artist) { return artistRepository.save(artist); }
 
@@ -172,7 +176,7 @@ public class ServiceLayer {
 
     public void removeArtist(int id) { artistRepository.deleteById(id); }
 
-    // LABEL
+    // --------------------------- LABEL ---------------------------
 
     public Label saveLabel(Label label) { return labelRepository.save(label); }
 
@@ -192,7 +196,7 @@ public class ServiceLayer {
 
     public void removeLabel(int id) { labelRepository.deleteById(id); }
 
-    // TRACK
+    // --------------------------- TRACK ---------------------------
 
     public Track saveTrack(Track track) { return trackRepository.save(track); }
 
@@ -208,7 +212,7 @@ public class ServiceLayer {
         track2.setAlbumId(track.getAlbumId());
         track2.setTitle(track.getTitle());
         track2.setRuntime(track.getRuntime());
-        trackRepository.save(track);
+        trackRepository.save(track2);
     }
 
     public void removeTrack(int id) { trackRepository.deleteById(id); }

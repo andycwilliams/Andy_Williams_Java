@@ -2,7 +2,6 @@ package com.company.musicstorecatalog.controller;
 
 import com.company.musicstorecatalog.exception.InvalidRequestException;
 import com.company.musicstorecatalog.exception.NoLabelFoundException;
-import com.company.musicstorecatalog.exception.NoRecordFoundException;
 import com.company.musicstorecatalog.model.Label;
 import com.company.musicstorecatalog.service.ServiceLayer;
 import org.springframework.beans.factory.annotation.Autowired;

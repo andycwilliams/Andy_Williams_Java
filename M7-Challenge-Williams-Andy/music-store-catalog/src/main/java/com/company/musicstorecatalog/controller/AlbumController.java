@@ -41,7 +41,7 @@ public class AlbumController {
     @PutMapping("/{id}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
     public void updateAlbum(@PathVariable int id, @RequestBody AlbumViewModel avm) {
-        if (avm.getId() == 0) {
+        if (avm.getId() == null) {
             avm.setId(id);
         }
         if (avm.getId() != id) {

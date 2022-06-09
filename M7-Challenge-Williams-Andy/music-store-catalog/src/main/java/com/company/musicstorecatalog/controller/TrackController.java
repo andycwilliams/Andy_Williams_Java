@@ -37,7 +37,7 @@ public class TrackController {
     @PutMapping("/{id}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
     public void updateTrack(@PathVariable int id, @RequestBody Track track) {
-        if (track.getId() == 0) {
+        if (track.getId() == null) {
             track.setId(id);
         }
         if (track.getId() != id) {
