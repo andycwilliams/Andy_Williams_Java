@@ -97,6 +97,7 @@ public class LabelControllerTest {
                 .andDo(print())
                 .andExpect(status().isNoContent());
     }
+
     @Test
     public void shouldReport404WhenFindLabelByInvalidId() throws Exception {
         mockMvc.perform(get("/label/" + nonExistentLabelId))

@@ -117,29 +117,29 @@ public class ServiceLayer {
 
         albumRepository.save(album);
 
+        List<Track> trackList = trackRepository.findByAlbumId(viewModel.getId());
 
-        List<Track> trackList = trackRepository.
-                findByAlbumId(3);
-
-        trackList.stream()
-                .forEach(track -> trackRepository.deleteById(track.getId()));
+        trackList.stream().forEach(track -> trackRepository.deleteById(track.getId()));
 
         List<Track> tracks = viewModel.getTracks();
         tracks.stream()
-                .forEach(t ->
-                {
+                .forEach(t -> {
                     t.setAlbumId(viewModel.getId());
                     t = trackRepository.save(t);
                 });
+
+        // Can add controller restraint for 500 error
+
     }
 
     @Transactional
     public void removeAlbum(int id) {
 
-        List<Track> trackList = trackRepository.findByAlbumId(3);
-
+        List<Track> trackList = trackRepository.findByAlbumId(id);
         trackList.stream()
                 .forEach(track -> trackRepository.deleteById(track.getId()));
+
+        // Can add controller restraint for 500 error
 
         albumRepository.deleteById(id);
     }
@@ -150,11 +150,6 @@ public class ServiceLayer {
 
     public Artist findArtist(int id) {
         Optional<Artist> artist = artistRepository.findById(id);
-//        artist.get().setName(artist.get().getName());
-//        artist.get().setInstagram(artist.get().getInstagram());
-//        artist.get().setTwitter(artist.get().getInstagram());
-//        artistRepository.save(artist.get().getName());
-//        artistRepository.save(artist);
         return artist.isPresent() ? artist.get() : null;
 
         // Get artist
@@ -174,7 +169,12 @@ public class ServiceLayer {
         artistRepository.save(artist2);
     }
 
-    public void removeArtist(int id) { artistRepository.deleteById(id); }
+    public void removeArtist(int id) {
+
+        // Can add controller restraint for 500 error
+
+        artistRepository.deleteById(id);
+    }
 
     // --------------------------- LABEL ---------------------------
 
