@@ -1,0 +1,51 @@
+{
+	"name": "I'M A TEST LABEL",
+	"website": "www.idonthaveonelol.com"
+},
+{
+	"name": "Literally just formed this band",
+	"instagram": "@DoesAnyOneWant",
+	"twitter": "@ToJoinWeNeedaDrummer"
+},
+{
+	"title": "NEW Album",
+	"artist": {
+		"id": 3
+	},
+	"releaseDate": "2022-06-08",
+	"label": {
+		"id": 3
+	},
+	"listPrice": 0.99,
+	"tracks": [
+		{
+			"title": "NEW SONG for NEW ALBUM",
+			"runtime": 120
+		}
+	]
+},
+{
+	"albumId": 1,
+	"title": "THIS IS A NEW SONG",
+	"runtime": 12
+},
+{
+	"labelId": 741,
+	"userId": 234,
+	"liked": false
+},
+{
+	"artistId": 253,
+	"userId": 547454,
+	"liked": true
+},
+{
+	"albumId": 1,
+	"userId": 4,
+	"liked": true
+}.
+{
+	"trackId": 55555,
+	"userId": 77777,
+	"liked": false
+}

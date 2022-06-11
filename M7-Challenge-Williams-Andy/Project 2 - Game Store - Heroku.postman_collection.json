@@ -1,0 +1,1030 @@
+{
+	"info": {
+		"_postman_id": "5dbac9cd-a995-494a-b132-051f35e263c5",
+		"name": "Project 2 - Game Store - Heroku",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "20574798"
+	},
+	"item": [
+		{
+			"name": "Catalog",
+			"item": [
+				{
+					"name": "Label",
+					"item": [
+						{
+							"name": "Create Label",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"name\": \"I'M A TEST LABEL\",\r\n    \"website\": \"www.idonthaveonelol.com\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "https://music-store-catalog-07701.herokuapp.com/label",
+									"protocol": "https",
+									"host": [
+										"music-store-catalog-07701",
+										"herokuapp",
+										"com"
+									],
+									"path": [
+										"label"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Get Label",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "https://music-store-catalog-07701.herokuapp.com/label/2",
+									"protocol": "https",
+									"host": [
+										"music-store-catalog-07701",
+										"herokuapp",
+										"com"
+									],
+									"path": [
+										"label",
+										"2"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Get All Labels",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "https://music-store-catalog-07701.herokuapp.com/label",
+									"protocol": "https",
+									"host": [
+										"music-store-catalog-07701",
+										"herokuapp",
+										"com"
+									],
+									"path": [
+										"label"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Update Label",
+							"request": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"name\": \"We Went Bankrupt\",\r\n    \"website\": \"www.oopsitbroke.com\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "https://music-store-catalog-07701.herokuapp.com/label/3",
+									"protocol": "https",
+									"host": [
+										"music-store-catalog-07701",
+										"herokuapp",
+										"com"
+									],
+									"path": [
+										"label",
+										"3"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Delete Label",
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "https://music-store-catalog-07701.herokuapp.com/label/4",
+									"protocol": "https",
+									"host": [
+										"music-store-catalog-07701",
+										"herokuapp",
+										"com"
+									],
+									"path": [
+										"label",
+										"4"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Artist",
+					"item": [
+						{
+							"name": "Create Artist",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"name\": \"Literally just formed this band\",\r\n    \"instagram\": \"@DoesAnyOneWant\",\r\n    \"twitter\": \"@ToJoinWeNeedaDrummer\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "https://music-store-catalog-07701.herokuapp.com/artist",
+									"protocol": "https",
+									"host": [
+										"music-store-catalog-07701",
+										"herokuapp",
+										"com"
+									],
+									"path": [
+										"artist"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Get Artist",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "https://music-store-catalog-07701.herokuapp.com/artist/3",
+									"protocol": "https",
+									"host": [
+										"music-store-catalog-07701",
+										"herokuapp",
+										"com"
+									],
+									"path": [
+										"artist",
+										"3"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Get All Artists",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "https://music-store-catalog-07701.herokuapp.com/artist",
+									"protocol": "https",
+									"host": [
+										"music-store-catalog-07701",
+										"herokuapp",
+										"com"
+									],
+									"path": [
+										"artist"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Update Artist",
+							"request": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"name\": \"WE HAVE A DRUMMER NOW\",\r\n    \"instagram\": \"@StillNeedAPianistThough\",\r\n    \"twitter\": \"@AndAName\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "https://music-store-catalog-07701.herokuapp.com/artist/5",
+									"protocol": "https",
+									"host": [
+										"music-store-catalog-07701",
+										"herokuapp",
+										"com"
+									],
+									"path": [
+										"artist",
+										"5"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Delete Artist",
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "https://music-store-catalog-07701.herokuapp.com/artist/4",
+									"protocol": "https",
+									"host": [
+										"music-store-catalog-07701",
+										"herokuapp",
+										"com"
+									],
+									"path": [
+										"artist",
+										"4"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Album",
+					"item": [
+						{
+							"name": "Create Album",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"title\": \"NEW Album\",\r\n    \"artist\": {\r\n        \"id\": 3\r\n    },\r\n    \"releaseDate\": \"2022-06-08\",\r\n    \"label\": {\r\n        \"id\": 3\r\n    },\r\n    \"listPrice\": 0.99,\r\n    \"tracks\": [\r\n        {\r\n            \"title\": \"NEW SONG for NEW ALBUM\",\r\n            \"runtime\": 120\r\n        }\r\n    ]\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "https://music-store-catalog-07701.herokuapp.com/album",
+									"protocol": "https",
+									"host": [
+										"music-store-catalog-07701",
+										"herokuapp",
+										"com"
+									],
+									"path": [
+										"album"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Get Album",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "https://music-store-catalog-07701.herokuapp.com/album/2",
+									"protocol": "https",
+									"host": [
+										"music-store-catalog-07701",
+										"herokuapp",
+										"com"
+									],
+									"path": [
+										"album",
+										"2"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Get All Albums",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "https://music-store-catalog-07701.herokuapp.com/album",
+									"protocol": "https",
+									"host": [
+										"music-store-catalog-07701",
+										"herokuapp",
+										"com"
+									],
+									"path": [
+										"album"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Update Album",
+							"request": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"title\": \"UPDATED Album\",\r\n    \"artist\": {\r\n        \"id\": 3\r\n    },\r\n    \"releaseDate\": \"2022-06-08\",\r\n    \"label\": {\r\n        \"id\": 3\r\n    },\r\n    \"listPrice\": 99.99,\r\n    \"tracks\": [\r\n        {\r\n            \"title\": \"UPDATED SONG for UPDATED ALBUM\",\r\n            \"runtime\": 1\r\n        }\r\n    ]\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "https://music-store-catalog-07701.herokuapp.com/album/5",
+									"protocol": "https",
+									"host": [
+										"music-store-catalog-07701",
+										"herokuapp",
+										"com"
+									],
+									"path": [
+										"album",
+										"5"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Delete Album",
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "https://music-store-catalog-07701.herokuapp.com/album/6",
+									"protocol": "https",
+									"host": [
+										"music-store-catalog-07701",
+										"herokuapp",
+										"com"
+									],
+									"path": [
+										"album",
+										"6"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Track",
+					"item": [
+						{
+							"name": "Create Track",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"albumId\": 1,\r\n    \"title\": \"THIS IS A NEW SONG\",\r\n    \"runtime\": 12\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "https://music-store-catalog-07701.herokuapp.com/track",
+									"protocol": "https",
+									"host": [
+										"music-store-catalog-07701",
+										"herokuapp",
+										"com"
+									],
+									"path": [
+										"track"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Get Track",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "https://music-store-catalog-07701.herokuapp.com/track/2",
+									"protocol": "https",
+									"host": [
+										"music-store-catalog-07701",
+										"herokuapp",
+										"com"
+									],
+									"path": [
+										"track",
+										"2"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Get All Tracks",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "https://music-store-catalog-07701.herokuapp.com/track",
+									"protocol": "https",
+									"host": [
+										"music-store-catalog-07701",
+										"herokuapp",
+										"com"
+									],
+									"path": [
+										"track"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Update Track",
+							"request": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"albumId\": 2,\r\n    \"title\": \"<<<UPDATED SONG>>>\",\r\n    \"runtime\": 10\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "https://music-store-catalog-07701.herokuapp.com/track/2",
+									"protocol": "https",
+									"host": [
+										"music-store-catalog-07701",
+										"herokuapp",
+										"com"
+									],
+									"path": [
+										"track",
+										"2"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Delete Track",
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "https://music-store-catalog-07701.herokuapp.com/track/3",
+									"protocol": "https",
+									"host": [
+										"music-store-catalog-07701",
+										"herokuapp",
+										"com"
+									],
+									"path": [
+										"track",
+										"3"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Recommendations",
+			"item": [
+				{
+					"name": "Label",
+					"item": [
+						{
+							"name": "Create Label",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"labelId\": 741,\r\n    \"userId\": 234,\r\n    \"liked\": false\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "https://music-store-recs-28877.herokuapp.com/label/",
+									"protocol": "https",
+									"host": [
+										"music-store-recs-28877",
+										"herokuapp",
+										"com"
+									],
+									"path": [
+										"label",
+										""
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Get Label",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "https://music-store-recs-28877.herokuapp.com/label/1",
+									"protocol": "https",
+									"host": [
+										"music-store-recs-28877",
+										"herokuapp",
+										"com"
+									],
+									"path": [
+										"label",
+										"1"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Get All Labels",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "https://music-store-recs-28877.herokuapp.com/label/",
+									"protocol": "https",
+									"host": [
+										"music-store-recs-28877",
+										"herokuapp",
+										"com"
+									],
+									"path": [
+										"label",
+										""
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Update Label",
+							"request": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"labelId\": 1156711,\r\n    \"userId\": 1176511,\r\n    \"liked\": false\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "https://music-store-recs-28877.herokuapp.com/label/1",
+									"protocol": "https",
+									"host": [
+										"music-store-recs-28877",
+										"herokuapp",
+										"com"
+									],
+									"path": [
+										"label",
+										"1"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Delete Label",
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "https://music-store-recs-28877.herokuapp.com/label/1",
+									"protocol": "https",
+									"host": [
+										"music-store-recs-28877",
+										"herokuapp",
+										"com"
+									],
+									"path": [
+										"label",
+										"1"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Artist",
+					"item": [
+						{
+							"name": "Create Artist",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"artistId\": 253,\r\n    \"userId\": 547454,\r\n    \"liked\": true\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "https://music-store-recs-28877.herokuapp.com/artist",
+									"protocol": "https",
+									"host": [
+										"music-store-recs-28877",
+										"herokuapp",
+										"com"
+									],
+									"path": [
+										"artist"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Get Artist",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "https://music-store-recs-28877.herokuapp.com/artist/1",
+									"protocol": "https",
+									"host": [
+										"music-store-recs-28877",
+										"herokuapp",
+										"com"
+									],
+									"path": [
+										"artist",
+										"1"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Get All Artists",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "https://music-store-recs-28877.herokuapp.com/artist",
+									"protocol": "https",
+									"host": [
+										"music-store-recs-28877",
+										"herokuapp",
+										"com"
+									],
+									"path": [
+										"artist"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Update Artist",
+							"request": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"artistId\": 11111,\r\n    \"userId\": 4444,\r\n    \"liked\": false\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "https://music-store-recs-28877.herokuapp.com/artist/2",
+									"protocol": "https",
+									"host": [
+										"music-store-recs-28877",
+										"herokuapp",
+										"com"
+									],
+									"path": [
+										"artist",
+										"2"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Delete Artist",
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "https://music-store-recs-28877.herokuapp.com/artist/3",
+									"protocol": "https",
+									"host": [
+										"music-store-recs-28877",
+										"herokuapp",
+										"com"
+									],
+									"path": [
+										"artist",
+										"3"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Album",
+					"item": [
+						{
+							"name": "Create Album",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"albumId\": 1,\r\n    \"userId\": 4,\r\n    \"liked\": true\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "https://music-store-recs-28877.herokuapp.com/album",
+									"protocol": "https",
+									"host": [
+										"music-store-recs-28877",
+										"herokuapp",
+										"com"
+									],
+									"path": [
+										"album"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Get Album",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "https://music-store-recs-28877.herokuapp.com/album/2",
+									"protocol": "https",
+									"host": [
+										"music-store-recs-28877",
+										"herokuapp",
+										"com"
+									],
+									"path": [
+										"album",
+										"2"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Get All Albums",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "https://music-store-recs-28877.herokuapp.com/album",
+									"protocol": "https",
+									"host": [
+										"music-store-recs-28877",
+										"herokuapp",
+										"com"
+									],
+									"path": [
+										"album"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Update Album",
+							"request": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"albumId\": 1010,\r\n    \"userId\": 4040,\r\n    \"liked\": true\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "https://music-store-recs-28877.herokuapp.com/album/2",
+									"protocol": "https",
+									"host": [
+										"music-store-recs-28877",
+										"herokuapp",
+										"com"
+									],
+									"path": [
+										"album",
+										"2"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Delete Album",
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "https://music-store-recs-28877.herokuapp.com/album/3",
+									"protocol": "https",
+									"host": [
+										"music-store-recs-28877",
+										"herokuapp",
+										"com"
+									],
+									"path": [
+										"album",
+										"3"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Track",
+					"item": [
+						{
+							"name": "Create Track",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"trackId\": 55555,\r\n    \"userId\": 77777,\r\n    \"liked\": false\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "https://music-store-recs-28877.herokuapp.com/track",
+									"protocol": "https",
+									"host": [
+										"music-store-recs-28877",
+										"herokuapp",
+										"com"
+									],
+									"path": [
+										"track"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Get Track",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "https://music-store-recs-28877.herokuapp.com/track/4",
+									"protocol": "https",
+									"host": [
+										"music-store-recs-28877",
+										"herokuapp",
+										"com"
+									],
+									"path": [
+										"track",
+										"4"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Get All Tracks",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "https://music-store-recs-28877.herokuapp.com/track",
+									"protocol": "https",
+									"host": [
+										"music-store-recs-28877",
+										"herokuapp",
+										"com"
+									],
+									"path": [
+										"track"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Update Track",
+							"request": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"trackId\": 9919999,\r\n    \"userId\": 9999991,\r\n    \"liked\": true\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "https://music-store-recs-28877.herokuapp.com/track/2",
+									"protocol": "https",
+									"host": [
+										"music-store-recs-28877",
+										"herokuapp",
+										"com"
+									],
+									"path": [
+										"track",
+										"2"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Delete Track",
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "https://music-store-recs-28877.herokuapp.com/track/3",
+									"protocol": "https",
+									"host": [
+										"music-store-recs-28877",
+										"herokuapp",
+										"com"
+									],
+									"path": [
+										"track",
+										"3"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				}
+			]
+		}
+	]
+}
